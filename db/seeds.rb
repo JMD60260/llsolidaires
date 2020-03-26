@@ -16,44 +16,44 @@ puts "Tous les users ont été supprimés"
 
 puts "Création de nouveaux utilisateurs"
 
-puts "Création de Jean..."
+puts "Création de Jean...(propriétaire)"
 owner1 = User.create!({
   email: "owner1@solidaires.com",
   password: "azerty",
   first_name: "Jean",
   last_name: "Dujardin",
   phone: "0612131415",
-  role: 1
+  role: "owner"
 })
 
-puts "Création de Pierre..."
+puts "Création de Pierre...(propriétaire)"
 owner2 = User.create!({
   email: "owner2@solidaires.com",
   password: "azerty",
   first_name: "Pierre",
   last_name: "Leloueur",
   phone: "0612131415",
-  role: 1
+  role: "owner"
 })
 
-puts "Création de Julio..."
+puts "Création de Julio...(propriétaire)"
 owner3 = User.create!({
   email: "owner3@solidaires.com",
   password: "azerty",
   first_name: "Julio",
   last_name: "Solidaire",
   phone: "0612131415",
-  role: 1
+  role: "owner"
 })
 
-puts "Création de Phill..."
+puts "Création de Phill...(Medic)"
 medic = User.create!({
   email: "medic@solidaires.com",
   password: "azerty",
-  first_name: "Phill",
+  first_name: "Phil",
   last_name: "Collins",
   phone: "0623242526",
-  role: 1
+  role: "medical"
 })
 
 puts "Création de 3 appartements"
