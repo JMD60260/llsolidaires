@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="header">
+    <h1>Voici la liste des appartements disponibles :</h1>
+  </div>
+<div class="flat-container d-flex">
+  <div class="flat-list">
+    <% @flats.each do |flat| %>
+      <div class="card">
+        <%= flat.description %>
+        <%= flat.flat_type %>
+        <%= flat.address %>
+      </div>
+    <% end %>
+  </div>
+  <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>">
+  </div>
+</div>
+
+
+</div>
