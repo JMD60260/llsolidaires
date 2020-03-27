@@ -93,4 +93,16 @@ Rental.create!({
   end_date: Date.new(2020,05,29)
 })
 
+puts "Création d'un hopital"
+  Hospital.create!({
+    address: "100 Boulevard du Général Leclerc 92110 Clichy",
+    name: "Hôpital Beaujon AP-HP"
+  })
+
+puts "Création d'un hopital"
+  Hospital.create!({
+    address: "178 Rue des Renouillers, 92700 Colombes",
+    name: "Hôpital Louis-Mourier AP-HP"
+  })
+
 puts " \nSeeds terminées avec succès"
