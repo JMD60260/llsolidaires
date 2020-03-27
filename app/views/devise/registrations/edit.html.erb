@@ -9,20 +9,29 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
-    <%= f.input :password,
+    <%# A mon avis dans le profil on modifie que nos infos perso %>
+    <%#= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+    <%#= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
+    <%#= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :first_name,required: true, autofocus: true%>
+    <%= f.input :last_name,required: true, autofocus: true%>
+    <%= f.input :phone,required: true, autofocus: true%>
+    <%#= f.input_field :role,
+                collection: [["Personnel médical", "medical"],["Propriétaire", "owner"]],
+                label_method: :first,
+                value_method: :last,
+                as: :radio_buttons,
+                checked: :none,
+                :item_wrapper_class => 'inline' %>
   </div>
-
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>
