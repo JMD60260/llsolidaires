@@ -22,13 +22,14 @@
          <%= link_to "SOS", "#", class: "nav-link text-danger font-weight-bold" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Profil", edit_user_registration_path, class: "nav-link" %>
+          <%= link_to "Profil", pages_userProfile_path, class: "nav-link" %>
         </li>
         <% else %>
         <% end %>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to current_user.first_name, pages_userProfile_path, class: "dropdown-item" %>
             <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Another action", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
