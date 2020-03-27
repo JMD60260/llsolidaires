@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+puts "Commencement des seeds\n "
 puts "Nettoyage de la base de données en cours ..."
 Rental.destroy_all
 puts "Toutes les locations ont été effacées"
@@ -92,3 +92,5 @@ Rental.create!({
   start_date: Date.new(2020,03,25),
   end_date: Date.new(2020,05,29)
 })
+
+puts " \nSeeds terminées avec succès"
