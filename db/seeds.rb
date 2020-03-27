@@ -13,6 +13,8 @@ Flat.destroy_all
 puts "Tous les appartements ont été supprimés"
 User.destroy_all
 puts "Tous les users ont été supprimés"
+Hospital.destroy_all
+puts "Tous les hopitaux ont été supprimés"
 
 puts "Création de nouveaux utilisateurs"
 
@@ -61,7 +63,7 @@ puts "Création de 3 appartements"
 puts "Création du Studio..."
 appart1 = Flat.create!({
   address: "17 rue du Paris, Paris 75017",
-  flat_type: "Studio",
+  flat_type: 1,
   description: "Charmant studio, 22m2, disponible pour vous reposer",
   accessibility_pmr: true,
   user_id: owner1.id
@@ -70,7 +72,7 @@ appart1 = Flat.create!({
 puts "Création du 3 pièces..."
 appart2 = Flat.create!({
   address: "141 rue de Saint-Denis, Colombes 92210",
-  flat_type: "3 pièces",
+  flat_type: 3,
   description: "3 pièces, 59m2, deux chambres meublées, 1 salle de bain",
   accessibility_pmr: true,
   user_id: owner2.id
@@ -79,7 +81,7 @@ appart2 = Flat.create!({
 puts "Création du 2 pièces..."
 appart3 = Flat.create!({
   address: "10 rue du port, Clichy 92110",
-  flat_type: "2 pièces",
+  flat_type: 2,
   description: "Charmant 2 pièces, 33m2 disponible pour vos reposer",
   accessibility_pmr: false,
   user_id: owner3.id

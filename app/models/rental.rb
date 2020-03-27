@@ -6,6 +6,8 @@ class Rental < ApplicationRecord
   # validate :date_start_after_today?
   # validate :end_date_after_start_date?
 
+  enum flat_type: [:T1, :T2, :T3, :T4]
+
   private
 
   def date_start_after_today?
