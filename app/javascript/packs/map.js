@@ -13,4 +13,15 @@ if (mapElement) {
   } else {
     map.fitLatLngBounds(markers);
   }
+  // Markers Hospitals
+  const markersHosp = JSON.parse(mapElement.dataset.markersHosp);
+  map.addMarkers(markersHosp);
+   if (markersHosp.length === 0) {
+     map.setZoom(2);
+   } else if (markersHosp.length === 1) {
+     map.setCenter(markersHosp[0].lat, markersHosp[0].lng);
+     map.setZoom(14);
+   } else {
+     map.fitLatLngBounds(markersHosp);
+   }
 }

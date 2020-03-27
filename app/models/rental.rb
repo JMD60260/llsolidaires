@@ -2,7 +2,7 @@ class Rental < ApplicationRecord
   belongs_to :user
   belongs_to :flat
 
-  validates :start_date, :end_date, presence: true
+  validates :start_date, presence: true
   # validate :date_start_after_today?
   # validate :end_date_after_start_date?
 
