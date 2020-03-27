@@ -1,0 +1,9 @@
+<h1>Dashboard</h1>
+<% @flats.each do |flat| %>
+<%= flat.address %>
+<% end %>
+
+<h1>Own</h1>
+<% @owned_flats.each do |flat| %>
+<%= flat.address %>
+<% end %>
