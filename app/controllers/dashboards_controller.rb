@@ -1,6 +1,11 @@
 class DashboardsController < ApplicationController
   def index
     @flats = Flat.all
-    @owned_flats = current_user.flats
+  end
+  def owner
+    @flats = Flat.all
+  end
+  def medical
+    @flats = Flat.all
   end
 end
