@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="header">
+    <h1>Voici la liste des appartements disponibles :</h1>
+  </div>
+
+  <div class="flat-list">
+
+    <% @flats.each do |flat| %>
+    <div class="card">
+      <%= flat.descritpion %>
+      <%= flat.flat_type %>
+      <%= flat.address %>
+    </div>
+
+
+    <% end %>
+
+
+  </div>
+
+</div>
