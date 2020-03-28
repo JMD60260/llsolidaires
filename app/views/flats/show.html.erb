@@ -1,0 +1,33 @@
+  <div class="ml-4">
+    <h1 class="text-center mt-4">Type de logement :
+      <% if @flat.flat_type = 0 %>
+         Studio
+      <% elsif  @flat.flat_type = 1 %>
+        T1
+      <% elsif  @flat.flat_type = 2 %>
+        T2
+      <% elsif  @flat.flat_type = 3 %>
+        T3
+      <% elsif  @flat.flat_type = 4 %>
+        T4
+      <% end %> </h1>
+
+        <p class="ml-4">Adresse : <%= @flat.address %></p>
+        <p class="ml-4">Description : <%= @flat.description %></p>
+        <p class="ml-4">Accessibilité PMR :
+          <% if @flat.accessibility_pmr == true %>
+            Oui
+            <% else %>
+            Non
+          <% end %>
+        </p>
+
+          <%= link_to new_flat_path do %>
+            <i class="fas fa-pencil-alt m-4 btn btn-primary">Ajouter un logement</i>
+          <% end %>
+        <div>
+          <%= link_to "Supprimer",  flat_path(@flat), class: "mt-4 btn btn-primary",
+          method: :delete,
+          data: { confirm: "Are you sure?" }  %>
+        </div>
+      </div>

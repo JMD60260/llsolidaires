@@ -2,15 +2,24 @@
   <div class="header">
     <h1>Voici la liste des appartements disponibles :</h1>
   </div>
+
+  <div>
+   <%= link_to new_flat_path do %>
+      <i class="fas fa-pencil-alt mt-4 mb-4 btn btn-primary">Ajouter un logement</i>
+   <% end %>
+  </div>
+
 <div class="flat-container d-flex">
-  <div class="flat-list">
+  <div class="flat-list m-4">
     <% @flats.each do |flat| %>
-      <div class="card">
-        <%= flat.description %>
-        <%= flat.flat_type %>
-        <%= flat.address %>
-      </div>
-    <% end %>
+      <%= link_to flat_path(flat), class: 'links m-4' do %>
+        <div class="card">
+          <%= flat.description %>
+          <%= flat.flat_type %>
+          <%= flat.address %>
+        </div>
+      <% end %>
+    <%end %>
   </div>
   <div
     id="map"
