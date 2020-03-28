@@ -8,6 +8,9 @@ class DashboardsController < ApplicationController
 
   def medical
      @flats = Flat.where("address ILIKE ?", "%#{params[:query]}%")
+     if params[:query]
+      @flats = Flat.near(params[:query])
+
       @markers = @flats.map do |flat|
         {
           lat: flat.latitude,
@@ -15,6 +18,8 @@ class DashboardsController < ApplicationController
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
       end
+    end
+    # raise
   end
 
   def show

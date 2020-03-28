@@ -25,6 +25,7 @@ import GMaps from 'gmaps/gmaps.js';
 
 
 function initAutocomplete() {
+  console.log("coucou");
   const map = new GMaps({
     el: '#map',
     lat: 48.8534,
@@ -35,8 +36,7 @@ function initAutocomplete() {
   // Create the search box and link it to the UI element.
   var input = document.getElementById('SearchBar');
   var searchBox = new google.maps.places.SearchBox(input);
-  console.log(searchBox)
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function () {
@@ -48,7 +48,7 @@ function initAutocomplete() {
   // more details for that place.
   searchBox.addListener('places_changed', function () {
     var places = searchBox.getPlaces();
-
+    console.log(places);
     if (places.length == 0) {
       return;
     }
@@ -61,6 +61,7 @@ function initAutocomplete() {
 
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
+    console.log(bounds)
     places.forEach(function (place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
@@ -93,4 +94,5 @@ function initAutocomplete() {
   });
 }
 
-initAutocomplete();
+initAutocomplete()
+
