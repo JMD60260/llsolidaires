@@ -18,7 +18,8 @@ class FlatsController < ApplicationController
   end
 
   def new
-
+    # Ligne a ajouter dans le formulaire pour ajouter les photos
+    # <%= f.file_field :photos, multiple: true %>
   end
 
   def create
@@ -44,6 +45,11 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :flat_type, :description, :accessibility_pmr)
+    params.require(:flat).permit(:address,
+                                 :flat_type,
+                                 :description,
+                                 :accessibility_pmr,
+                                 { photos: [] }
+                                 )
   end
 end

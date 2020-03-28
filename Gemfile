@@ -18,6 +18,9 @@ gem 'webpacker'
 
 # Geocoding gem for GoogleMaps
 gem 'geocoder'
+gem 'aws-sdk-s3', require: false
+gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
