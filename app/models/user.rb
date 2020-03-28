@@ -22,7 +22,7 @@ class User < ApplicationRecord
   after_create :send_password
 
   def send_password
-    if self.role == 'owner'
+    if self.role == 'owner' && self.from_csv
       UserMailer.send_password_to_new_user(self, self.password).deliver
     end
   end
