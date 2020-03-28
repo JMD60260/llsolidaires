@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+
   resources :flats, only: [:index, :show, :new, :create, :destroy]
   resources :dashboards, only: [:index]
   get 'dashboards/owner', to: "dashboards#owner"

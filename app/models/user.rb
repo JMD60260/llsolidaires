@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   enum role: [:owner, :medical]
 
+  has_many :flats, dependent: :destroy
+  has_many :rentals, dependent: :destroy
+
   after_initialize do
     if self.new_record?
       self.role ||= :medical

@@ -2,6 +2,8 @@ class DashboardsController < ApplicationController
 
   def owner
     @flats = Flat.all
+    @own_flats = current_user.flats
+    @own_rentals = current_user.rentals
   end
   def medical
     # Flats identification for Medics
