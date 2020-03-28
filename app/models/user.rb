@@ -18,4 +18,12 @@ class User < ApplicationRecord
   end
 
   validates :role, :phone, :last_name, presence: true
+
+  after_create :send_password
+
+  def send_password
+    if self.role == 'owner'
+      UserMailer.send_password_to_new_user(self, self.password).deliver
+    end
+  end
 end
