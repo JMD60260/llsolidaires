@@ -7,4 +7,7 @@ class Flat < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  enum flat_type: [:T1, :T2, :T3, :T4]
+
+
 end
