@@ -62,8 +62,8 @@ puts "Création de 3 appartements"
 
 puts "Création du Studio..."
 appart1 = Flat.create!({
-  address: "17 rue du Paris, Paris 75017",
-  flat_type: 1,
+  address: "32 rue Gauthey, Paris 75017",
+  flat_type: "T1",
   description: "Charmant studio, 22m2, disponible pour vous reposer",
   accessibility_pmr: true,
   user_id: owner1.id
@@ -71,8 +71,8 @@ appart1 = Flat.create!({
 
 puts "Création du 3 pièces..."
 appart2 = Flat.create!({
-  address: "141 rue de Saint-Denis, Colombes 92210",
-  flat_type: 3,
+  address: "35 avenue du parc, Saint-Leu la forêt 95320",
+  flat_type: "T3",
   description: "3 pièces, 59m2, deux chambres meublées, 1 salle de bain",
   accessibility_pmr: true,
   user_id: owner2.id
@@ -81,7 +81,7 @@ appart2 = Flat.create!({
 puts "Création du 2 pièces..."
 appart3 = Flat.create!({
   address: "10 rue du port, Clichy 92110",
-  flat_type: 2,
+  flat_type: "T2",
   description: "Charmant 2 pièces, 33m2 disponible pour vos reposer",
   accessibility_pmr: false,
   user_id: owner3.id
@@ -95,16 +95,16 @@ Rental.create!({
   end_date: Date.new(2020,05,29)
 })
 
-puts "Création d'un hopital"
-  Hospital.create!({
-    address: "100 Boulevard du Général Leclerc 92110 Clichy",
-    name: "Hôpital Beaujon AP-HP"
-  })
+# puts "Création d'un hopital"
+#   Hospital.create!({
+#     address: "100 Boulevard du Général Leclerc 92110 Clichy",
+#     name: "Hôpital Beaujon AP-HP"
+#   })
 
-puts "Création d'un hopital"
-  Hospital.create!({
-    address: "178 Rue des Renouillers, 92700 Colombes",
-    name: "Hôpital Louis-Mourier AP-HP"
-  })
+# puts "Création d'un hopital"
+#   Hospital.create!({
+#     address: "178 Rue des Renouillers, 92700 Colombes",
+#     name: "Hôpital Louis-Mourier AP-HP"
+#   })
 
 puts " \nSeeds terminées avec succès"

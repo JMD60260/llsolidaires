@@ -22,6 +22,10 @@ gem 'aws-sdk-s3', require: false
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
 
+# Algolia Search
+gem "algoliasearch-rails"
+
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

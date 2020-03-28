@@ -4,8 +4,15 @@
   <%= image_tag current_user.identity_file.url, alt: "alttext" %>
 <% end %>
 <%= link_to 'Propriétaire?', dashboards_owner_path, class: 'btn btn-primary' %>
-
 <div class="container">
+  <%= form_tag dashboards_medical_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control flat-search",
+      placeholder: "Recherchez la ville de votre Hopital"
+    %>
+    <%= submit_tag "Rechercher", class: "btn btn-primary" %>
+  <% end %>
   <div class="header">
     <h1>Voici la liste des appartements disponibles :</h1>
   </div>
@@ -19,17 +26,6 @@
         </div>
       <% end %>
     </div>
-    <div class="hospital-container">
-
-    <% @hospitals.each do |hospital| %>
-      <div class="card">
-        <%= hospital.name %>
-        <%= hospital.address %>
-      </div>
-
-    <% end %>
-
-  </div>
     <div
       id="map"
       style="width: 100%;
