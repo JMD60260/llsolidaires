@@ -1,5 +1,8 @@
 <h1>Medical</h1>
 <%= current_user.role %>
+<% if current_user.identity_file.url.present? %>
+  <%= image_tag current_user.identity_file.url, alt: "alttext" %>
+<% end %>
 
 <%= link_to 'Propriétaire?', dashboards_owner_path, class: 'btn btn-primary' %>
 

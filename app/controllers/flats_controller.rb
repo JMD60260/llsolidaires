@@ -26,6 +26,8 @@ class FlatsController < ApplicationController
       flash[:error] = "Accès interdit -> Vous devez vous inscrire d'abord !"
       redirect_to root_path
     end
+    # Ligne a ajouter dans le formulaire pour ajouter les photos
+    # <%= f.file_field :photos, multiple: true %>
   end
 
   def create
@@ -58,6 +60,11 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :flat_type, :description, :accessibility_pmr)
+    params.require(:flat).permit(:address,
+                                 :flat_type,
+                                 :description,
+                                 :accessibility_pmr,
+                                 { photos: [] }
+                                 )
   end
 end
