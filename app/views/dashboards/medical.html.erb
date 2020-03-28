@@ -8,6 +8,7 @@
   <%= form_tag dashboards_medical_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
+      id: 'SearchBar',
       class: "form-control flat-search",
       placeholder: "Recherchez la ville de votre Hopital"
     %>
@@ -31,7 +32,7 @@
       style="width: 100%;
       height: 600px;"
       data-markers="<%= @markers.to_json %>"
-      data-markersHosp="<%= @markersHosp.to_json %>" >
+      >
     </div>
   </div>
 
