@@ -1,4 +1,7 @@
 class Flat < ApplicationRecord
+  mount_uploaders :photos, FlatPhotosUploader
+  # serialize :photos, JSON
+
   belongs_to :user
   has_many :rentals
 
