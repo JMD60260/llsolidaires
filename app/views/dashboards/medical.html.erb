@@ -3,9 +3,9 @@
 <% if current_user.identity_file.url.present? %>
   <%= image_tag current_user.identity_file.url, alt: "alttext" %>
 <% end %>
-<%= link_to 'Propriétaire?', dashboards_owner_path, class: 'btn btn-primary' %>
+<%= link_to 'Propriétaire?', dashboard_owner_path, class: 'btn btn-primary' %>
 <div class="container">
-  <%= form_tag dashboards_medical_path, method: :get do %>
+  <%= form_tag dashboard_medical_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       id: 'SearchBar',

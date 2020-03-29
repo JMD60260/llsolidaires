@@ -4,9 +4,9 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       if current_user.role == "owner"
-        redirect_to dashboards_owner_path
+        redirect_to dashboard_owner_path
       elsif current_user.role == "medical"
-        redirect_to dashboards_medical_path
+        redirect_to dashboard_medical_path
       end
     else
       redirect_to new_user_session_path

@@ -1,9 +1,8 @@
 class DashboardsController < ApplicationController
 
   def owner
-    @flats = Flat.all
-    @own_flats = current_user.flats
-    @own_rentals = current_user.rentals
+    @flats = current_user.flats
+    @flat = Flat.new
   end
 
   def medical
@@ -22,19 +21,6 @@ class DashboardsController < ApplicationController
       @flats = Flat.geocoded
     end
     # raise
-  end
-
-  def show
-    set_flat
-  end
-private
-
-  def set_flat
-    @flat = Flat.find(params[:id])
-  end
-
-  def flat_params
-    params.require(:flat).permit(:address, :flat_type, :description, :accessibility_pmr)
   end
 
 end

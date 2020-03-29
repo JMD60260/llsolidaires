@@ -1,36 +1,38 @@
 <h1>Dashboard Owner</h1>
-<%= link_to 'Personnel soignant', dashboards_medical_path, class: 'btn btn-primary' %>
 <p>Mon rôle: <%= current_user.role %></p>
 
 <h2>Mes appartements: </h2>
+
 <div class="card" style="width: 18rem;">
-<% @own_flats.each do |flat| %>
+<% @flats.each do |flat| %>
   <img class="card-img-top" src="https://images.unsplash.com/photo-1565721219423-c8cd193201c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">Un <%= flat.flat_type %> pièces</h5>
     <p class="card-text"><%= flat.address %></p>
     <%# <a href="#" class="btn btn-primary">Voir</a> %>
     <%= link_to "Voir l'appartement", flat_path(flat), class: 'btn btn-primary' %>
-    
+
   </div>
   <% end %>
 </div>
 
-<h2>Mes réservations:</h2>
-<% current_user.rentals.each do |r| %>
-<%= r %>
+
+<h2>Proposer un nouveau logement: </h2>
+
+<div class="container pt-4 pb-4 mt-4 mb-4">
+  <h1 class="mt-4 pt-4 mb-4 pb-4">Ajouter un logement</h1>
+<%= simple_form_for(@flat) do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :address, :label => "Adresse" %>
+    <%= f.input :flat_type, :label => "Type du logement",  collection: ["Studio", "T1", "T2", "T3"]  %>
+    <%= f.input :description, :label => "Description" %>
+    <%= f.input :accessibility_pmr, :label => "Accessibilité PMR" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn' %>
+  </div>
 <% end %>
-<div class="card" style="width: 18rem;">
-<% @own_rentals.each do |rental| %>
-  <img class="card-img-top" src="https://images.unsplash.com/photo-1565721219423-c8cd193201c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Du <%= rental.start_date %> au <%= rental.end_date %></h5>
-    <p class="card-text">Appartement</p>
-    <a href="#" class="btn btn-primary">Voir</a>
-    
-  </div>
-  <% end %>
+
 </div>
-
-<%= link_to 'Un nouvel appartement?', new_flat_path, class: 'btn btn-primary' %>
-
