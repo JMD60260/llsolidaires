@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-
-  resources :flats, only: [:index, :show, :new, :create, :destroy, :edit, :update] do
-    resources :rentals, only: [:show, :create]
+  resources :flats, only: [:index, :show, :new, :create, :destroy] do
+    resources :rentals, only: [:new, :create]
   end
-  resources :rentals, only: [:index, :edit]
+  resources :rentals, only: [:show, :index, :edit] do
+    member { get :download_proof }
+  end
   resources :dashboards, only: [:index]
   get 'dashboards/owner', to: "dashboards#owner"
   get 'dashboards/medical', to: "dashboards#medical"

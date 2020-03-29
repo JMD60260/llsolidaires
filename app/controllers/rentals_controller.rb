@@ -1,5 +1,11 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:show, :edit, :update, :destroy, :validate_rental, :refuse_rental]
+  before_action :set_rental, only: [:download_proof, :show, :edit, :update, :destroy, :validate_rental, :refuse_rental]
+
+  def download_proof
+    data = open(@rental.user.proof.url)
+    extension_rgx = /[0-9a-z]+$/
+    send_data data.read, type: data.content_type, x_sendflile: true, filename: "justificatif_#{@rental.user.last_name}_#{@rental.user.first_name}.#{(@rental.user.proof.path).match(extension_rgx).to_s}"
+  end
 
   def show
 
@@ -52,7 +58,7 @@ class RentalsController < ApplicationController
   def update
     if @rental.update(rental_params)
       # On a une view rental? ou bien rediriger vers l'index de rentals du current medical
-      redirect_to root_path
+      redirect_to rental_path(@rental)
     else
       render :edit
     end
@@ -69,7 +75,7 @@ class RentalsController < ApplicationController
     @rental.validated = true
     UserMailer.send_acceptation_to_medical(@rental).deliver
     # On a une view rental? ou bien rediriger vers l'index de rentals du current medical
-    redirect_to root_path
+    redirect_to rental_path(@rental)
   end
 
   def refuse_rental
@@ -77,7 +83,6 @@ class RentalsController < ApplicationController
     flash[:error] = "Vous avez refusé la réservation de l'appartement situé #{@rental.flat.address} par #{@rental.user.first_name} #{@rental.user.last_name}"
     @rental.destroy
     UserMailer.send_refusal_to_medical(@rental).deliver
-    # On a une view rental? ou bien rediriger vers l'index de rentals du current medical
     redirect_to root_path
   end
 
