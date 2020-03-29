@@ -19,7 +19,7 @@
         </li>
         <% if current_user.role == "medical" %>
         <li class="nav-item">
-         <%= link_to "SOS", "#", class: "nav-link text-danger font-weight-bold" %>
+         <%= link_to "SOS", pages_sos_mailer_path, class: "nav-link text-danger font-weight-bold" %>
         </li>
         <li class="nav-item">
           <%= link_to "Profil", pages_userProfile_path, class: "nav-link" %>
