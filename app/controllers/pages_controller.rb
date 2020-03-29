@@ -16,4 +16,7 @@ class PagesController < ApplicationController
 
   def userProfile
   end
+
+  def helpDoc
+  end
 end
