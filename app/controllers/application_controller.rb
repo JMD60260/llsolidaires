@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
                          :first_name,
                          :last_name,
                          :phone,
-                         :rgpd)
+                         :rgpd,
+                         :description)
     end
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
        user_params.permit(:role,
@@ -29,7 +30,8 @@ class ApplicationController < ActionController::Base
                           :remove_identity_file,
                           :proof,
                           :proof_cache,
-                          :remove_proof
+                          :remove_proof,
+                          :description
                           )
     end
   end
