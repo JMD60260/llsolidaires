@@ -7,7 +7,7 @@ function initAutocomplete() {
     el: '#map',
     lat: 48.8534,
     lng: 2.3488,
-    zoom: 9
+    zoom: 7
   });
 
   // Create the search box and link it to the UI element.
@@ -26,8 +26,9 @@ function initAutocomplete() {
   // more details for that place.
 
   let query
-  searchBox.addListener('submit', function (event) {
+  searchBox.addListener('submit', function () {
     var places = searchBox.getPlaces();
+    console.log(places)
     query = places[0].formatted_address
     if (places.length == 0) {
       return;
@@ -79,6 +80,7 @@ function initAutocomplete() {
 
 
   let flats = document.getElementById('map').getAttribute('data-markers');
+  console.log(flats)
   if (flats){
      flats = flats.replace('[', '');
      flats = flats.replace(']', '');
@@ -101,6 +103,7 @@ function initAutocomplete() {
              lng: json.lng,
            });
        }
+       console.log(value)
      }
   }
 }

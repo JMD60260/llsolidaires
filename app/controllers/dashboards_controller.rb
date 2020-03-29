@@ -15,10 +15,11 @@ class DashboardsController < ApplicationController
         {
           lat: flat.latitude,
           lng: flat.longitude,
-          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+          # infoWindow: { content: render_to_string(partial: "/flats/maps", locals: { flat: flat }) }
         }
       end
-
+    else
+      @flats = Flat.geocoded
     end
     # raise
   end

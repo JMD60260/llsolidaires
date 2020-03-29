@@ -14,6 +14,12 @@ class PagesController < ApplicationController
     end
   end
 
+  def sos_mailer
+    # Methode de mailer avec view de mail qui envoit un mail à nous même pour contact@les-logements-solidaires.com
+    UserMailer.send_sos_to_llsolidaires(current_user).deliver
+    redirect_to dashboards_path
+  end
+
   def userProfile
   end
 

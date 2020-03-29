@@ -33,4 +33,11 @@ class UserMailer < ApplicationMailer
          subject: "Votre réservation pour l'appartement situé #{@flat.address} a été refusée."
          )
   end
+
+  def send_sos_to_llsolidaires(user)
+    @user = user
+    mail(to: "contact@les-logements-solidaires.com",
+         subject: "Un utilisateur vient de cliquer sur SOS"
+        )
+  end
 end
