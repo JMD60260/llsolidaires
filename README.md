@@ -35,11 +35,11 @@
     Rails version 6.0.2.1
     Bundler 2.1.4
     CSS : Bootstrap
-    Licence AGPL3
+    Licence AGPL3 (Merci de ne pas faire une utilisation commerciale de ce repository car nous l'avons concu pour aider les personnels de première ligne respecté notre philosophie)
 
 ***
 
-### API Utilisées Pour Github ###
+#### API Utilisées Pour Github ####
 
     dirige toi via ton terminal dans le dossier que tu souhaites
     git clone git@github.com:JMD60260/llsolidaires.git
