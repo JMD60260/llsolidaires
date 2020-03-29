@@ -11,7 +11,7 @@ class UserMailer < ApplicationMailer
   def send_rental_demand_to_owner(rental)
     @rental = rental
     @flat = rental.flat
-    @owner = rental.flat.owner
+    @owner = rental.flat.user
     mail(to: @owner.email,
          subject: "Les Logements Solidaires - Vous avez reçu une demande de réservation pour votre appartment situé #{@flat.address}"
          )
@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
   def send_acceptation_to_medical(rental)
     @rental = rental
     @flat = rental.flat
-    @owner = rental.flat.owner
+    @owner = rental.flat.user
     mail(to: @rental.user.email,
          subject: "Votre réservation pour l'appartement situé #{@flat.address} a été acceptée."
          )

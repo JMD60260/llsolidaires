@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:download_proof, :edit, :update, :destroy, :validate_rental, :refuse_rental]
+  before_action :set_rental, only: [:download_proof, :edit, :update, :destroy]
 
   def download_proof
     data = open(@rental.user.proof.url)
@@ -34,23 +34,24 @@ class RentalsController < ApplicationController
   end
 
   def validate_rental
+    @rental = Rental.find(params[:rental_id])
     if @rental.flat.user == current_user && @rental.validated == false
       @rental.update(validated: true)
       # Supprimer toutes les autres rentals.validated == false pour le @rental.user, seuleùent celles qui ont une date en commun avec @rental
       UserMailer.send_acceptation_to_medical(@rental).deliver
-      render :owner_validated
+      redirect_to owner_pending_requests_path
     else
       flash[:error] = "Vous ne pouvez pas valider cette réservation."
     end
   end
 
   def refuse_rental
-    # Display une pop up demandant validation de la part de l'utilisateur
+    @rental = Rental.find(params[:rental_id])
     if @rental.flat.user == current_user && @rental.validated == false
       flash[:error] = "Vous avez refusé la réservation de l'appartement situé #{@rental.flat.address} par #{@rental.user.first_name} #{@rental.user.last_name}"
       @rental.destroy
       UserMailer.send_refusal_to_medical(@rental).deliver
-      redirect_to root_path
+      redirect_to owner_pending_requests_path
     else
       flash[:error] = "Vous ne pouvez pas refuser cette réservation."
     end
@@ -66,7 +67,7 @@ class RentalsController < ApplicationController
           if rental.validated
             if rental.start_date > Date.today
               @future_rentals << rental
-            elsif rental.start_date <= Date.today && rental.end_date >= Date.today
+            elsif rental.start_date <= Date.today && (!rental.end_date || rental.end_date >= Date.today)
               @current_rentals << rental
             end
           end
@@ -87,7 +88,7 @@ class RentalsController < ApplicationController
       @rentals
       current_user.flats.each do |flat|
         flat.rentals.each do |rental|
-          if !rental.validated && rental.end_date >= Date.tomorrow
+          if !rental.validated && (!rental.end_date || rental.end_date >= Date.tomorrow)
             @rentals << rental
           end
         end
@@ -103,7 +104,7 @@ class RentalsController < ApplicationController
     # Les rentals du current medical, validated==true, celles en cours et dans le futur
     if current_user.role == 'medical'
        # all_rentals_from_medic = Rental.joins(:flat).where(user: current_user)
-       @current_rentals = current_user.rentals.where(validated: true).select {|rental| rental.start_date <= Date.today && rental.end_date >= Date.today }.sort_by{ |rental| rental.end_date }
+       @current_rentals = current_user.rentals.where(validated: true).select {|rental| rental.start_date <= Date.today && (!rental.end_date || rental.end_date >= Date.today) }.sort_by{ |rental| rental.end_date }
        @future_rentals = current_user.rentals.where(validated: true).select {|rental| rental.start_date > Date.today }.sort_by{ |rental| rental.start_date }
     else
       flash[:error] = "Vous n'avez pas accés à cette page.'"
@@ -115,7 +116,7 @@ class RentalsController < ApplicationController
     # Les rentals du current medical, validated==false, celles à venir seulement
     if current_user.role == 'medical'
        # all_rentals_from_medic = Rental.joins(:flat).where(user: current_user)
-       @rentals = current_user.rentals.where(validated: false).select { |rental| rental.end_date >= Date.tomorrow }.sort_by{ |rental| rental.start_date }
+       @rentals = current_user.rentals.where(validated: false).select { |rental| (!rental.end_date || rental.end_date >= Date.tomorrow) }.sort_by{ |rental| rental.start_date }
     else
       flash[:error] = "Vous n'avez pas accés à cette page.'"
       redirect_to root_path

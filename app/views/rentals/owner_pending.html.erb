@@ -1,4 +1,14 @@
 <%= render 'shared/banner' %>
 <%= render 'shared/navbar_owner' %>
 
-owner_pending.html.erb
+<% @rentals.each do |rental| %>
+
+  <p> <%= rental.flat.flat_type %> </p>
+
+  <p> <%= rental.flat.description %> </p>
+
+  <%= link_to 'Accepter', rental_validate_path(rental), method: :patch %>
+
+  <%= link_to 'Décliner', rental_refuse_path(rental), method: :delete %>
+
+<% end %>
