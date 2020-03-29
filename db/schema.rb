@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2020_03_29_142559) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
-    t.json "photos"
     t.string "status", default: "libre"
+    t.json "photos"
     t.string "city"
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
