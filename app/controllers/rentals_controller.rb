@@ -12,9 +12,9 @@ class RentalsController < ApplicationController
       @rental = Rental.new(rental_params)
       if @rental.save
         UserMailer.send_rental_demand_to_owner(@rental).deliver
-        redirect_to root_path
+        redirect_to medical_pending_requests_path
       else
-        render :new
+        redirect_to root_path
       end
     else
       flash[:error] = "Vous ne pouvez pas réserver d'appartement avant de vous être inscrit en tant que personnel soignant."

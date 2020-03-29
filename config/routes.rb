@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   get 'dashboard/owner', to: "dashboards#owner"
   get 'dashboard/medical', to: "dashboards#medical"
 
-  resources :flats, only: [:create, :edit, :update, :destroy]
+  resources :flats, only: [:create, :edit, :update, :destroy] do
+    resources :rentals, only: [:create]
+  end
 
-  resources :rentals, only: [:create, :destroy] do
+  resources :rentals, only: [:destroy] do
     member { get :download_proof }
     patch 'validate', to: "rentals#validate_rental"
     delete 'refuse', to: "rentals#refuse_rental"

@@ -2,18 +2,20 @@
 <%= render 'shared/navbar_medical' %>
 
 <h1>Medical</h1>
-<%= current_user.role %>
-<% if current_user.identity_file.url.present? %>
-  <%= image_tag current_user.identity_file.url, alt: "alttext" %>
-<% end %>
-<%= link_to 'Propriétaire?', dashboard_owner_path, class: 'btn btn-primary' %>
+
 <div class="container">
+
   <%= form_tag dashboard_medical_path, method: :get do %>
+    <label for="start">De:</label>
+    <%= date_field_tag :start, params[:start], id: "start", required: true, value: Date.tomorrow %>
+    <label for="end">A:</label>
+    <%= date_field_tag :end, params[:end], id: "end", value: "" %>
     <%= text_field_tag :query,
       params[:query],
       id: 'SearchBar',
       class: "form-control flat-search",
-      placeholder: "Recherchez la ville de votre Hopital"
+      placeholder: "Recherchez la ville de votre Hopital",
+      required: true
     %>
     <%= submit_tag "Rechercher", class: "btn btn-primary" %>
   <% end %>
@@ -39,6 +41,14 @@
     </div>
   </div>
 
-
+<h2>Logements:</h2>
+<% @flats.each do |flat| %>
+  <div class="card">
+    <%= flat.description %>
+    <%= flat.flat_type %>
+    <%= flat.address %>
+    <%= link_to "Envoyer une demande", flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }), method: :post %>
+  </div>
+<% end %>
 
 </div>
