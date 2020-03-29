@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
 
-  resources :flats, only: [:index, :show, :new, :create, :destroy]
+  resources :flats, only: [:index, :show, :new, :create, :destroy] do
+    resources :rentals, only: [:show, :create]
+  end
+  resources :rentals, only: [:index, :edit]
   resources :dashboards, only: [:index]
   get 'dashboards/owner', to: "dashboards#owner"
   get 'dashboards/medical', to: "dashboards#medical"

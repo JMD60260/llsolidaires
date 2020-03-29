@@ -4,7 +4,33 @@ class UserMailer < ApplicationMailer
     @user = user
     @password = password
     mail(to: @user.email,
-      subject: "Les Logements Solidaires - Merci à vous! Voici votre mot de passe")
+         subject: "Les Logements Solidaires - Merci à vous! Voici votre mot de passe"
+         )
   end
 
+  def send_rental_demand_to_owner(rental)
+    @rental = rental
+    @flat = rental.flat
+    @owner = rental.flat.owner
+    mail(to: @owner.email,
+         subject: "Les Logements Solidaires - Vous avez reçu une demande de réservation pour votre appartment situé #{@flat.address}"
+         )
+  end
+
+  def send_acceptation_to_medical(rental)
+    @rental = rental
+    @flat = rental.flat
+    @owner = rental.flat.owner
+    mail(to: @rental.user.email,
+         subject: "Votre réservation pour l'appartement situé #{@flat.address} a été acceptée."
+         )
+  end
+
+  def send_refusal_to_medical(rental)
+    @rental = rental
+    @flat = rental.flat
+    mail(to: @rental.user.email,
+         subject: "Votre réservation pour l'appartement situé #{@flat.address} a été refusée."
+         )
+  end
 end
