@@ -9,7 +9,8 @@
   <div class="card-body">
     <h5 class="card-title">Un <%= flat.flat_type %> pièces</h5>
     <p class="card-text"><%= flat.address %></p>
-    <a href="#" class="btn btn-primary">Voir</a>
+    <%# <a href="#" class="btn btn-primary">Voir</a> %>
+    <%= link_to "Voir l'appartement", show_flat_path, class: 'btn btn-primary' %>
   </div>
   <% end %>
 </div>
@@ -25,6 +26,7 @@
     <h5 class="card-title">Du <%= rental.start_date %> au <%= rental.end_date %></h5>
     <p class="card-text">Appartement</p>
     <a href="#" class="btn btn-primary">Voir</a>
+    
   </div>
   <% end %>
 </div>
