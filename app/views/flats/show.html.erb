@@ -21,13 +21,17 @@
             Non
           <% end %>
         </p>
-
+    <div>
           <%= link_to new_flat_path do %>
             <i class="fas fa-pencil-alt m-4 btn btn-primary">Ajouter un logement</i>
           <% end %>
+          <%= link_to "Editer", edit_flat_path(@flat), class: 'btn btn-primary' %>
+</div>
+          
         <div>
           <%= link_to "Supprimer",  flat_path(@flat), class: "mt-4 btn btn-primary",
           method: :delete,
           data: { confirm: "Are you sure?" }  %>
+          <%= link_to "Retour au dashboard", dashboards_owner_path, class: 'btn btn-primary' %>
         </div>
       </div>
