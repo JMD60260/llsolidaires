@@ -2,3 +2,11 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 <%= link_to 'Personnel soignant', dashboards_medical_path, class: 'btn btn-primary' %>
 <%= link_to 'Propriétaire?', dashboards_owner_path, class: 'btn btn-primary' %>
+<p>Villes et appartmeents disponibles dans chacune:</p>
+<ul>
+  <% @cities.each do |city| %>
+    <li>
+      <%= city %> : <%= Flat.where(city: city).count %>
+    </li>
+  <% end %>
+</ul>
