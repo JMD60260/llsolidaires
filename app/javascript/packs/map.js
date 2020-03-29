@@ -1,54 +1,34 @@
 import GMaps from 'gmaps/gmaps.js';
-// import { initAutocomplete } from '../components/autocomplete';
 
-
-// const mapElement = document.getElementById('map');
-// if (mapElement) {
-//   const map = new GMaps({
-//     el: '#map',
-//     lat: 48.8534,
-//     lng: 2.3488,
-//     zoom:12
-//   });
-
-//   const markers = JSON.parse(mapElement.dataset.markers);
-//   map.addMarkers(markers);
-//   if (markers.length === 0) {
-//     map.setZoom(12);
-//   } else if (markers.length === 1) {
-//     map.setCenter(markers[0].lat, markers[0].lng);
-//     map.setZoom(5);
-//   } else {
-//     map.fitLatLngBounds(markers);
-//   }
-// }
-
+require('google-maps');
 
 function initAutocomplete() {
-  console.log("coucou");
   const map = new GMaps({
     el: '#map',
     lat: 48.8534,
     lng: 2.3488,
-    zoom: 12
+    zoom: 9
   });
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('SearchBar');
+
   var searchBox = new google.maps.places.SearchBox(input);
-  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function () {
     searchBox.setBounds(map.getBounds());
   });
 
+
   var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-  searchBox.addListener('places_changed', function () {
+
+  let query
+  searchBox.addListener('submit', function (event) {
     var places = searchBox.getPlaces();
-    console.log(places);
+    query = places[0].formatted_address
     if (places.length == 0) {
       return;
     }
@@ -61,12 +41,13 @@ function initAutocomplete() {
 
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
-    console.log(bounds)
+
     places.forEach(function (place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
         return;
       }
+
       var icon = {
         url: place.icon,
         size: new google.maps.Size(71, 71),
@@ -91,7 +72,37 @@ function initAutocomplete() {
       }
     });
     map.fitBounds(bounds);
+    let target = document.getElementById('SearchBar');
+    target.removeAttribute('value');
+    target.setAttribute('value', `${query}`);
   });
+
+
+  let flats = document.getElementById('map').getAttribute('data-markers');
+  if (flats){
+     flats = flats.replace('[', '');
+     flats = flats.replace(']', '');
+     flats = flats.split('},');
+
+     let value
+     let flatarray = []
+     for (let i = 0; i < flats.length; i++) {
+       if (i != flats.length - 1) {
+         value = flats[i] + '}';
+
+       } else {
+         value = flats[i];
+
+       }
+       let json = JSON.parse(value)
+       if(typeof(json) === "object"){
+           map.addMarker({
+             lat: json.lat,
+             lng: json.lng,
+           });
+       }
+     }
+  }
 }
 
 initAutocomplete()
