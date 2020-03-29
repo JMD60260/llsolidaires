@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'dashboards/owner', to: "dashboards#owner"
   get 'dashboards/medical', to: "dashboards#medical"
   get 'pages/userProfile', to: "pages#userProfile"
+  get 'pages/helpDoc', to: "pages#helpDoc"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end
