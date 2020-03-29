@@ -4,7 +4,7 @@
 
 + Paul (back)
 + Inés (back + front)
-+ Brian (back)
++ Brian (Github BrianRid)(back)
 + Emilie (back)
 + Alexandre (back)
 + Hugo (back + front)
