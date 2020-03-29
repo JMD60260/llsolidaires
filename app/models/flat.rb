@@ -4,7 +4,7 @@ class Flat < ApplicationRecord
   enum flat_type: [:T1, :T2, :T3, :T4]
 
   belongs_to :user
-  has_many :rentals
+  has_many :rentals, dependent: :destroy
 
   validates :address, presence: true
 
