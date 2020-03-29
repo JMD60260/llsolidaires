@@ -12,9 +12,10 @@
   <div class="card-body">
     <h5 class="card-title">Un <%= flat.flat_type %> pièces</h5>
     <p class="card-text"><%= flat.address %></p>
-    <%# <a href="#" class="btn btn-primary">Voir</a> %>
-    <%= link_to "Voir l'appartement", flat_path(flat), class: 'btn btn-primary' %>
-
+    <%= link_to "Supprimer",  flat_path(flat), class: "mt-4 btn btn-primary",
+              method: :delete,
+              data: { confirm: "Are you sure?" }  %>
+    <%= link_to "Editer", edit_flat_path(flat), class: 'btn btn-primary' %>
   </div>
   <% end %>
 </div>
