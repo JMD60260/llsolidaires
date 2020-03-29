@@ -11,6 +11,7 @@
     <%= f.input :flat_type, :label => "Type du logement",  collection: ["Studio", "T1", "T2", "T3"]  %>
     <%= f.input :description, :label => "Description" %>
     <%= f.input :accessibility_pmr, :label => "Accessibilité PMR" %>
+    <%= f.file_field :photos, multiple: true %>
   </div>
 
    <div class="form-actions">
