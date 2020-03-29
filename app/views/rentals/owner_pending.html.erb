@@ -7,6 +7,13 @@
 
   <p> <%= rental.flat.description %> </p>
 
+  <p> <%= rental.user.last_name %> </p>
+
+  <% if rental.user.proof.url.present? %>
+    <p>justificatif du demandeur</p>
+    <%= link_to 'Télécharger le justificatif du demandeur',  download_proof_rental_path(rental) %>
+  <% end %>
+
   <%= link_to 'Accepter', rental_validate_path(rental), method: :patch %>
 
   <%= link_to 'Décliner', rental_refuse_path(rental), method: :delete %>
