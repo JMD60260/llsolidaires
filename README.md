@@ -1,4 +1,4 @@
-# READ ME Les Logements Solidaires #
+# README Les Logements Solidaires #
 
 ## Membres bénévoles ayant participé à cette aventure ##
 
