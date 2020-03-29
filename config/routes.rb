@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  get 'pages/legal-notice', to: "pages#legal_notice"
+  get 'pages/privacy-policy', to: "pages#privacy_policy"
+  get 'pages/owner-doc', to: "pages#owner_doc"
+  get 'pages/medical-doc', to: "pages#medical_doc"
+  get 'pages/sos_mailer', to: "pages#sos_mailer"
+
   resources :flats do
     resources :rentals, only: [:new, :create]
   end
@@ -11,11 +17,7 @@ Rails.application.routes.draw do
   resources :dashboards, only: [:index]
   get 'dashboards/owner', to: "dashboards#owner"
   get 'dashboards/medical', to: "dashboards#medical"
-  get 'pages/userProfile', to: "pages#userProfile"
 
-  get 'pages/sos_mailer', to: "pages#sos_mailer"
-
-  get 'pages/helpDoc', to: "pages#helpDoc"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end
