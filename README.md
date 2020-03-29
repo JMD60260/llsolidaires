@@ -35,7 +35,7 @@
     Rails version 6.0.2.1
     Bundler 2.1.4
     CSS : Bootstrap
-    Licence AGPL3 (Merci de ne pas faire une utilisation commerciale de ce repository car nous l'avons concu pour aider les personnels de première ligne respecté notre philosophie)
+    Licence AGPL3 (Merci de ne pas faire une utilisation commerciale de ce repository car nous l'avons concu pour aider les personnels de première ligne respectez notre philosophie)
 
 ***
 
