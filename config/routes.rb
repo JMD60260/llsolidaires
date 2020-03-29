@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get 'dashboard/medical', to: "dashboards#medical"
 
   resources :flats do
-    resources :rentals, only: [:new, :create]
+    resources :rentals, only: [:create]
   end
+
   resources :rentals, only: [:show, :index, :edit] do
     member { get :download_proof }
   end

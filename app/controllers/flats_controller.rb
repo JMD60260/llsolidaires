@@ -1,57 +1,63 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: [:show, :edit, :update, :destroy]
-
-  def show
-    @flat = Flat.find(params[:id])
-  end
-
-  def index
-    @flats = Flat.geocoded
-
-    @markers = @flats.map do |flat|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-      }
-    end
-  end
-
-  def new
-    if current_user
-      @user_id = current_user.id
-      @flat = Flat.new
-
-    else
-      flash[:error] = "Accès interdit -> Vous devez vous inscrire d'abord !"
-      redirect_to root_path
-    end
-    # Ligne a ajouter dans le formulaire pour ajouter les photos
-    # <%= f.file_field :photos, multiple: true %>
-  end
+  before_action :set_flat, only: [:edit, :update, :destroy]
 
   def create
-    @flat = Flat.new(flat_params)
-    @flat.user_id = current_user.id
-    if @flat.save
-      redirect_to flat_path(@flat)
+    if current_user.role == 'owner'
+      @flat = Flat.new(flat_params)
+      @flat.user_id = current_user.id
+      if @flat.save
+        redirect_to dashboard_owner_path
+      else
+        @flats = current_user.flats
+        render 'dashboards/owner'
+      end
     else
-      render :new
+      flash[:error] = "Accès interdit -> Vous devez être inscrit en tant que propriétaire pour cela !"
+      redirect_to dashboard_medical_path
     end
   end
 
   def edit
-
+    if current_user.role == 'owner'
+      if @flat.user != current_user
+        flash[:error] = "Accès interdit -> Vous devez être le propriétaire pour éditer !"
+        redirect_to dashboard_owner_path
+      end
+    else
+      flash[:error] = "Accès interdit -> Vous devez être inscrit en tant que propriétaire pour cela !"
+      redirect_to dashboard_medical_path
+    end
   end
 
   def update
-    @flat.update(flat_params)
-    redirect_to root_path
+    if current_user.role == 'owner'
+      if @flat.user != current_user
+        flash[:error] = "Accès interdit -> Vous devez être le propriétaire pour éditer !"
+        redirect_to dashboard_owner_path
+      end
+    else
+      flash[:error] = "Accès interdit -> Vous devez être inscrit en tant que propriétaire pour cela !"
+      redirect_to dashboard_medical_path
+    end
+    if @flat.update(flat_params)
+      redirect_to dashboard_owner_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    if current_user.role == 'owner'
+      if @flat.user != current_user
+        flash[:error] = "Accès interdit -> Vous devez être le propriétaire pour supprimer !"
+        redirect_to dashboard_owner_path
+      end
+    else
+      flash[:error] = "Accès interdit -> Vous devez être inscrit en tant que propriétaire pour cela !"
+      redirect_to dashboard_medical_path
+    end
     @flat.destroy
-    redirect_to flats_path
+    redirect_to dashboard_owner_path
   end
 
   private
