@@ -1,21 +1,53 @@
-READ ME Les Logements Solidaires
+# README Les Logements Solidaires #
 
-__
-Versions Utilisées
+## Membres bénévoles ayant participé à cette aventure ##
+
++ Paul (back)
++ Inés (back + front)
++ Brian (back)
++ Emilie (back)
++ Alexandre (back)
++ Hugo (back + front)
++ Julien (front)
++ Pavel (front)
++ Maximilien (front)
++ Youenn (back)
++ Slim (recrutement)
++ Julie (code review et testing)
++ Saad (PO)
++ Jean-Marc DARDY git ID JMD60260 (Chef de Projet Agile)
+  
+***
+
+### Outils de Gestion ###
+
+    Trello publique (https://trello.com/b/i1IQ3aIw)
+    Slack
+    Zoom
+    Serveur Jitsi
+    Google Drive
+
+***
+
+#### Versions Utilisées ####
 
     Ruby version 2.6.5
     Rails version 6.0.2.1
+    Bundler 2.1.4
     CSS : Bootstrap
-    AGPL3 Licence
+    Licence AGPL3 (Merci de ne pas faire une utilisation commerciale de ce repository car nous l'avons concu pour aider les personnels de première ligne respectez notre philosophie)
 
-API Utilisées
-Pour Github
+***
+
+#### API Utilisées Pour Github ####
 
     dirige toi via ton terminal dans le dossier que tu souhaites
     git clone git@github.com:JMD60260/llsolidaires.git
     cd llsolidaires
     bundle install
     rails db:create
+
+***
 
 => Puis pour commencer à travailler
 
@@ -33,7 +65,7 @@ Tu peux alors coder normalement / puis
 
     git commit -m "ton commentaire"
 
-Pour Merger
+#### Pour Merger ####
 
     git checkout master
     git pull origin master
