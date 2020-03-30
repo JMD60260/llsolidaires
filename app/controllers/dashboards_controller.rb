@@ -2,7 +2,7 @@ class DashboardsController < ApplicationController
 
   def owner
     @tab = "Mes logements"
-    @role = "owner"
+    @as = "owner"
     @flats = current_user.flats
     @flat = Flat.new
   end
@@ -10,7 +10,7 @@ class DashboardsController < ApplicationController
   def medical
     if current_user.role == "medical"
       @tab = "Recherche de logements"
-      @role = "medical"
+      @as = "medical"
      @flats = Flat.where("address ILIKE ?", "%#{params[:query]}%")
      if params[:query]
       @start_date = Date.parse(params[:start])
@@ -44,6 +44,13 @@ class DashboardsController < ApplicationController
         redirect_to root_path
       end
     end
-    # raise
+
+    def owner_profile
+      redirect_to edit_user_registration_path(as: 'owner')
+    end
+
+    def medical_profile
+      redirect_to edit_user_registration_path(as: 'medical')
+    end
 
   end

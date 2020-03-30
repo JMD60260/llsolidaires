@@ -1,15 +1,11 @@
 <%= render 'shared/banner' %>
 
-<% if current_user.role == "medical" %>
-  <%= render 'shared/navbar_medical' %>
+<%= render 'shared/navbar_user' %>
 
-<% elsif current_user.role == "owner" %>
-  <%= render 'shared/navbar_owner' %>
-<% end %>
 
 <h2>Modifier <%= resource_name.to_s.humanize %></h2>
 
-<% if current_user.role == "medical" %>
+<% if @as == "medical" %>
   <%= link_to "SOS", pages_sos_mailer_path, class: "nav-link text-danger font-weight-bold" %>
 <% end %>
 

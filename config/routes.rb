@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'dashboard/owner', to: "dashboards#owner"
   get 'dashboard/medical', to: "dashboards#medical"
+  get 'dashboard/owner_profile', to: "dashboards#owner_profile"
+  get 'dashboard/medical_profile', to: "dashboards#medical_profile"
 
   resources :flats, only: [:create, :edit, :update, :destroy] do
     resources :rentals, only: [:create]

@@ -59,7 +59,7 @@ class RentalsController < ApplicationController
 
   def owner_validated
     @tab = "Réservations"
-    @role = "owner"
+    @as = "owner"
     # Les rentals du current owner, validated==true, a trier par "en cours" et "a venir" (du plus récent au plus vieux), (contendra partial show)
     @current_rentals = []
     @future_rentals = []
@@ -80,7 +80,7 @@ class RentalsController < ApplicationController
 
   def owner_pending
     @tab = "Demandes"
-    @role = "owner"
+    @as = "owner"
     # Les rentals du current_owner, validated==false, a trier par date de début, (contiendra boutons valider et refuse + partial rental show)
     @rentals = []
     @rentals
@@ -96,7 +96,7 @@ class RentalsController < ApplicationController
 
   def medical_validated
     @tab = "Mes réservations"
-    @role = "medical"
+    @as = "medical"
     # Les rentals du current medical, validated==true, celles en cours et dans le futur
     if current_user.role == 'medical'
        # all_rentals_from_medic = Rental.joins(:flat).where(user: current_user)
@@ -110,7 +110,7 @@ class RentalsController < ApplicationController
 
   def medical_pending
     @tab = "Demandes"
-    @role = "medical"
+    @as = "medical"
     # Les rentals du current medical, validated==false, celles à venir seulement
     if current_user.role == 'medical'
        # all_rentals_from_medic = Rental.joins(:flat).where(user: current_user)
