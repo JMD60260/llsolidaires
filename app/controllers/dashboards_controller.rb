@@ -5,15 +5,12 @@ class DashboardsController < ApplicationController
     @flat = Flat.new
   end
 
-  def medical
-     @flats = Flat.where("address ILIKE ?", "%#{params[:query]}%")
+def medical
+     @flats = Flat.all
+     @geo = @flats.geocoded
      if params[:query]
-      @start_date = Date.parse(params[:start])
-      if params[:end] == ""
-        @end_date = nil
-      else
-        @end_date = Date.parse(params[:end])
-      end
+      puts "je suis dans le if"
+      # @flatsAll = Flat.where("address ILIKE ?", "%#{params[:query]}%")
       @flats = Flat.near(params[:query], 20)
       @markers = @flats.map do |flat|
         {
@@ -22,8 +19,17 @@ class DashboardsController < ApplicationController
           # infoWindow: { content: render_to_string(partial: "/flats/maps", locals: { flat: flat }) }
         }
       end
+    else
+      puts "je suis dans le else"
+      @markers = @flats.map do |flat|
+        {
+          lat: flat.latitude,
+          lng: flat.longitude,
+          # infoWindow: { content: render_to_string(partial: "/flats/maps", locals: { flat: flat }) }
+        }
+      end
     end
-    # raise
   end
+    # raise
 
 end
