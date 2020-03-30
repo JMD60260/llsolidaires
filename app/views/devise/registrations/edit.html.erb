@@ -102,13 +102,13 @@
                   :item_wrapper_class => 'inline' %>
     <% end %>
 
-    <p>Ajouter une pièce d'identité</p>
+    <p>Modifier la pièce d'identité</p>
     <%= f.label :identity_file do %>
       <%= f.file_field :identity_file %>
       <%= f.hidden_field :identity_file_cache %>
     <% end %>
 
-    <p>Ajouter un justificatif</p>
+    <p> justificatif</p>
     <%= f.label :proof do %>
       <%= f.file_field :proof %>
       <%= f.hidden_field :proof_cache %>
@@ -123,7 +123,7 @@
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete %></p>
+<p><%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete %></p>
 
 
 
