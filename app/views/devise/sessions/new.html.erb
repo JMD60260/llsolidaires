@@ -80,6 +80,14 @@
                                       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                                         <%= f.error_notification %>
 
+                                        <%= f.input_field :role,
+                                                    collection: [["Personnel médical", "medical"],["Propriétaire", "owner"]],
+                                                    label_method: :first,
+                                                    value_method: :last,
+                                                    as: :radio_buttons,
+                                                    checked: :none,
+                                                    :item_wrapper_class => 'inline' %>
+
                                         <div class="form-inputs">
                                           <div class="group" style="margin-top: 10px;">
                                             <%= f.input :first_name,
@@ -123,24 +131,29 @@
                                                         label_html: { class: 'label' }  %>
 
                                           </div>
-                                          <%= f.input_field :role,
-                                                      collection: [["Personnel médical", "medical"],["Propriétaire", "owner"]],
-                                                      label_method: :first,
-                                                      value_method: :last,
-                                                      as: :radio_buttons,
-                                                      checked: :none,
-                                                      :item_wrapper_class => 'inline' %>
 
-                                          <%= f.input :rgpd %>
+                                          <div class="form-group row">
+
+                                            <div class="col-sm-10">
+                                              <div class="form-check">
+                                                  <%= f.input :rgpd, label: false %> J'ai lu et j'accepte les <%= link_to "mentions légales", pages_legal_notice_path, class: 'text' %>
+                                              </div>
+                                            </div>
+                                          </div>
+
 
                                           <%#= f.input_field :role, as: :check_boxes, label: "Êtes-vous propriétaire?", item_wrapper_class: 'inline', checked_value: 'owner', unchecked_value: 'medical' %>
 
-                                        </div>
 
                                         <div class="form-actions">
-                                          <%= f.button :submit, "S'enregistrer" %>
+
+                                          <div class="group">
+                                          <%= f.button :submit, "S'inscrire", class: "button" %>
+                                          </div>
                                         </div>
+
                                       <% end %>
+                                        </div>
 
 
 
@@ -167,13 +180,14 @@
                                     <div class="group">
                                         <label  class="label">CONFIRMATION DE MOT DE PASSE</label>
                                         <input required="" name="password" id="" type="password" class="input" data-type="password" placeholder="Confirmer" required>
-                                    </div><div class="group">
+                                    </div>
+                                    <div class="group">
                                       <div class="form-group row">
 
                                         <div class="col-sm-10">
                                           <div class="form-check">
                                             <label class="form-check-label">
-                                              <input class="form-check-input" type="checkbox">J'ai lu et j'accepte <a href="">les conditions générales</a>  </label>
+                                              <input class="form-check-input" type="checkbox">J'ai lu et j'accepte les <%= link_to "mentions légales", pages_legal_notice_path, class: 'text' %>  </label>
                                           </div>
                                         </div>
                                       </div>
@@ -236,40 +250,6 @@
     </div>
 
 
-
-    <footer class="ftco-footer ftco-section">
-      <div class="container">
-        <div class="row ">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <p> &copy;<script>document.write(new Date().getFullYear());</script> Les Logements Solidaires</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-6">
-                <li><a href="https://www.malt.fr/" ><img class="mb-4" src="assets/images/malt_logo.svg" alt="" width="150" ></a></li>
-                <li><a href="https://www.lewagon.com/fr" ><img class="mb-4" src="assets/images/le-wagon-color.png" alt="" width="150" ></a></a></li>
-
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-md">
-          </div>
-
-          <div class="col-md">
-            <ul class="list-unstyled text alignend icon-footer" >
-              <li><span><a href="#" class="fab fa-facebook" ></a></span></li>
-            </ul>
-            <ul class="list-unstyled text alignend">
-              <li><a class="text" href="#">Mentions légales</a></li>
-              <li><a class="text" href="#">Politique de confidentialité</a></li>
-              <li><a class="text" href="#">Contact</a></li>
-            </ul>
-          </div>
-          </div>
-        </div>
-
-
-
-    </footer>
 
   <script src="assets/stylesheets/js/app.js"></script>
   <script src="https://kit.fontawesome.com/b9dea9cce1.js" crossorigin="anonymous"></script>
