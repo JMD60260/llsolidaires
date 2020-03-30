@@ -9,16 +9,11 @@ class Flat < ApplicationRecord
   validates :address, presence: true
 
   geocoded_by :address
-  #do |obj, results|
+  # do |obj, results|
   #   if geo = results.first
   #     obj.city = geo.city
   #   end
   # end
 
-
   after_validation :geocode, if: :will_save_change_to_address?
-
-
-
-
 end

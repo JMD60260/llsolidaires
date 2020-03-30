@@ -26,7 +26,7 @@ const initAutocomplete = () => {
   // more details for that place.
 
   let query
-  searchBox.addListener('submit', function () {
+  searchBox.addListener('places_changed', function () {
     var places = searchBox.getPlaces();
     console.log(places)
     query = places[0].formatted_address
@@ -81,28 +81,18 @@ const initAutocomplete = () => {
 
   let flats = document.getElementById('map').getAttribute('data-markers');
 
-  if (flats) {
-   flats = flats.replace('[', '');
-   flats = flats.replace(']', '');
-   flats = flats.split('},');
+  if (flats && flats != "[]") {
+    flats = flats.replace('[', '');
+    flats = flats.replace(']', '');
+    flats = flats.split(/(?=\{)/);
 
-   let value
-   let flatarray = []
-   for (let i = 0; i < flats.length; i++) {
-      if (flats.length === 1) {
-        value = flats[0] + '}';
-      } else if (i != flats.length - 1) {
-        value = flats[i] + '}';
-      } else {
-        value = flats[i];
-      }
-    }
+    $.each(flats, function(index, value) {
+      let json = JSON.parse(value.replace(/,*$/, ""))
+
+      map.addMarker({
+       lat: json.lat,
+       lng: json.lng,
+      });
+    });
   }
-
-  let json = JSON.parse(value)
-
-  map.addMarker({
-   lat: json.lat,
-   lng: json.lng,
-  });
 }
