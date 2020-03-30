@@ -1,20 +1,208 @@
-<h2>Log in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img class="mb-4" src="assets/images/logo-sl.png" alt="" width="250" ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="" class="nav-link">Déconnexion</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
 
-<%= render "devise/shared/links" %>
+    <div class="hero-wrap" style="background-image: url('assets/images/bg_1.jpg');" >
+      <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-6 " id="hero"  >
+                <div class="login-wrap">
+                    <div class="login-html">
+                        <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label for="tab-1" class="tab" style="cursor: pointer;">Connexion</label>
+                        <input id="tab-2" type="radio"  name="tab" class="sign-up"><label for="tab-2" class="tab" style="cursor: pointer;"> INSCRIPTION</label>
+                        <div class="login-form">
+
+                            <div class="sign-in-htm mt-4 ">
+
+                              <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                <div class="form-inputs">
+
+                                  <div class="group">
+                                    <%= f.input :email,
+                                                autofocus: true,
+                                                input_html: { autocomplete: "email", class: "input", type: "email" },
+                                                label_html: { class: 'label' } %>
+                                  </div>
+                                  <div class="group">
+                                    <%= f.input :password,
+                                                input_html: { autocomplete: "current-password", class: "input" },
+                                                label_html: { class: 'label' } %>
+                                  </div>
+                                </div>
+
+                                <div class="form-actions">
+
+                                  <div class="group">
+                                    <%= f.button :submit, "Se connecter", class: 'button' %>
+                                  </div>
+                                </div>
+                              <% end %>
+
+                                <div  style="margin-top: 25px; text-align: center;">
+                                  <%= link_to "Mot de passe oublié?", new_password_path(resource_name), style: "color: #6c757d;"   %>
+                                </div>
+
+
+                            </div>
+
+                                <div class="sign-up-htm ">
+
+                                  <div class="row ">
+                                    <div id="aa" class="col-12">
+
+                                      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                                        <%= f.error_notification %>
+
+                                        <%= f.input_field :role,
+                                                    collection: [["Vous êtes soignant", "medical"]],
+                                                    label_method: :first,
+                                                    value_method: :last,
+                                                    as: :radio_buttons,
+                                                    checked: :none,
+                                                    onclick: "check()",
+                                                    :item_wrapper_class => 'inline' %>
+                                        <%= f.input_field :role,
+                                                    collection: [["Vous êtes propriétaire", "owner"]],
+                                                    label_method: :first,
+                                                    value_method: :last,
+                                                    as: :radio_buttons,
+                                                    checked: :none,
+                                                    onclick: "ChechOut()",
+                                                    :item_wrapper_class => 'inline' %>
+
+                                        <div class="form-inputs">
+                                          <div class="group" style="margin-top: 10px;">
+                                            <%= f.input :first_name,
+                                                        placeholder: "Prénom",
+                                                        autofocus: true,
+                                                        input_html: { class: "input" },
+                                                        label_html: { class: 'label' }  %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :last_name,
+                                                        placeholder: "Nom",
+                                                        input_html: { class: "input" },
+                                                        label_html: { class: 'label' }  %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :phone,
+                                                        placeholder: "Numéro de téléphone",
+                                                        input_html: { class: "input" },
+                                                        label_html: { class: 'label' }  %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :email,
+                                                        autofocus: true,
+                                                        placeholder: "Email",
+                                                        input_html: { autocomplete: "email", class: "input" },
+                                                        label_html: { class: 'label' } %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :password,
+                                                        placeholder: "Mot de passe",
+                                                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                                                        input_html: { autocomplete: "new-password", class: "input" },
+                                                        label_html: { class: 'label' }  %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :password_confirmation,
+                                                        placeholder: "Confirmer le mot de passe",
+                                                        input_html: { autocomplete: "new-password", class: "input" },
+                                                        label_html: { class: 'label' }  %>
+
+                                          </div>
+
+                                          <div class="form-group row">
+
+                                            <div class="col-sm-10">
+                                              <div class="form-check">
+                                                  <%= f.input :rgpd, label: false %> J'ai lu et j'accepte les <%= link_to "mentions légales", pages_legal_notice_path, class: 'text' %>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+                                        <div class="form-actions">
+
+                                          <div class="group">
+                                          <%= f.button :submit, "S'inscrire", class: "button" %>
+                                          </div>
+                                        </div>
+
+                                      <% end %>
+                                      </div>
+
+
+                                    </div>
+
+
+                                    <div  id="rr">
+                                    <div class="group">
+                                  <h6>Photocopie de votre carte d'identité (obligatoire)</h6>
+                                  <br>
+                                  <div  class="custom-file">
+                                    <input type="file" class="custom-file-input" id="hFichier" name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
+                                    <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <h6>Photocopie de carte CPS / attestation de l’hôpital / contrat de travail de l’hôpital / carte d’enregistrement à l’ordre national des infirmiers / Fiche de paie, badge, et d'une facon générale tout document daté de moins de 3 mois (obligatoire)</h6>
+                                  <br>
+                                  <div  class="custom-file">
+                                    <input type="file" class="custom-file-input"  name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
+                                    <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
+                                  </div>
+                              </div>
+                              <br>
+                              <div class="form-group form-login ">
+                                <label for="exampleFormControlTextarea1" style="color: #ffb400;">VOUS EN QUELQUES MOTS </label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" required></textarea>
+                              </div>
+                            </div>
+                                  </div>
+                              </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+<div class="col-md-6 " style="margin-top: 550px;">
+            <div class="row no-gutters slider-text align-items-center " >
+                <div class="col-md-12 order-md-last  mt-5 text-left" >
+                  <h1 class="mb-4 soulignement">DES LOGEMENTS GRATUITS POUR NOS SOIGNANTS</h1>
+                  <p><a href="#" class="btn btn-warning py-3 px-4">PROPOSER UN HEBERGEMENT</a></p>
+                </div>
+
+              </div>
+        </div>
+
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+  <script src="assets/stylesheets/js/app.js"></script>
+  <script src="https://kit.fontawesome.com/b9dea9cce1.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

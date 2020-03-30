@@ -1,30 +1,170 @@
 <%= render 'shared/banner' %>
-<%= render 'shared/navbar_owner' %>
 
-<h1>Dashboard Owner</h1>
-<p>Mon rôle: <%= current_user.role %></p>
-
-<h2>Mes appartements: </h2>
-
-<div class="card" style="width: 18rem;">
-<% @flats.each do |flat| %>
-  <img class="card-img-top" src="https://images.unsplash.com/photo-1565721219423-c8cd193201c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Un <%= flat.flat_type %> pièces</h5>
-    <p class="card-text"><%= flat.address %></p>
-    <%= link_to "Supprimer",  flat_path(flat), class: "mt-4 btn btn-primary",
-              method: :delete,
-              data: { confirm: "Are you sure?" }  %>
-    <%= link_to "Editer", edit_flat_path(flat), class: 'btn btn-primary' %>
+<div class="container blogMenu" style="margin-top: 25px;">
+  <div class="dashboardLink">
+    <ul class="nav justify-content-center" >
+      <li class="nav-item">
+        <%= link_to "Mes logements", dashboard_owner_path, class: "activeLink" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Réservations", owner_validated_rentals_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Demandes", owner_pending_requests_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Aide et documentation", pages_owner_doc_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Mon profil", edit_user_registration_path %>
+      </li>
+    </ul>
   </div>
-  <% end %>
+</div>
+
+<div class="container-fluid">
+  <div class="row propose justify-content-center">
+    <button class="btn btn-warning text-white radius m-5" id="myBtn">Proposer un logement</button>
+  </div>
+  <div class="col-12">
+    <div class="row cardRow">
+      <% @flats.each do |flat| %>
+      <div class="cardAppart ">
+        <div class="row mb-3 padding1">
+          <div class="col-md-4 themed-grid-col">
+            <div class="col-auto d-none d-lg-flex m-4">
+              <img src="https://picsum.photos/200" width="250" alt="">
+              <img class="ml-4 mr-4" src="https://picsum.photos/200" width="250" alt="">
+              <img src="https://picsum.photos/200" width="250" alt="">
+            </div>
+          </div>
+          <div class="col-md-2 offset-md-6 themed-grid-col mt-4">
+            <div class="pictos">
+              <%= link_to edit_flat_path(flat), class: 'btn btn-primary' do %>
+              <i class="fas fa-pencil-alt fa-2x"></i>
+              <% end %>
+
+              <%= link_to  flat_path(flat), class: "mt-4 btn btn-primary",
+              method: :delete,
+              data: { confirm: "Are you sure?" }  do %>
+              <i class="fas fa-trash-alt fa-2x"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="row m-4 mb-3 themed-grid-col padding1 mt-4">
+          <div class="col-md-4 d-flex">
+            <h6 class="mb-1 type"> Adresse : </h6>
+            <p class="grey mt-1 ml-5"> <%= flat.address %></p>
+          </div>
+          <div class="col-md-4">
+            <h6 class="mb-1 type"> Type : <span class="grey ml-3"> <%= flat.flat_type %></span></h6>
+          </div>
+          <div class="col-md-4">
+            <h6 class="mb-1 type"> Description :</h6>
+            <p class="grey"> <%= flat.description %> </p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
-<h2>Proposer un nouveau logement: </h2>
 
-<div class="container pt-4 pb-4 mt-4 mb-4">
-  <h1 class="mt-4 pt-4 mb-4 pb-4">Ajouter un logement</h1>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+    </div>
+    <div class="modal-body">
+
+      <form action="" method="POST">
+        <div class="col-auto d-none d-lg-flex m-4">
+          <div class="imgCircle">
+            <img src="https://picsum.photos/200" width="250" alt="">
+            <a class="text-blue" href=""><i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i></a>
+          </div>
+          <div class="ml-4 align-self-center">
+            <a href=""><i class="fas fa-plus-circle fa-3x" aria-hidden="true"></i></a>
+          </div>
+
+
+        </div>
+        <div class="row mb-3 padding1 m-3">
+          <div class="col-md-4 themed-grid-col">
+            <div class="row">
+              <div class="col-md-10 themed-grid-col mt-4">
+                <div class="form-group row formborder">
+                  <label for="example-date-input" class="col-4 col-form-label type1">Adresse :</label>
+                  <div class="col-8">
+                    <input type="text" class="form-control " placeholder="75 rue National 94000 Paris" name="adresse">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 themed-grid-col">
+            <div class="row">
+              <div class="col-md-12 themed-grid-col mt-4">
+
+                <div class="form-group row formborder">
+                  <label for="example-date-input" class="col-3 col-form-label type1">Type :</label>
+                  <div class="col-6">
+                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                      <option value="studio">Studio</option>
+                      <option value="appartement">Appartement</option>
+                      <option value="maison">Maison</option>
+                      <option value="hotel">Hôtel</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row formborder">
+                  <label for="example-date-input" class="col-4 col-form-label type1">Nb de chambre :</label>
+                  <div class="col-6">
+                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 themed-grid-col mt-4">
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-4 col-form-label type1">Description :</label>
+              <div class="col-8">
+                <textarea class="form-control" id="exampleTextarea" placeholder="Texte" rows="5"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 text-center">
+            <input type="submit" class="btn btn-warning py-3 px-4" value="Enregistrer les modificationss">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+</div>
+
+
 <%= simple_form_for(@flat) do |f| %>
 
   <div class="form-inputs">
@@ -38,5 +178,3 @@
     <%= f.button :submit, class: 'btn' %>
   </div>
 <% end %>
-
-</div>
