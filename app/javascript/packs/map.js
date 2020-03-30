@@ -89,7 +89,7 @@ function initAutocomplete() {
      let value
      let flatarray = []
      for (let i = 0; i < flats.length; i++) {
-      if (flats.length === 0) {
+      if (flats.length === 1) {
         value = flats[0] + '}';
       } else if (i != flats.length - 1) {
         value = flats[i] + '}';
@@ -98,6 +98,7 @@ function initAutocomplete() {
        }
 
        let json = JSON.parse(value)
+
            map.addMarker({
              lat: json.lat,
              lng: json.lng,
