@@ -89,7 +89,7 @@ function initAutocomplete() {
      let value
      let flatarray = []
      for (let i = 0; i < flats.length; i++) {
-      if (flats.length === 1) {
+      if (flats.length === 0) {
         value = flats[0] + '}';
       } else if (i != flats.length - 1) {
         value = flats[i] + '}';
