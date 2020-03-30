@@ -7,7 +7,6 @@ class DashboardsController < ApplicationController
 
 def medical
      @flats = Flat.all
-     @geo = @flats.geocoded
      if params[:query]
       puts "je suis dans le if"
       # @flatsAll = Flat.where("address ILIKE ?", "%#{params[:query]}%")
