@@ -1,0 +1,23 @@
+<%= render 'shared/banner' %>
+<%= render 'shared/navbar_medical' %>
+
+<h2> En cours </h2>
+
+<% @current_rentals.each do |rental| %>
+
+  <p> <%= rental.flat.flat_type %> </p>
+
+  <p> <%= rental.flat.description %> </p>
+
+<% end %>
+
+
+<h2> A venir </h2>
+
+<% @future_rentals.each do |rental| %>
+
+  <p> <%= rental.flat.flat_type %> </p>
+
+  <p> <%= rental.flat.description %> </p>
+
+<% end %>

@@ -1,0 +1,12 @@
+<%= render 'shared/banner' %>
+<%= render 'shared/navbar_medical' %>
+
+<% @rentals.each do |rental| %>
+
+  <p> <%= rental.flat.flat_type %> </p>
+
+  <p> <%= rental.flat.description %> </p>
+
+  <%= link_to 'Annuler la demande',  rental_path(rental), method: :delete %>
+
+<% end %>

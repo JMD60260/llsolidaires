@@ -1,0 +1,37 @@
+<%= render 'shared/banner' %>
+<%= render 'shared/navbar_owner' %>
+
+<h2> En cours </h2>
+
+<% @current_rentals.each do |rental| %>
+
+  <p> <%= rental.flat.flat_type %> </p>
+
+  <p> <%= rental.flat.description %> </p>
+
+  <p> <%= rental.user.last_name %> </p>
+
+  <% if rental.user.proof.url.present? %>
+    <p>justificatif du demandeur</p>
+    <%= link_to 'Télécharger le justificatif du demandeur',  download_proof_rental_path(rental) %>
+  <% end %>
+
+<% end %>
+
+
+<h2> A venir </h2>
+
+<% @future_rentals.each do |rental| %>
+
+  <p> <%= rental.flat.flat_type %> </p>
+
+  <p> <%= rental.flat.description %> </p>
+
+  <p> <%= rental.user.last_name %> </p>
+
+  <% if rental.user.proof.url.present? %>
+    <p>justificatif du demandeur</p>
+    <%= link_to 'Télécharger le justificatif du demandeur',  download_proof_rental_path(rental) %>
+  <% end %>
+
+<% end %>

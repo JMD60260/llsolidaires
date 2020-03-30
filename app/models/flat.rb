@@ -1,7 +1,7 @@
 class Flat < ApplicationRecord
   mount_uploaders :photos, FlatPhotosUploader
   # serialize :photos, JSON
-  enum flat_type: [:T1, :T2, :T3, :T4]
+  enum flat_type: [:Studio, :T1, :T2, :T3, :T4]
 
   belongs_to :user
   has_many :rentals, dependent: :destroy

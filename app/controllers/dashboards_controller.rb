@@ -1,16 +1,20 @@
 class DashboardsController < ApplicationController
 
   def owner
-    @flats = Flat.all
-    @own_flats = current_user.flats
-    @own_rentals = current_user.rentals
+    @flats = current_user.flats
+    @flat = Flat.new
   end
 
   def medical
      @flats = Flat.where("address ILIKE ?", "%#{params[:query]}%")
      if params[:query]
+      @start_date = Date.parse(params[:start])
+      if params[:end] == ""
+        @end_date = nil
+      else
+        @end_date = Date.parse(params[:end])
+      end
       @flats = Flat.near(params[:query], 20)
-
       @markers = @flats.map do |flat|
         {
           lat: flat.latitude,
@@ -18,23 +22,8 @@ class DashboardsController < ApplicationController
           # infoWindow: { content: render_to_string(partial: "/flats/maps", locals: { flat: flat }) }
         }
       end
-    else
-      @flats = Flat.geocoded
     end
     # raise
-  end
-
-  def show
-    set_flat
-  end
-private
-
-  def set_flat
-    @flat = Flat.find(params[:id])
-  end
-
-  def flat_params
-    params.require(:flat).permit(:address, :flat_type, :description, :accessibility_pmr)
   end
 
 end
