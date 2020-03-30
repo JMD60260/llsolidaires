@@ -1,18 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="index.html"><img class="mb-4" src="assets/images/logo-sl.png" alt="" width="250" ></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="oi oi-menu"></span> Menu
-    </button>
 
-    <div class="collapse navbar-collapse" id="ftco-nav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a href="" class="nav-link">Déconnexion</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img class="mb-4" src="assets/images/logo-sl.png" alt="" width="250" ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="" class="nav-link">Déconnexion</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
 
     <div class="hero-wrap" style="background-image: url('assets/images/bg_1.jpg');" >
       <div class="overlay"></div>
@@ -20,33 +21,196 @@
             <div class="row">
             <div class="col-md-6 " id="hero"  >
                 <div class="login-wrap">
-                    <div class="login-html">
-                        <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label style="cursor: pointer;" for="tab-1" class="tab">Connexion</label>
-                        <input id="tab-2" type="radio"  name="tab" class="sign-up"><label style="cursor: pointer;" for="tab-2" class="tab"> INSCRIPTION</label>
+                    <div class="login-html" style="cursor: pointer;">
+                        <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label for="tab-1" class="tab">Connexion</label>
+                        <input id="tab-2" type="radio"  name="tab" class="sign-up"><label for="tab-2" class="tab"> INSCRIPTION</label>
                         <div class="login-form">
+
                             <div class="sign-in-htm mt-4 ">
-                            <form style="margin-top: 125px;" action="" method="POST">
-                                <div class="group">
-                                    <label for="user" class="label">ADRESSE EMAIL</label>
-                                    <input name="email" required="" id="user" type="email" class="input" placeholder="Email">
-                                </div>
-                                <div class="group">
-                                    <label for="pass" class="label">MOT DE PASSE</label>
-                                    <input required="" name="password" id="pass" type="password" class="input" data-type="password" placeholder="Mot de passe">
+
+                              <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                <div class="form-inputs">
+
+                                  <div class="group">
+                                    <%= f.input :email,
+                                                autofocus: true,
+                                                input_html: { autocomplete: "email", class: "input", type: "email" },
+                                                label_html: { class: 'label' } %>
+                                  </div>
+                                  <div class="group">
+                                    <%= f.input :password,
+                                                input_html: { autocomplete: "current-password", class: "input" },
+                                                label_html: { class: 'label' } %>
+                                  </div>
                                 </div>
 
-                                <div class="group" style="margin-top: 50px;">
-                                    <input type="submit" class="button" value="Se Connecter">
-                                </div>
+                                <div class="form-actions">
 
-                                </form>
+                                  <div class="group">
+                                    <%= f.button :submit, "Se connecter", class: 'button' %>
+                                  </div>
+                                </div>
+                              <% end %>
+
                                 <div  style="margin-top: 25px; text-align: center;">
-                                  <a style="color: #6c757d;" href="">Mot de passe oublié</a>
+                                  <%= link_to "Mot de passe oublié?", new_password_path(resource_name), style: "color: #6c757d;"   %>
                                 </div>
+
 
                             </div>
 
+                            <form action="" method="POST">
+                                <div class="sign-up-htm ">
 
+                                  <div class="row ">
+                                    <div id="aa" class="col-12">
+
+                                      <div class="d-block ">
+                                        <div class="custom-control custom-radio">
+                                          <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" onclick="ChechOut()" checked="" required="">
+                                          <label class="custom-control-label" for="credit">Vous êtes propriétaire</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                          <input id="soignant" name="paymentMethod" type="radio" class="custom-control-input" onclick="check()" required="">
+                                          <label class="custom-control-label" for="soignant">Vous êtes soignant</label>
+                                        </div>
+
+                                      </div>
+
+                                      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                                        <%= f.error_notification %>
+
+                                        <div class="form-inputs">
+                                          <div class="group" style="margin-top: 10px;">
+                                            <%= f.input :first_name,
+                                                        placeholder: "Prénom",
+                                                        input_html: { class: "input" },
+                                                        label_html: { class: 'label' }  %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :last_name,
+                                                        placeholder: "Nom",
+                                                        input_html: { class: "input" },
+                                                        label_html: { class: 'label' }  %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :phone,
+                                                        placeholder: "Numéro de téléphone",
+                                                        input_html: { class: "input" },
+                                                        label_html: { class: 'label' }  %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :email,
+                                                        required: true,
+                                                        autofocus: true,
+                                                        placeholder: "Email",
+                                                        input_html: { autocomplete: "email", class: "input" },
+                                                        label_html: { class: 'label' } %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :password,
+                                                        required: true,
+                                                        placeholder: "Mot de passe",
+                                                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                                                        input_html: { autocomplete: "new-password", class: "input" },
+                                                        label_html: { class: 'label' }  %>
+                                          </div>
+                                          <div class="group">
+                                            <%= f.input :password_confirmation,
+                                                        required: true,
+                                                        placeholder: "Confirmer le mot de passe",
+                                                        input_html: { autocomplete: "new-password", class: "input" },
+                                                        label_html: { class: 'label' }  %>
+
+                                          </div>
+                                          <%= f.input_field :role,
+                                                      collection: [["Personnel médical", "medical"],["Propriétaire", "owner"]],
+                                                      label_method: :first,
+                                                      value_method: :last,
+                                                      as: :radio_buttons,
+                                                      checked: :none,
+                                                      :item_wrapper_class => 'inline' %>
+
+                                          <%= f.input :rgpd %>
+
+                                          <%#= f.input_field :role, as: :check_boxes, label: "Êtes-vous propriétaire?", item_wrapper_class: 'inline', checked_value: 'owner', unchecked_value: 'medical' %>
+
+                                        </div>
+
+                                        <div class="form-actions">
+                                          <%= f.button :submit, "S'enregistrer" %>
+                                        </div>
+                                      <% end %>
+
+
+
+                                    <div class="group" style="margin-top: 10px;">
+                                    </div>
+                                        <label  class="label">NOM</label>
+                                        <input type="text" class="input" placeholder="Dupont" required >
+                                    <div class="group">
+                                        <label  class="label">PRENOM</label>
+                                        <input type="text" class="input" placeholder="Jean" required>
+                                    </div>
+                                    <div class="group">
+                                        <label  class="label">NUMERO DE TELEPHONE</label>
+                                        <input type="tel" pattern="[0-9]{10}" class="input" placeholder="06 01 02 03 04" required>
+                                    </div>
+                                    <div class="group">
+                                        <label  class="label">ADRESSE EMAIL</label>
+                                        <input type="email" class="input" placeholder="jeandupont@gmail.com" required>
+                                    </div>
+                                    <div class="group">
+                                        <label  class="label">MOT DE PASSE</label>
+                                        <input required="" name="password" id="" type="password" class="input" data-type="password" placeholder="Mot de passe" required>
+                                    </div>
+                                    <div class="group">
+                                        <label  class="label">CONFIRMATION DE MOT DE PASSE</label>
+                                        <input required="" name="password" id="" type="password" class="input" data-type="password" placeholder="Confirmer" required>
+                                    </div><div class="group">
+                                      <div class="form-group row">
+
+                                        <div class="col-sm-10">
+                                          <div class="form-check">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="checkbox">J'ai lu et j'accepte <a href="">les conditions générales</a>  </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <input type="submit" class="button" value="S'INSCRIRE">
+                                  </div>
+
+                                    </div>
+
+
+                                    <div  id="rr">
+                                    <div class="group">
+                                  <h6>Photocopie de votre carte d'identité (obligatoire)</h6>
+                                  <br>
+                                  <div  class="custom-file">
+                                    <input type="file" class="custom-file-input" id="hFichier" name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
+                                    <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <h6>Photocopie de carte CPS / attestation de l’hôpital / contrat de travail de l’hôpital / carte d’enregistrement à l’ordre national des infirmiers / Fiche de paie, badge, et d'une facon générale tout document daté de moins de 3 mois (obligatoire)</h6>
+                                  <br>
+                                  <div  class="custom-file">
+                                    <input type="file" class="custom-file-input"  name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
+                                    <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
+                                  </div>
+                              </div>
+                              <br>
+                              <div class="form-group form-login ">
+                                <label for="exampleFormControlTextarea1" style="color: #ffb400;">VOUS EN QUELQUES MOTS </label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" required></textarea>
+                              </div>
+                            </div>
+                                  </div>
+                              </div>
+
+
+                            </form>
 
                         </div>
                     </div>
@@ -107,7 +271,7 @@
 
     </footer>
 
-
+  <script src="assets/stylesheets/js/app.js"></script>
   <script src="https://kit.fontawesome.com/b9dea9cce1.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
