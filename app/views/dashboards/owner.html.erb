@@ -24,7 +24,7 @@
 
 <div class="container-fluid">
   <div class="row propose justify-content-center">
-    <button class="btn btn-warning text-white radius m-5" id="myBtn">Proposer un logement</button>
+    <button class="btn btn-warning text-white radius" id="myBtn">Proposer un logement</button>
   </div>
   <div class="col-12">
     <div class="row cardRow">
@@ -46,7 +46,7 @@
 
               <%= link_to  flat_path(flat), class: "mt-4 btn btn-primary",
               method: :delete,
-              data: { confirm: "Are you sure?" }  do %>
+              data: { confirm: "Êtes-vous sûr ?" }  do %>
               <i class="fas fa-trash-alt fa-2x"></i>
               <% end %>
             </div>
@@ -124,23 +124,6 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group row formborder">
-                  <label for="example-date-input" class="col-4 col-form-label type1">Nb de chambre :</label>
-                  <div class="col-6">
-                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </select>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -169,7 +152,7 @@
 
   <div class="form-inputs">
     <%= f.input :address, :label => "Adresse" %>
-    <%= f.input :flat_type, :label => "Type du logement",  collection: ["Studio", "T1", "T2", "T3"]  %>
+    <%= f.input :flat_type, :label => "Type du logement",  collection: ["Studio", "T1", "T2", "T3", "T4"]  %>
     <%= f.input :description, :label => "Description" %>
     <%= f.input :accessibility_pmr, :label => "Accessibilité PMR" %>
   </div>
@@ -178,3 +161,6 @@
     <%= f.button :submit, class: 'btn' %>
   </div>
 <% end %>
+
+
+<div class="margintop"> </div>
