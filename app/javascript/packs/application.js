@@ -4,7 +4,7 @@ require("channels")
 require('google-maps');
 
 import "bootstrap";
-
+import { initAutocomplete } from "./map";
 
 var bouton = document.querySelector("#soignant");
 var rr = document.querySelector("#rr");
@@ -32,6 +32,8 @@ function checkOut() {
 
 window.check = check;
 window.checkOut = checkOut;
+
+initAutocomplete();
 
   // // Get the modal
   // var modal = document.getElementById("myModal");
