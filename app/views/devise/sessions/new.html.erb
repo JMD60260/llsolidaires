@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
     <%= link_to root_path do%>
@@ -193,3 +192,13 @@
 
   </div> <!-- <div class="container"> -->
 </div> <!-- <div class="hero-wrap" -->
+
+<% @cities.each do |city| %>
+  <% if city  %>
+    <li>
+      <%= city %> : <%= Flat.where(city: city).count %>
+    </li>
+  <% end %>
+<% end %>
+
+
