@@ -189,11 +189,14 @@
       </div>
 
     </div>
-
-
-
-
-
   </div>
 </div>
+
+<% @cities.each do |city| %>
+  <% if city  %>
+    <li>
+      <%= city %> : <%= Flat.where(city: city).count %>
+    </li>
+  <% end %>
+<% end %>
 
