@@ -98,7 +98,6 @@ function initAutocomplete() {
        }
 
        let json = JSON.parse(value)
-       if(typeof(json) === "object"){
            map.addMarker({
              lat: json.lat,
              lng: json.lng,
