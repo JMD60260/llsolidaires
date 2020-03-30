@@ -1,0 +1,41 @@
+<div class="container blogMenu" style="margin-top: 25px;">
+  <div class="dashboardLink">
+      <ul class="nav justify-content-center" >
+        <li class="nav-item">
+          <% if @tab == "Recherche de logements" %>
+            <%= link_to "Recherche de logements", dashboard_medical_path, class: "activeLink" %>
+          <% else %>
+            <%= link_to "Recherche de logements", dashboard_medical_path %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if @tab == "Demandes" %>
+            <%= link_to "Demandes", medical_pending_requests_path, class: "activeLink"  %>
+          <% else %>
+            <%= link_to "Demandes", medical_pending_requests_path %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if @tab == "Mes réservations" %>
+            <%= link_to "Mes réservations", medical_validated_rentals_path, class: "activeLink"  %>
+          <% else %>
+            <%= link_to "Mes réservations", medical_validated_rentals_path %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if @tab == "Aide et documentation" %>
+            <%= link_to "Aide et documentation", pages_medical_doc_path, class: "activeLink" %>
+          <% else %>
+            <%= link_to "Aide et documentation", pages_medical_doc_path%>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if @tab == "Mon profil" %>
+            <%= link_to "Mon profil", edit_user_registration_path, class: "activeLink"  %>
+          <% else %>
+            <%= link_to "Mon profil", edit_user_registration_path %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+</div>
