@@ -49,7 +49,7 @@
             <br>
             <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp;&nbsp;  Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "Non déterminé" %></span></h6>
             <%= link_to 'Accepter', rental_validate_path(rental), method: :patch, class: "btn btn-success m-2 py-3 px-4 radius"  %>
-            <%= link_to 'Décliner', rental_refuse_path(rental), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger m-2 py-3 px-4 radius" %>
+            <%= link_to 'Décliner', rental_refuse_path(rental), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-danger m-2 py-3 px-4 radius" %>
           </div>
         </div>
       </div>
