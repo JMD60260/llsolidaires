@@ -1,12 +1,16 @@
 class DashboardsController < ApplicationController
 
   def owner
+    @tab = "Mes logements"
+    @role = "owner"
     @flats = current_user.flats
     @flat = Flat.new
   end
 
   def medical
     if current_user.role == "medical"
+      @tab = "Recherche de logements"
+      @role = "medical"
      @flats = Flat.where("address ILIKE ?", "%#{params[:query]}%")
      if params[:query]
       @start_date = Date.parse(params[:start])

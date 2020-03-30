@@ -7,12 +7,16 @@ class FlatsController < ApplicationController
     if @flat.save
       redirect_to dashboard_owner_path
     else
+      @tab = "Mes logements"
+      @role = "owner"
       @flats = current_user.flats
       render 'dashboards/owner'
     end
   end
 
   def edit
+    @tab = "Mes logements"
+    @role = "owner"
     if @flat.user != current_user
       flash[:error] = "Accès interdit -> Vous devez être le propriétaire pour éditer !"
       redirect_to dashboard_owner_path
@@ -27,6 +31,8 @@ class FlatsController < ApplicationController
     if @flat.update(flat_params)
       redirect_to dashboard_owner_path
     else
+      @tab = "Mes logements"
+      @role = "owner"
       render :edit
     end
   end

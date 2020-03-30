@@ -26,8 +26,12 @@ class PagesController < ApplicationController
   end
 
   def owner_doc
+    @tab = "Aide et documentation"
+    @role = "owner"
   end
 
   def medical_doc
+    @tab = "Aide et documentation"
+    @role = "medical"
   end
 end
