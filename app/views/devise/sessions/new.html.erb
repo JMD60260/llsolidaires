@@ -21,9 +21,9 @@
             <div class="row">
             <div class="col-md-6 " id="hero"  >
                 <div class="login-wrap">
-                    <div class="login-html" style="cursor: pointer;">
-                        <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label for="tab-1" class="tab">Connexion</label>
-                        <input id="tab-2" type="radio"  name="tab" class="sign-up"><label for="tab-2" class="tab"> INSCRIPTION</label>
+                    <div class="login-html">
+                        <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label for="tab-1" class="tab" style="cursor: pointer;">Connexion</label>
+                        <input id="tab-2" type="radio"  name="tab" class="sign-up"><label for="tab-2" class="tab" style="cursor: pointer;"> INSCRIPTION</label>
                         <div class="login-form">
 
                             <div class="sign-in-htm mt-4 ">
@@ -59,39 +59,36 @@
 
                             </div>
 
-                            <form action="" method="POST">
                                 <div class="sign-up-htm ">
 
                                   <div class="row ">
                                     <div id="aa" class="col-12">
 
-                                      <div class="d-block ">
-                                        <div class="custom-control custom-radio">
-                                          <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" onclick="ChechOut()" checked="" required="">
-                                          <label class="custom-control-label" for="credit">Vous êtes propriétaire</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                          <input id="soignant" name="paymentMethod" type="radio" class="custom-control-input" onclick="check()" required="">
-                                          <label class="custom-control-label" for="soignant">Vous êtes soignant</label>
-                                        </div>
-
-                                      </div>
-
                                       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                                         <%= f.error_notification %>
 
                                         <%= f.input_field :role,
-                                                    collection: [["Personnel médical", "medical"],["Propriétaire", "owner"]],
+                                                    collection: [["Vous êtes soignant", "medical"]],
                                                     label_method: :first,
                                                     value_method: :last,
                                                     as: :radio_buttons,
                                                     checked: :none,
+                                                    onclick: "check()",
+                                                    :item_wrapper_class => 'inline' %>
+                                        <%= f.input_field :role,
+                                                    collection: [["Vous êtes propriétaire", "owner"]],
+                                                    label_method: :first,
+                                                    value_method: :last,
+                                                    as: :radio_buttons,
+                                                    checked: :none,
+                                                    onclick: "ChechOut()",
                                                     :item_wrapper_class => 'inline' %>
 
                                         <div class="form-inputs">
                                           <div class="group" style="margin-top: 10px;">
                                             <%= f.input :first_name,
                                                         placeholder: "Prénom",
+                                                        autofocus: true,
                                                         input_html: { class: "input" },
                                                         label_html: { class: 'label' }  %>
                                           </div>
@@ -109,7 +106,6 @@
                                           </div>
                                           <div class="group">
                                             <%= f.input :email,
-                                                        required: true,
                                                         autofocus: true,
                                                         placeholder: "Email",
                                                         input_html: { autocomplete: "email", class: "input" },
@@ -117,7 +113,6 @@
                                           </div>
                                           <div class="group">
                                             <%= f.input :password,
-                                                        required: true,
                                                         placeholder: "Mot de passe",
                                                         hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                                                         input_html: { autocomplete: "new-password", class: "input" },
@@ -125,7 +120,6 @@
                                           </div>
                                           <div class="group">
                                             <%= f.input :password_confirmation,
-                                                        required: true,
                                                         placeholder: "Confirmer le mot de passe",
                                                         input_html: { autocomplete: "new-password", class: "input" },
                                                         label_html: { class: 'label' }  %>
@@ -142,9 +136,6 @@
                                           </div>
 
 
-                                          <%#= f.input_field :role, as: :check_boxes, label: "Êtes-vous propriétaire?", item_wrapper_class: 'inline', checked_value: 'owner', unchecked_value: 'medical' %>
-
-
                                         <div class="form-actions">
 
                                           <div class="group">
@@ -153,46 +144,8 @@
                                         </div>
 
                                       <% end %>
-                                        </div>
-
-
-
-                                    <div class="group" style="margin-top: 10px;">
-                                    </div>
-                                        <label  class="label">NOM</label>
-                                        <input type="text" class="input" placeholder="Dupont" required >
-                                    <div class="group">
-                                        <label  class="label">PRENOM</label>
-                                        <input type="text" class="input" placeholder="Jean" required>
-                                    </div>
-                                    <div class="group">
-                                        <label  class="label">NUMERO DE TELEPHONE</label>
-                                        <input type="tel" pattern="[0-9]{10}" class="input" placeholder="06 01 02 03 04" required>
-                                    </div>
-                                    <div class="group">
-                                        <label  class="label">ADRESSE EMAIL</label>
-                                        <input type="email" class="input" placeholder="jeandupont@gmail.com" required>
-                                    </div>
-                                    <div class="group">
-                                        <label  class="label">MOT DE PASSE</label>
-                                        <input required="" name="password" id="" type="password" class="input" data-type="password" placeholder="Mot de passe" required>
-                                    </div>
-                                    <div class="group">
-                                        <label  class="label">CONFIRMATION DE MOT DE PASSE</label>
-                                        <input required="" name="password" id="" type="password" class="input" data-type="password" placeholder="Confirmer" required>
-                                    </div>
-                                    <div class="group">
-                                      <div class="form-group row">
-
-                                        <div class="col-sm-10">
-                                          <div class="form-check">
-                                            <label class="form-check-label">
-                                              <input class="form-check-input" type="checkbox">J'ai lu et j'accepte les <%= link_to "mentions légales", pages_legal_notice_path, class: 'text' %>  </label>
-                                          </div>
-                                        </div>
                                       </div>
-                                      <input type="submit" class="button" value="S'INSCRIRE">
-                                  </div>
+
 
                                     </div>
 
@@ -222,9 +175,6 @@
                             </div>
                                   </div>
                               </div>
-
-
-                            </form>
 
                         </div>
                     </div>
