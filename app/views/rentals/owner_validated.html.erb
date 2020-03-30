@@ -1,37 +1,101 @@
 <%= render 'shared/banner' %>
-<%= render 'shared/navbar_owner' %>
 
-<h2> En cours </h2>
+<div class="container blogMenu" style="margin-top: 25px;">
+  <div class="dashboardLink">
+    <ul class="nav justify-content-center" >
+      <li class="nav-item">
+        <%= link_to "Mes logements", dashboard_owner_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Réservations", owner_validated_rentals_path, class: "activeLink" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Demandes", owner_pending_requests_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Aide et documentation", pages_owner_doc_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Mon profil", edit_user_registration_path %>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<% @current_rentals.each do |rental| %>
-
-  <p> <%= rental.flat.flat_type %> </p>
-
-  <p> <%= rental.flat.description %> </p>
-
-  <p> <%= rental.user.last_name %> </p>
-
-  <% if rental.user.proof.url.present? %>
-    <p>justificatif du demandeur</p>
-    <%= link_to 'Télécharger le justificatif du demandeur',  download_proof_rental_path(rental) %>
-  <% end %>
-
-<% end %>
 
 
-<h2> A venir </h2>
+<div class="container-fluid">
+  <div class="col-12">
+    <div class="row cardRow">
+      <div class="col-8 marginleft ">
+        <h4>EN COURS</h4>
+      </div>
+      <% @current_rentals.each do |rental| %>
+      <div class="cardAppart ">
+        <div class="row mb-3 padding1">
+          <div class="col-md-4 themed-grid-col">
+            <div class="col-auto d-none d-lg-block m-4">
+              <img src="https://picsum.photos/200" width="250"  alt="">
+            </div>
+          </div>
+          <div class="col-md-4 themed-grid-col">
+            <div class="row">
+              <div class="col-md-10 themed-grid-col mt-4">
+                <h6 class="mb-1 type"> Type : <span class="grey"> <%= rental.flat.flat_type %> </span></h6>
+                <br>
+                <h6 class="mb-4 type"> Adresse :<span class="grey"> <%= rental.flat.address %> </span></h6>
+                <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp; Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "Non déterminé" %></span></h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 themed-grid-col mt-4">
+            <h6 class="mb-4 type"> Description :</h6>
+            <p> <%= rental.flat.description %></p>
+            <br>
+            <h6 class="mb-4 type"> Occupant : <span class="grey"><%= rental.user.first_name + " " + rental.user.last_name %></span></h6>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
 
-<% @future_rentals.each do |rental| %>
+<div class="container-fluid">
+  <div class="col-12">
+    <div class="row cardRow">
+      <div class="col-8 marginleft ">
+        <h4>À VENIR</h4>
+      </div>
+      <% @current_rentals.each do |rental| %>
+      <div class="cardAppart ">
+        <div class="row mb-3 padding1">
+          <div class="col-md-4 themed-grid-col">
+            <div class="col-auto d-none d-lg-block m-4">
+              <img src="https://picsum.photos/200" width="250"  alt="">
+            </div>
+          </div>
+          <div class="col-md-4 themed-grid-col">
+            <div class="row">
+              <div class="col-md-10 themed-grid-col mt-4">
+                <h6 class="mb-1 type"> Type : <span class="grey"> <%= rental.flat.flat_type %> </span></h6>
+                <br>
+                <h6 class="mb-4 type"> Adresse :<span class="grey"> <%= rental.flat.address %> </span></h6>
+                <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp; Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "Non déterminé" %></span></h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 themed-grid-col mt-4">
+            <h6 class="mb-4 type"> Description :</h6>
+            <p> <%= rental.flat.description %></p>
+            <br>
+            <h6 class="mb-4 type"> Occupant : <span class="grey"><%= rental.user.first_name + " " + rental.user.last_name %></span></h6>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-  <p> <%= rental.flat.flat_type %> </p>
-
-  <p> <%= rental.flat.description %> </p>
-
-  <p> <%= rental.user.last_name %> </p>
-
-  <% if rental.user.proof.url.present? %>
-    <p>justificatif du demandeur</p>
-    <%= link_to 'Télécharger le justificatif du demandeur',  download_proof_rental_path(rental) %>
-  <% end %>
-
-<% end %>

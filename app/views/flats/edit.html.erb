@@ -1,3 +1,24 @@
+<div class="container blogMenu" style="margin-top: 25px;">
+  <div class="dashboardLink">
+      <ul class="nav justify-content-center" >
+        <li class="nav-item">
+          <%= link_to "Mes logements", dashboard_owner_path, class: "activeLink" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Réservations", owner_validated_rentals_path %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Demandes", owner_pending_requests_path %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Aide et documentation", pages_owner_doc_path %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Mon profil", edit_user_registration_path %>
+        </li>
+      </ul>
+    </div>
+</div>
 
 
 <div class="container pt-4 pb-4 mt-4 mb-4">
@@ -8,7 +29,7 @@
 
   <div class="form-inputs">
     <%= f.input :address, :label => "Adresse" %>
-    <%= f.input :flat_type, :label => "Type du logement",  collection: ["Studio", "T1", "T2", "T3"]  %>
+    <%= f.input :flat_type, :label => "Type du logement",  collection: ["Studio", "T1", "T2", "T3", "T4"]  %>
     <%= f.input :description, :label => "Description" %>
     <%= f.input :accessibility_pmr, :label => "Accessibilité PMR" %>
     <%= f.file_field :photos, multiple: true %>

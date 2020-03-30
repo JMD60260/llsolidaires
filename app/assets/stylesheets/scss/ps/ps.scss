@@ -1,0 +1,191 @@
+$white: #fff;
+$black: #000000;
+$darken: #232931;
+$grey: #6c757d;
+$success: #3F983D;
+$danger: #CE5034;
+$blue: #04148a;
+$primary: #ffb400;
+$secondary: #6b76ff;
+
+.blogMenu{
+
+    li{
+        margin: 1.2rem;
+    }
+
+}
+.dashboardLink {
+   
+    ul {
+        margin-left: -150px;
+      display: flex;
+      list-style: none;
+      color: $secondary;
+      justify-content: space-evenly;
+      li {
+        padding: 0rem 1rem;
+        a {
+          color: $grey;
+        }
+        .activeLink {
+          position: relative;
+          color:$blue ;
+
+          &:after {
+            content: '';
+            transform-origin: 0 0;
+            transform: scaleX(0.7);
+            position: absolute;
+            top: 20px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: .3em;
+            background: #F8B53F;
+            z-index: -1;
+            opacity: 0.8;
+            transition: ease-in-out 1s;
+          }
+        }
+      }
+    }
+  }
+  .marginleft{
+    margin-left: 30px;
+    h4{
+        color: #ffb400;
+    }
+  }
+  .margin30{
+    margin-left: 30px;
+  }
+
+  .padding1{
+    padding: 1rem;
+  }
+  
+  .type{
+    color: #04148a;
+    font-size: 20px;
+    line-height: 1.8;
+    font-weight: 700;
+  }
+  .type1{
+    color: #04148a;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 700;
+  }
+  .grey{
+    color: $grey;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 600;
+  }
+  .colorwar{
+    color: $primary !important;
+    line-height: 1.8;
+    font-weight: 600;
+  }
+  .margintop{
+      margin-bottom: 15rem;
+  }
+  .formborder input{
+    border: 1px solid $primary !important;
+  }
+  .formborder textarea{
+    border: 1px solid $primary !important;
+  }
+  .formborder select{
+    border: 1px solid $primary !important;
+  }
+  .btnsos{
+    padding: 1.1rem;
+    border-radius: 10px;
+  }
+  .radius{
+    border-radius: 25px;
+  }
+#id-client{
+  cursor: pointer;
+}
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #FEF8EC;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: $primary;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  background-color: #FEF8EC;
+  
+}
+
+.modal-body {padding: 2px 16px; }
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #FEF8EC;
+  color: white;
+}
+.btnout{
+  background-color:#ffffff00 ;
+  border: none;
+  outline: 0;
+}
+.btnout:focus{
+  
+  outline: none;
+}
