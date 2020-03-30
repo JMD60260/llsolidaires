@@ -80,7 +80,7 @@ function initAutocomplete() {
 
 
   let flats = document.getElementById('map').getAttribute('data-markers');
-  console.log(flats)
+
   if (flats){
      flats = flats.replace('[', '');
      flats = flats.replace(']', '');
@@ -89,13 +89,14 @@ function initAutocomplete() {
      let value
      let flatarray = []
      for (let i = 0; i < flats.length; i++) {
-       if (i != flats.length - 1) {
-         value = flats[i] + '}';
-
+      if (flats.length === 1) {
+        value = flats[0] + '}';
+      } else if (i != flats.length - 1) {
+        value = flats[i] + '}';
        } else {
          value = flats[i];
-
        }
+
        let json = JSON.parse(value)
        if(typeof(json) === "object"){
            map.addMarker({
