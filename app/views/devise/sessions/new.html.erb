@@ -1,20 +1,114 @@
-<h2>Log in</h2>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img class="mb-4" src="assets/images/logo-sl.png" alt="" width="250" ></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a href="" class="nav-link">Déconnexion</a></li>
+      </ul>
+    </div>
   </div>
+</nav>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+    <div class="hero-wrap" style="background-image: url('assets/images/bg_1.jpg');" >
+      <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-6 " id="hero"  >
+                <div class="login-wrap">
+                    <div class="login-html">
+                        <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label style="cursor: pointer;" for="tab-1" class="tab">Connexion</label>
+                        <input id="tab-2" type="radio"  name="tab" class="sign-up"><label style="cursor: pointer;" for="tab-2" class="tab"> INSCRIPTION</label>
+                        <div class="login-form">
+                            <div class="sign-in-htm mt-4 ">
+                            <form style="margin-top: 125px;" action="" method="POST">
+                                <div class="group">
+                                    <label for="user" class="label">ADRESSE EMAIL</label>
+                                    <input name="email" required="" id="user" type="email" class="input" placeholder="Email">
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label">MOT DE PASSE</label>
+                                    <input required="" name="password" id="pass" type="password" class="input" data-type="password" placeholder="Mot de passe">
+                                </div>
+
+                                <div class="group" style="margin-top: 50px;">
+                                    <input type="submit" class="button" value="Se Connecter">
+                                </div>
+
+                                </form>
+                                <div  style="margin-top: 25px; text-align: center;">
+                                  <a style="color: #6c757d;" href="">Mot de passe oublié</a>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+<div class="col-md-6 " style="margin-top: 550px;">
+            <div class="row no-gutters slider-text align-items-center " >
+                <div class="col-md-12 order-md-last  mt-5 text-left" >
+                  <h1 class="mb-4 soulignement">DES LOGEMENTS GRATUITS POUR NOS SOIGNANTS</h1>
+                  <p><a href="#" class="btn btn-warning py-3 px-4">PROPOSER UN HEBERGEMENT</a></p>
+                </div>
+
+              </div>
+        </div>
+
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row ">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <p> &copy;<script>document.write(new Date().getFullYear());</script> Les Logements Solidaires</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-6">
+                <li><a href="https://www.malt.fr/" ><img class="mb-4" src="assets/images/malt_logo.svg" alt="" width="150" ></a></li>
+                <li><a href="https://www.lewagon.com/fr" ><img class="mb-4" src="assets/images/le-wagon-color.png" alt="" width="150" ></a></a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md">
+          </div>
+
+          <div class="col-md">
+            <ul class="list-unstyled text alignend icon-footer" >
+              <li><span><a href="#" class="fab fa-facebook" ></a></span></li>
+            </ul>
+            <ul class="list-unstyled text alignend">
+              <li><a class="text" href="#">Mentions légales</a></li>
+              <li><a class="text" href="#">Politique de confidentialité</a></li>
+              <li><a class="text" href="#">Contact</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+
+
+
+    </footer>
+
+
+  <script src="https://kit.fontawesome.com/b9dea9cce1.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
