@@ -14,7 +14,14 @@ class ApplicationController < ActionController::Base
                          :last_name,
                          :phone,
                          :rgpd,
-                         :description)
+                         :description,
+                         :identity_file,
+                         :identity_file_cache,
+                         :remove_identity_file,
+                         :proof,
+                         :proof_cache,
+                         :remove_proof
+                         )
     end
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
        user_params.permit(:role,
@@ -25,13 +32,13 @@ class ApplicationController < ActionController::Base
                           :password,
                           :password_confirmation,
                           :current_password,
+                          :description,
                           :identity_file,
                           :identity_file_cache,
                           :remove_identity_file,
                           :proof,
                           :proof_cache,
-                          :remove_proof,
-                          :description
+                          :remove_proof
                           )
     end
   end
