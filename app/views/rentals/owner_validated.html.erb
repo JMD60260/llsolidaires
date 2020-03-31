@@ -7,6 +7,10 @@
 <div class="container" style="margin-top: 100px;">
   <div class="col-12 marginleft ">
     <h4>EN COURS</h4>
+  <% if @current_rentals.empty? %>
+    <br>
+    <h6 class="mb-4 type1">Pas de réservation en cours.</h6>
+  <% end %>
   </div>
 </div>
 
@@ -98,9 +102,13 @@
 <div class="container" style="margin-top: 100px;">
   <div class="col-12 marginleft ">
     <h4>À VENIR</h4>
+    <% if @future_rentals.empty? %>
+      <br>
+      <h6 class="mb-4 type1">Pas de réservation à venir.</h6>
+    <% end %>
+    </div>
   </div>
 </div>
-
 
 
 <% @future_rentals.each do |rental| %>

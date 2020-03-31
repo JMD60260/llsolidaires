@@ -2,6 +2,14 @@
 
 <%= render 'shared/navbar_user' %>
 
+<% if @rentals.empty? %>
+<div class="container" style="margin-top: 100px;">
+  <div class="col-12 marginleft ">
+    <h6 class="mb-4 type1">Pas de demande en cours.</h6>
+  </div>
+</div>
+<% end %>
+
 
 <% @rentals.each do |rental| %>
 <section>
