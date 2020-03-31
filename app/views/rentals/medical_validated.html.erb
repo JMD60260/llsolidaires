@@ -9,11 +9,12 @@
   </div>
 </div>
 
+
 <% @current_rentals.each do |rental| %>
 <section>
   <div class="container marketing color-back" style="margin-top:8rem;">
     <div class="row d-flex">
-      <div class="col-md-6 col-lg-4 pl-lg-5 py-5">
+      <div class="col-md-12 col-lg-4 pl-lg-5 py-5">
         <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
 
 
@@ -31,24 +32,9 @@
 
               </div>
             </div>
-            <div class="carousel-item ">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block text-dark">
 
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block">
 
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block">
 
-              </div>
-            </div>
             <!-- Contrôles -->
             <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -82,9 +68,10 @@
         <div class="py-md-5">
           <div class="row justify-content-start pb-3">
             <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-              <h6 class="mb-4 type"> Description :</h6>
+              <h6 class="mb-4 type"> Description : </h6>
               <p> <%= rental.flat.description %></p>
               <br>
+              <h6 class="mb-4 type"> Propriétaire : <span class="grey"> <%= rental.flat.user.first_name + " " + rental.flat.user.last_name %> </span></h6>
             </div>
           </div>
         </div>
@@ -93,6 +80,8 @@
   </div>
 </section>
 <% end %>
+
+
 
 
 
@@ -107,7 +96,7 @@
 <section>
   <div class="container marketing color-back" style="margin-top:8rem;">
     <div class="row d-flex">
-      <div class="col-md-6 col-lg-4 pl-lg-5 py-5">
+      <div class="col-md-12 col-lg-4 pl-lg-5 py-5">
         <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
 
 
@@ -125,24 +114,9 @@
 
               </div>
             </div>
-            <div class="carousel-item ">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block text-dark">
 
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block">
 
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block">
 
-              </div>
-            </div>
             <!-- Contrôles -->
             <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -166,17 +140,17 @@
               <h6 class="mb-1 type"> Type : <span class="grey"> <%= rental.flat.flat_type %></span></h6>
               <h6 class="mb-1 type"> Accessible PMR : <span class="grey ml-3"> <%= rental.flat.accessibility_pmr ? 'Oui' : 'Non' %></span></h6>
               <br>
-              <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= rental.flat.address %></span></h6>
+              <h6 class="mb-4 type"> Adresse : <span class="grey"> <br> <%= rental.flat.address %></span></h6>
               <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp; Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "n. d." %></span></h6>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-lg-4 pl-lg-5 py-5">
+      <div class="col-md-6 col-lg-4 pl-lg-5 py-4">
         <div class="py-md-5">
           <div class="row justify-content-start pb-3">
             <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-              <h6 class="mb-4 type"> Description :</h6>
+              <h6 class="mb-4 type"> Description : </h6>
               <p> <%= rental.flat.description %></p>
               <br>
               <h6 class="mb-4 type"> Propriétaire : <span class="grey"> <%= rental.flat.user.first_name + " " + rental.flat.user.last_name %> </span></h6>
