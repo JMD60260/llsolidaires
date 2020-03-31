@@ -1,0 +1,29 @@
+<% if current_user %>
+
+  <% if @as == "medical" %>
+    <%= render 'shared/navbar_medical' %>
+  <% elsif @as == "owner" %>
+      <%= render 'shared/navbar_owner' %>
+  <% else %>
+    <% if current_user.role == "medical" %>
+      <%= render 'shared/navbar_medical' %>
+    <% elsif current_user.role == "owner" %>
+      <%= render 'shared/navbar_owner' %>
+    <% end %>
+  <% end %>
+
+  <% else %>
+
+    <div class="container blogMenu" style="margin-top: 25px;">
+      <div class="dashboardLink">
+        <ul class="nav justify-content-center" >
+          <li class="nav-item">
+            <%= link_to "Accueil", root_path, class: "activeLink" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<% end %>
+
+

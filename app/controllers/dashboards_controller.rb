@@ -1,23 +1,32 @@
 class DashboardsController < ApplicationController
 
   def owner
+    @tab = "Mes logements"
+    @as = "owner"
     @flats = current_user.flats
     @flat = Flat.new
   end
 
   def medical
-    if params[:query]
-      @start_date = Date.parse(params[:start])
-      if params[:end] == ""
-        @end_date = nil
+    if current_user.role == "medical"
+      @tab = "Recherche de logements"
+      @as = "medical"
+      if params[:query]
+        @start_date = Date.parse(params[:start])
+        if params[:end] == ""
+          @end_date = nil
+        else
+          @end_date = Date.parse(params[:end])
+        end
+        @flats = Flat.near(params[:query], 20)
       else
-        @end_date = Date.parse(params[:end])
+        @flats = Flat.all
       end
-      @flats = Flat.near(params[:query], 20)
+      @markers = geocoded_flats(@flats)
     else
-      @flats = Flat.all
+      flash[:error] = "Vous n'avez pas accés à cette page.'"
+      redirect_to root_path
     end
-    @markers = geocoded_flats(@flats)
   end
 
   # Ancienne méthode qui envoie une 500 sans query (avec la private method)
@@ -58,5 +67,12 @@ class DashboardsController < ApplicationController
   #     }
   #   end
   # end
-end
 
+  def owner_profile
+    redirect_to edit_user_registration_path(as: 'owner')
+  end
+
+  def medical_profile
+    redirect_to edit_user_registration_path(as: 'medical')
+  end
+end
