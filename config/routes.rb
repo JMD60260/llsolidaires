@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'dashboard/owner_profile', to: "dashboards#owner_profile"
   get 'dashboard/medical_profile', to: "dashboards#medical_profile"
 
+  get '/llscovid19', to: 'flats#new', as: 'new_flat'
   resources :flats do
     resources :rentals, only: [:create]
     collection { post :import }
