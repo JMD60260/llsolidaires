@@ -46,6 +46,15 @@ class FlatsController < ApplicationController
     redirect_to dashboard_owner_path
   end
 
+  def new
+  end
+
+  def import
+    Flat.import(params[:file])
+    redirect_to root_path, notice: "Les propriétaires et appartements ont été ajoutés avec succès"
+    flash[:succes] = "Les propriétaires et appartements ont été ajoutés avec succès"
+  end
+
   private
 
   def set_flat
