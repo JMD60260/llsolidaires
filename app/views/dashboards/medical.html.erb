@@ -1,60 +1,107 @@
 <%= render 'shared/banner' %>
 
-<h1>Coucou</h1>
+
 
 
 <%= render 'shared/navbar_user' %>
 
 
-<h1>Medical</h1>
 
-<div class="container">
 
-  <%= form_tag dashboard_medical_path, method: :get do %>
-    <label for="start">De:</label>
-    <%= date_field_tag :start, params[:start], id: "start", required: true, value: Date.tomorrow %>
-    <label for="end">A:</label>
-    <%= date_field_tag :end, params[:end], id: "end", value: "" %>
-    <%= text_field_tag :query,
-      params[:query],
-      id: 'SearchBar',
-      class: "form-control flat-search",
-      placeholder: "Recherchez la ville de votre Hopital",
-      required: true
-    %>
-    <%= submit_tag "Rechercher", class: "btn btn-primary" %>
-  <% end %>
-  <div class="header">
-    <h1>Voici la liste des appartements disponibles :</h1>
-  </div>
-  <div class="flat-container d-flex">
-    <div class="flat-list">
-      <% @flats.each do |flat| %>
-        <div class="card">
-          <%= flat.description %>
-          <%= flat.flat_type %>
-          <%= flat.address %>
+
+<div class="container color-back" style="margin-top:8rem;">
+  <div class="col-12">
+    <div class="row cardRow">
+      <div class="cardAppart">
+          <%= form_tag dashboard_medical_path, method: :get do %>
+          <div class="row mb-4 padding1 p-5">
+            <div class="col-md-6 themed-grid-col marginleft">
+              <div class="row ">
+               <div class="col-md-6 themed-grid-col formborder">
+                <div class="form-group row">
+                  <label for="example-date-input" class="col-2 col-form-label">De</label>
+                  <div class="col-10">
+                    <%= date_field_tag :start, params[:start], id: "start", required: true, value: Date.tomorrow, class:"form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 themed-grid-col formborder">
+                <div class="form-group row">
+                  <label for="example-date-input" class="col-2 col-form-label">À</label>
+                  <div class="col-10">
+                    <%= date_field_tag :end, params[:end], id: "end", value: "", class:"form-control"  %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 themed-grid-col formborder">
+                <div class="form-group row">
+                  <label for="example-date-input" class="col-2 col-form-label">Où</label>
+                  <div class="col-10">
+                    <%= text_field_tag :query,
+                    params[:query],
+                    id: 'SearchBar',
+                    class: "form-control flat-search",
+                      placeholder: "Recherchez la ville de votre Hôpital",
+                      required: true,
+                      class:"form-control mb-2 mr-sm-2"
+                        %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row margin30">
+                <div class="col-md-12 themed-grid-col "><div class="form-check mb-2 mr-sm-2">
+                  La date de fin peut être laissée vide.
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-end">
+              <!-- <div class="col-md-12 themed-grid-col"> <button type="submit" class="btn btn-warning text-white m-2 ">Recherche</button></div> -->
+              <%= submit_tag "Rechercher", class: "btn btn-warning text-white m-2 " %>
+            </div>
+          </div>
         </div>
-      <% end %>
-    </div>
-    <div
-      id="map"
-      style="width: 100%;
-      height: 600px;"
-      data-markers=<%= @markers.to_json %>
-      >
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
+
+
+<div class="header">
+  <h1>Voici la liste des appartements disponibles :</h1>
+</div>
+<div class="flat-container d-flex">
+  <div class="flat-list">
+    <% @flats.each do |flat| %>
+    <div class="card">
+      <%= flat.description %>
+      <%= flat.flat_type %>
+      <%= flat.address %>
+    </div>
+    <% end %>
+  </div>
+  <div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers=<%= @markers.to_json %>
+  >
+</div>
+</div>
 
 
 <h2>Logements:</h2>
 <% @flats.each do |flat| %>
-  <div class="card">
-    <%= flat.description %>
-    <%= flat.flat_type %>
-    <%= flat.address %>
-    <%= link_to "Envoyer une demande", flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }), method: :post %>
-  </div>
+<div class="card">
+  <%= flat.description %>
+  <%= flat.flat_type %>
+  <%= flat.address %>
+  <%= link_to "Envoyer une demande", flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }), method: :post %>
+</div>
 <% end %>
 
 </div>
