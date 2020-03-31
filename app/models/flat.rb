@@ -21,7 +21,10 @@ class Flat < ApplicationRecord
   validate :define_city
 
   def define_city
-    self.city = Geocoder.search("#{self.latitude}, #{self.longitude}").first.data["address"]["city"]
+    geocoded_adress = Geocoder.search("#{self.latitude}, #{self.longitude}")[0].data["address"]
+    city = geocoded_adress["city"]
+    town = geocoded_adress["town"]
+    (city != nil) ? self.city = city : self.city = town
   end
 
   def found_address_presence?
