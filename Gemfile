@@ -15,12 +15,15 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert2-rails'
 
 # Geocoding gem for GoogleMaps
 gem 'geocoder'
 gem 'aws-sdk-s3', require: false
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
+
 
 # Algolia Search
 gem "algoliasearch-rails"

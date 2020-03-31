@@ -3,6 +3,9 @@ require("@rails/activestorage").start()
 require("channels")
 require('google-maps');
 
+//= require sweetalert2
+//= require sweet-alert2-rails
+
 import "bootstrap";
 import { initAutocomplete } from "./map";
 
@@ -39,7 +42,7 @@ var modal = document.querySelector("#myModal");
 // var close = document.getElementById("close");
 
 
-// J'ai commenté ca pour pas que la map pète merci 
+// J'ai commenté ca pour pas que la map pète merci
 // close.onclick = function() {
 //   modal.style.display = "none";
 
@@ -118,6 +121,10 @@ window.modalForm = modalForm;
 window.modalOpen = modalOpen;
 window.modalMap = modalMap;
 
+
+setTimeout(function () {
+  $('.alert').fadeOut('fast');
+}, 4000);
 
 
 

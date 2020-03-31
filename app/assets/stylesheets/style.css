@@ -3573,7 +3573,29 @@ input[type="button"].btn-block {
   padding-left: 0;
   border-radius: 0; }
 
-.alert {
+  .alert-info {
+    position: absolute;
+    width: 25vw;
+    right: 0;
+    background-color: #28a745;
+    opacity: 0.7;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+  }
+
+  .alert-warning {
+    position: absolute;
+    width: 25vw;
+    right: 0;
+    background-color: #ffc107;
+    opacity: 0.7;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+  }
+
+/* .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
@@ -3665,7 +3687,7 @@ input[type="button"].btn-block {
   .alert-dark hr {
     border-top-color: #b9bbbe; }
   .alert-dark .alert-link {
-    color: #040505; }
+    color: #040505; } */
 
 @keyframes progress-bar-stripes {
   from {
