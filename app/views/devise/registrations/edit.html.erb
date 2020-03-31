@@ -36,11 +36,11 @@
                   <%= f.text_area :description, class:"form-control", rows: 5, class:"form-control" %>
                 </div>
               </div>
+              <p>Pièce d'identité : </p>
               <%= f.label :identity_file do %>
                 <%= f.file_field :identity_file %>
                 <%= f.hidden_field :identity_file_cache %>
               <% end %>
-              <p>Pièce d'identité : </p>
               <p> Justificatif professionnel : </p>
               <%= f.label :proof do %>
                 <%= f.file_field :proof %>
