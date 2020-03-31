@@ -36,14 +36,15 @@ window.checkOut = checkOut;
 
 //  // Get the modal
 var modal = document.querySelector("#myModal");
-var close = document.getElementById("close");
+// var close = document.getElementById("close");
 
-if (close){
-  close.onclick = function() {
-    modal.style.display = "none";
-  }
-}
 
+// J'ai commenté ca pour pas que la map pète merci 
+// close.onclick = function() {
+//   modal.style.display = "none";
+
+
+// }
 
 window.onclick = function(event) {
   if (event.target == modal) {

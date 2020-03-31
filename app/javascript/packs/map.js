@@ -28,8 +28,8 @@ const initAutocomplete = () => {
   let query
   searchBox.addListener('places_changed', function () {
     var places = searchBox.getPlaces();
-    console.log(places)
-    query = places[0].formatted_address
+    console.log(places);
+    query = places[0].location
     if (places.length == 0) {
       return;
     }
@@ -74,8 +74,11 @@ const initAutocomplete = () => {
     });
     map.fitBounds(bounds);
     let target = document.getElementById('SearchBar');
-    target.removeAttribute('value');
-    target.setAttribute('value', `${query}`);
+    target.addEventListener('submit', (e)=> {
+      e.removeAttribute('value');
+      e.setAttribute('value', `${query}`);
+    });
+    document.getElementById('search-bar-button').click();
   });
 
 

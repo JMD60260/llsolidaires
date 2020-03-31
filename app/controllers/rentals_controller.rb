@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:download_proof, :edit, :update, :destroy]
+  before_action :set_rental, only: [:download_proof, :edit, :update, :destroy, :validate_rental, :refuse_rental]
 
   def download_proof
     data = open(@rental.user.proof.url)
@@ -34,10 +34,18 @@ class RentalsController < ApplicationController
   end
 
   def validate_rental
-    @rental = Rental.find(params[:rental_id])
+    # Supprimer toutes les autres rentals.validated == false pour le @rental.user, seuleùent celles qui ont une date en commun avec @rental
     if @rental.flat.user == current_user && @rental.validated == false
+      @flat_rentals = @rental.flat.rentals
+      @rentals_to_delete = []
+      @flat_rentals.each do |rental|
+        if @rental.end_date != nil && (@rental.start_date..@rental.end_date).include?(rental.start_date)
+          @rentals_to_delete << rental
+        elsif rental.start_date <= @rental.start_date
+          @rentals_to_delete << rental
+        end
+      end
       @rental.update(validated: true)
-      # Supprimer toutes les autres rentals.validated == false pour le @rental.user, seuleùent celles qui ont une date en commun avec @rental
       UserMailer.send_acceptation_to_medical(@rental).deliver
       redirect_to owner_pending_requests_path
     else
@@ -92,6 +100,7 @@ class RentalsController < ApplicationController
       end
     end
     @rentals.sort_by{ |rental| rental.start_date }
+
   end
 
   def medical_validated
