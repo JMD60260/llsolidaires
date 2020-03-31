@@ -184,7 +184,7 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: 0.5rem; }
+  margin-bottom: 0.1rem; }
 
 button {
   border-radius: 0; }
@@ -7560,6 +7560,10 @@ h1, h2, h3, h4, h5,
     .hero-wrap.hero-wrap-2 .slider-text {
       height: 800px; }
 
+#btn-hr-blue:hover {
+  background: #336cd2ab;
+  color: white; }
+
 .slider-text {
   position: relative; }
   .slider-text h1 {
@@ -7611,7 +7615,7 @@ h1, h2, h3, h4, h5,
   width: 800px;
   max-width: 450px;
   min-height: 550px;
-  height: 780px;
+  height: 800px;
   position: relative;
   border-radius: 25px;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
@@ -7658,6 +7662,13 @@ h1, h2, h3, h4, h5,
   color: #343a40;
   border-color: #ffb400; }
 
+#link-cnx {
+  color: #ffb400 !important;
+  font-size: 16px; }
+
+#link-cnx:hover {
+  color: #4c442d !important; }
+
 .login-form {
   margin-top: 15px;
   min-height: 345px;
@@ -7666,7 +7677,7 @@ h1, h2, h3, h4, h5,
   transform-style: preserve-3d; }
 
 .login-form .group {
-  margin-bottom: 15px; }
+  margin-bottom: 10px; }
 
 .login-form .group .label,
 .login-form .group .input,
@@ -7772,6 +7783,63 @@ h1, h2, h3, h4, h5,
 .foot-lnk {
   text-align: center; }
 
+.block-7 {
+  margin-bottom: 30px;
+  background: #fff; }
+
+.block-7 .heading {
+  font-size: 14px;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+  text-transform: uppercase; }
+
+.block-7 .heading-2 {
+  font-size: 16px; }
+
+.block-7 .price {
+  margin: 0;
+  padding: 0;
+  display: block; }
+
+.block-7 .price sup {
+  font-size: 20px;
+  top: -.7em;
+  color: #fcd307; }
+
+.block-7 .price .number {
+  font-size: 40px;
+  font-weight: 500;
+  color: #fcd307; }
+
+.block-7 .excerpt {
+  margin-bottom: 20px;
+  color: gray; }
+
+.block-7 .label2 {
+  text-transform: uppercase; }
+
+.block-7 .pricing-text {
+  margin-bottom: 0; }
+
+.block-7 .pricing-text, .block-7 .pricing-text li {
+  padding: 0;
+  margin: 0; }
+
+.block-7 .pricing-text li {
+  list-style: none;
+  margin-bottom: 15px;
+  color: #fcd307; }
+
+.block-7 .pricing-text li strong {
+  color: #000000; }
+
+#scroll {
+  height: 150px;
+  overflow-y: scroll; }
+
 .ftco-section {
   padding: 7em 0;
   position: relative; }
@@ -7855,6 +7923,29 @@ h1, h2, h3, h4, h5,
   padding-top: 120px;
   padding-bottom: 120px; }
 
+#btn-hr-blue {
+  padding: 15px 125px; }
+
+#scroll::-webkit-scrollbar {
+  background-color: rgba(247, 245, 245, 0.733);
+  border-radius: 25px;
+  width: 11px; }
+
+/* background of the scrollbar except button or resizer */
+#scroll::-webkit-scrollbar-track {
+  background-color: #727171;
+  border-radius: 25px; }
+
+/* scrollbar itself */
+#scroll::-webkit-scrollbar-thumb {
+  background-color: #ffb400;
+  border-radius: 25px;
+  border: 4px solid #ffb400; }
+
+/* set button(top and bottom of the scrollbar) */
+#scroll::-webkit-scrollbar-button {
+  display: none; }
+
 body::-webkit-scrollbar {
   background-color: rgba(247, 245, 245, 0.733);
   width: 11px; }
@@ -7895,7 +7986,7 @@ body::-webkit-scrollbar-button {
 
 #hero {
   margin-left: -150px;
-  margin-top: 200px; }
+  margin-top: 180px; }
 
 #rr {
   display: none; }
@@ -7948,9 +8039,21 @@ body::-webkit-scrollbar-button {
     color: #04148a;
     font-size: 12px;
     line-height: 1.8;
-    font-weight: 700; } }
+    font-weight: 700; }
+  #btn-hr-blue {
+    padding: 15px 120px !important; } }
 
 @media (min-width: 300px) and (max-width: 649px) {
+  #aa {
+    font-size: 9px; }
+  #rr {
+    font-size: 9px; }
+  .login-html {
+    padding: 10px 30px 0px 30px; }
+  .login-wrap {
+    height: 700px; }
+  #link-cnx {
+    font-size: 10px; }
   .mdl-type1 {
     color: #04148a;
     font-size: 10px;
@@ -7965,7 +8068,15 @@ body::-webkit-scrollbar-button {
   .login-form .group .label {
     font-size: 10px; }
   .login-wrap {
-    width: 350px; }
+    width: auto; }
+  #btn-hr-blue {
+    padding: 15px 88px !important; }
+  .hero-wrap {
+    height: 800px; }
+  .overlay {
+    height: 800px; }
+  .navbar-brand img {
+    width: 150px; }
   #hero {
     margin-left: 0px;
     margin-top: 25px; }
@@ -7993,6 +8104,10 @@ body::-webkit-scrollbar-button {
     font-size: 15px !important; }
   p {
     font-size: 10px; } }
+
+@media (min-width: 300px) and (max-width: 400px) {
+  #btn-hr-blue {
+    padding: 15px 70px !important; } }
 
 @media (min-width: 1200px) and (max-width: 1500px) {
   .type1 {
