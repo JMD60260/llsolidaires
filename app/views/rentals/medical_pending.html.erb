@@ -3,41 +3,99 @@
 <%= render 'shared/navbar_user' %>
 
 
-<div class="container-fluid">
-  <div class="col-12">
-    <div class="row cardRow">
-      <% @rentals.each do |rental| %>
-      <div class="cardAppart ">
-        <div class="row mb-3 padding1">
-          <div class="col-md-4 themed-grid-col">
-            <div class="col-auto d-none d-lg-block m-4">
-              <img src="https://picsum.photos/200" width="250"  alt="">
+
+<% @rentals.each do |rental| %>
+<section>
+  <div class="container marketing color-back" style="margin-top:8rem;">
+    <div class="row d-flex">
+      <div class="col-md-6 col-lg-4 pl-lg-5 py-5">
+        <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
+
+
+          <!-- Carrousel -->
+          <div class="carousel-inner">
+            <div class="carousel-item imgCircle">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block " >
+                <a class="text-blue" href=""><i class="fas fa-plus-circle fa-2x"></i></a>
+              </div>
+            </div>
+            <div class="carousel-item active">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block text-dark">
+
+              </div>
+            </div>
+            <div class="carousel-item ">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block text-dark">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <!-- Contrôles -->
+            <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Suivant</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 pl-lg-5 py-3">
+        <div class="py-md-5">
+          <div class="row justify-content-start pb-3">
+            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+              <h6 class="mb-1 type"> Type : <span class="grey"> <%= rental.flat.flat_type %></span></h6>
+              <br>
+              <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= rental.flat.address %></span></h6>
+              <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp; Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "n. d." %></span></h6>
             </div>
           </div>
-          <div class="col-md-4 themed-grid-col">
-            <div class="row">
-              <div class="col-md-10 themed-grid-col mt-4">
-                <h6 class="mb-1 type"> Type : <span class="grey"> <%= rental.flat.flat_type %></span></h6>
-                <br>
-                <h6 class="mb-4 type"> Adresse :<span class="grey"> <%= rental.flat.address %></span></h6>
-                <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp; Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "Non déterminé" %></span></h6>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 pl-lg-5 py-4">
+        <div class="py-md-5">
+          <div class="row justify-content-start pb-3">
+            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+              <div class="text-right p-2">
+                <%= link_to rental_path(rental), method: :delete do %>
+                  <button class="btn btn-outline-warning py-1 px-3 mb-2 radius" id="myBtn">Annuler la demande</button>
+                <% end %>
+              </div>
+              <h6 class="mb-4 type"> Description :</h6>
+              <p> <%= rental.flat.description %></p>
+              <br>
+              <br>
+              <br>
+              <br>
+              <div class="col-12 " style="text-align: end;">
+                <h5 class="mb-4 type te">État: en attente</h5>
               </div>
             </div>
           </div>
-          <div class="col-md-4 themed-grid-col mt-4">
-            <h6 class="mb-4 type"> Description :</h6>
-            <p> <%= rental.flat.description %></p>
-          </div>
         </div>
-        <div class="col-12" style="text-align: end;">
-          <h5 class="mb-4 type m-4">État: en attente</h5>
-        </div>
-        <%= link_to 'Annuler la demande',  rental_path(rental), method: :delete %>
       </div>
-      <% end %>
     </div>
   </div>
-</div>
+</section>
+<% end %>
+
 
 
 <div class="margintop"> </div>
