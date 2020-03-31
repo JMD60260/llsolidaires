@@ -36,13 +36,13 @@ window.checkOut = checkOut;
 
 //  // Get the modal
 var modal = document.querySelector("#myModal");
-var close = document.getElementById("close");
+// var close = document.getElementById("close");
 
-close.onclick = function() {
-  modal.style.display = "none";
+// close.onclick = function() {
+//   modal.style.display = "none";
 
 
-}
+// }
 
 window.onclick = function(event) {
   if (event.target == modal) {
