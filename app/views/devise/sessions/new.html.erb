@@ -1,203 +1,70 @@
 <%= render 'shared/home_nav' %>
 
-<div class="hero-wrap" style="background-image: url(<%= image_url('bg_1.jpg') %>);" >
-  <div class="overlay"></div>
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-6 " id="hero"  >
-        <div class="login-wrap">
-          <div class="login-html">
-            <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label for="tab-1" class="tab" style="cursor: pointer;">Connexion</label>
-            <input id="tab-2" type="radio"  name="tab" class="sign-up"><label for="tab-2" class="tab" style="cursor: pointer;"> INSCRIPTION</label>
-            <div class="login-form">
-
-              <div class="sign-in-htm mt-4 ">
-
-                <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                  <div class="form-inputs">
-
-                    <div class="group">
-                      <%= f.input :email,
-                                  label: "Email",
-                                  placeholder: "Email",
-                                  input_html: { autocomplete: "email", class: "input", type: "email" },
-                                  label_html: { class: 'label' } %>
-                    </div>
-                    <div class="group">
-                      <%= f.input :password,
-                                  label: "Mot de passe",
-                                  placeholder: "Mot de passe",
-                                  input_html: { autocomplete: "current-password", class: "input" },
-                                  label_html: { class: 'label' } %>
-                    </div>
-                  </div>
-
-                  <div class="form-actions">
-                    <div class="group">
-                      <%= f.button :submit, "Se connecter", class: 'button' %>
-                    </div>
-                  </div>
-                <% end %>
-
-                <div  style="margin-top: 25px; text-align: center;">
-                  <%= link_to "Mot de passe oublié?", new_password_path(resource_name), style: "color: #6c757d;"   %>
-                </div>
 
 
-              </div>
+    <div class="hero-wrap" style="background-image: url(<%= image_url('bg_1.jpg') %>);" >
+      <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-6 " id="hero"  >
+                <div class="login-wrap">
 
-              <div class="sign-up-htm ">
+                    <div class="login-html" style="cursor: pointer;">
+                        <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label for="tab-1" class="tab"></label>
+                        <input id="tab-2" type="radio"  name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
 
-                <div class="row ">
-                  <div id="aa" class="col-12">
+                        <div class="login-form">
 
-                    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                      <%= f.error_notification %>
+                            <div class="sign-in-htm mt-4 " style="margin-top: 125px;">
+                            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                <div class="group">
+                                    <label for="user" class="label">ADRESSE EMAIL</label>
+                                    <%= f.input :email,
+                                                label: false,
+                                                input_html: { autocomplete: "email", class: "input", type: "email" },
+                                                label_html: { class: 'label' } %>
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label">MOT DE PASSE</label>
+                                    <%= f.input :password,
+                                                label: false,
+                                                input_html: { autocomplete: "current-password", class: "input" },
+                                                label_html: { class: 'label' } %>
+                                </div>
 
-                      <%= f.input_field :role,
-                                        collection: [["Vous êtes soignant", "medical"]],
-                                        label_method: :first,
-                                        value_method: :last,
-                                        as: :radio_buttons,
-                                        id: "soignant",
-                                        checked: :none,
-                                        onclick: "window.check()",
-                                        item_wrapper_class: 'inline' %>
-                      <%= f.input_field :role,
-                                        collection: [["Vous êtes propriétaire", "owner"]],
-                                        label_method: :first,
-                                        value_method: :last,
-                                        as: :radio_buttons,
-                                        checked: :none,
-                                        onclick: "window.checkOut()",
-                                        item_wrapper_class: 'inline' %>
+                                <div class="group" style="margin-top: 50px;">
+                                    <%= f.button :submit, "Se connecter", class: 'button' %>
+                                </div>
 
-                      <div class="form-inputs">
-                        <div class="group" style="margin-top: 10px;">
-                          <%= f.input :email,
-                                      placeholder: "Email",
-                                      label: "Email",
-                                      input_html: { autocomplete: "email", class: "input" },
-                                      label_html: { class: 'label' } %>
-                        </div>
-                        <div class="group">
-                          <%= f.input :password,
-                                      placeholder: "Mot de passe",
-                                      label: "Mot de passe",
-                                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                                      input_html: { autocomplete: "new-password", class: "input" },
-                                      label_html: { class: 'label' }  %>
-                        </div>
-                        <div class="group">
-                          <%= f.input :password_confirmation,
-                                      placeholder: "Confirmer le mot de passe",
-                                      label: "Confirmer le mot de passe",
-                                      input_html: { autocomplete: "new-password", class: "input" },
-                                      label_html: { class: 'label' }  %>
-                        </div>
-                        <div class="group">
-                          <%= f.input :first_name,
-                                      placeholder: "Prénom",
-                                      label: "Prénom",
-                                      input_html: { class: "input" },
-                                      label_html: { class: 'label' }  %>
-                        </div>
-                        <div class="group">
-                          <%= f.input :last_name,
-                                      placeholder: "Nom",
-                                      label: "Nom",
-                                      input_html: { class: "input" },
-                                      label_html: { class: 'label' }  %>
-                        </div>
-                        <div class="group">
-                          <%= f.input :phone,
-                                      placeholder: "Numéro de téléphone",
-                                      label: "Numéro de téléphone",
-                                      input_html: { class: "input" },
-                                      label_html: { class: 'label' }  %>
-                        </div>
+                                <% end %>
+                                 <div class="text-center m-3">
+                                  <%= link_to "S'INSCRIRE", new_registration_path(resource_name), id:"link-cnx" %>
+                                </div>
+                                <div  style="margin-top: 25px; text-align: center;">
+                                  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), style: "color: #6c757d;"   %>
+                                </div>
 
-                        <div class="form-group row">
-                          <div class="col-sm-10">
-                            <div class="form-check">
                             </div>
-                          </div>
-                        </div>
 
 
-                        <div class="form-actions">
-                          <div class="group">
-                            <%= f.button :submit, "S'inscrire", class: "button" %>
-                          </div>
-                        </div>
-                      </div> <!-- <div class="form-inputs"> -->
-                    </div> <!-- <div id="aa" class="col-12"> -->
-
-                      <div id="rr"> <!-- div qui apparaît si 'utilisateur selectionne medical au signUp -->
-                        <div class="group">
-
-                          <h6>Photocopie de votre carte d'identité (obligatoire)</h6>
-                          <br>
-                          <div  class="custom-file">
-
-                            <!-- Malheureusement ce form HTML ne fonctionne pas, et je n'arrive pas à garder sa mise en page avec les helpers simple form -->
-                            <!-- <input type="file" class="custom-file-input" id="hFichier" name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" /> -->
-                            <!-- <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label> -->
-                            <%= f.label :identity_file do %>
-                              <%= f.file_field :identity_file %>
-                              <%= f.hidden_field :identity_file_cache %>
-                            <% end %>
-
-                          </div>
-                          <br>
-                          <br>
-                          <h6>Photocopie de carte CPS / attestation de l’hôpital / contrat de travail de l’hôpital / carte d’enregistrement à l’ordre national des infirmiers / Fiche de paie, badge,<br> et d'une facon générale tout document daté de moins de 3 mois (obligatoire)</h6>
-                          <br>
-                          <div  class="custom-file">
-
-                            <!-- Malheureusement ce form HTML ne fonctionne pas, et je n'arrive pas à garder sa mise en page avec les helpers simple form -->
-                            <!-- <input type="file" class="custom-file-input"  name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" /> -->
-                            <!-- <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label> -->
-                            <%= f.label :proof do %>
-                              <%= f.file_field :proof %>
-                              <%= f.hidden_field :proof_cache %>
-                            <% end %>
-
-                          </div>
-                        </div>
-                        <br>
-                        <div class="form-group form-login ">
-
-                          <!-- Malheureusement ce form HTML ne fonctionne pas, et je n'arrive pas à garder sa mise en page avec les helpers simple form -->
-                          <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" required></textarea> -->
-                          <label for="exampleFormControlTextarea1" style="color: #ffb400;">VOUS EN QUELQUES MOTS </label>
 
                         </div>
-                      </div> <!-- <div id="rr"> -->
-
-                    <% end %> <%#= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+<div class="col-md-6 " style="margin-top: 550px;">
+            <div class="row no-gutters slider-text align-items-center " >
+                <div class="col-md-12 order-md-last  mt-5 text-left" >
+                  <h1 class="mb-4 soulignement">DES LOGEMENTS GRATUITS POUR NOS SOIGNANTS</h1>
+                  <p> <%= link_to "PROPOSER UN HEBERGEMENT", new_registration_path(resource_name), class:'btn btn-warning py-3 px-4' %></p>
+                </div>
+
+              </div>
+        </div>
         </div>
       </div>
-
-      <div class="col-md-6 " style="margin-top: 550px;">
-        <div class="row no-gutters slider-text align-items-center " >
-          <div class="col-md-12 order-md-last  mt-5 text-left" >
-            <h1 class="mb-4 soulignement">DES LOGEMENTS GRATUITS POUR NOS SOIGNANTS</h1>
-            <p><a href="#" class="btn btn-warning py-3 px-4">PROPOSER UN HEBERGEMENT</a></p>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-  </div> <!-- <div class="container"> -->
-</div> <!-- <div class="hero-wrap" -->
 
 <% @cities.each do |city| %>
   <% if city  %>
