@@ -79,7 +79,7 @@
                   <div class=" col-md-4">
                     <ul class="nav nav-pills nav-stacked anyClass">
                       <div class="tool-card">
-                        <% @cities.each do |city| %>
+                        <% @cities.sort_by{ |city| Flat.where(city: city).count }.reverse.each do |city| %>
                           <% if city  %>
                             <li class="text-body ">
                               <%= city %>  :<span class=" colorwar" >&nbsp; <%= Flat.where(city: city).count %> </span> <span class="text-body" > Logements</span>
