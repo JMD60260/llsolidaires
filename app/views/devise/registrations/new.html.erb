@@ -1,3 +1,5 @@
+
+
 <%= render 'shared/home_nav' %>
 
 
@@ -14,7 +16,6 @@
             <input id="tab-2" type="radio"  name="tab" checked="" class="sign-up"><label for="tab-2"  class="tab"></label>
             <div class="login-form mt-0">
 
-              <form action="" method="POST">
                 <div class="sign-up-htm mt-0">
 
                   <div class="row ">
@@ -115,10 +116,9 @@
                         <br>
                         <div  class="custom-file">
                           <%= f.label :identity_file do %>
-                            <%= f.file_field :identity_file %>
-                            <%= f.hidden_field :identity_file_cache,
-                            input_html: { class: "custom-file-input" },
+                            <%= f.file_field :identity_file, input_html: { class: "custom-file-input" },
                             label_html: { class: 'custom-file-label' } %>
+                            <%= f.hidden_field :identity_file_cache %>
                           <% end %>
                         </div>
                         <br>
@@ -127,10 +127,9 @@
                         <br>
                         <div  class="custom-file">
                           <%= f.label :proof do %>
-                            <%= f.file_field :proof %>
-                            <%= f.hidden_field :proof_cache,
-                            input_html: { class: "custom-file-input" },
+                            <%= f.file_field :proof, input_html: { class: "custom-file-input" },
                             label_html: { class: 'custom-file-label' } %>
+                            <%= f.hidden_field :proof_cache %>
                           <% end %>
                         </div>
                       </div>
