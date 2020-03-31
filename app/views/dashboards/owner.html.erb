@@ -2,145 +2,200 @@
 
 <%= render 'shared/navbar_user' %>
 
-<div class="container-fluid">
-  <div class="row propose justify-content-center">
-    <button class="btn btn-warning text-white radius" id="myBtn">Proposer un logement</button>
-  </div>
-  <div class="col-12">
-    <div class="row cardRow">
-      <% @flats.each do |flat| %>
-      <div class="cardAppart ">
-        <div class="row mb-3 padding1">
-          <div class="col-md-4 themed-grid-col">
-            <div class="col-auto d-none d-lg-flex m-4">
-              <img src="https://picsum.photos/200" width="250" alt="">
-              <img class="ml-4 mr-4" src="https://picsum.photos/200" width="250" alt="">
-              <img src="https://picsum.photos/200" width="250" alt="">
-            </div>
-          </div>
-          <div class="col-md-2 offset-md-6 themed-grid-col mt-4">
-            <div class="pictos">
-              <%= link_to edit_flat_path(flat), class: 'btn btn-primary' do %>
-              <i class="fas fa-pencil-alt fa-2x"></i>
-              <% end %>
 
-              <%= link_to  flat_path(flat), class: "mt-4 btn btn-primary",
-              method: :delete,
-              data: { confirm: "Êtes-vous sûr ?" }  do %>
-              <i class="fas fa-trash-alt fa-2x"></i>
-              <% end %>
+<section>
+  <div class="container" style="margin-top: 100px;">
+    <div class="row text-center">
+      <div class="col-lg-12 col-md-12">
+        <button class="btn btn-warning text-white radius mb-1 p-2" onclick="modalForm()">Proposer un logement</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<% @flats.each do |flat| %>
+<section>
+  <div class="container marketing color-back" style="margin-top:8rem;">
+    <div class="row d-flex " >
+      <div class="col-md-6 col-lg-4 pl-lg-5 py-4">
+        <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
+
+
+          <!-- Carrousel -->
+          <div class="carousel-inner">
+            <div class="carousel-item imgCircle">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block " >
+              </div>
+            </div>
+            <div class="carousel-item active">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block text-dark">
+
+              </div>
+            </div>
+            <div class="carousel-item ">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block text-dark">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <!-- Contrôles -->
+            <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Suivant</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 pl-lg-7 py-4">
+        <div class="py-md-5">
+
+
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 pl-lg-4 py-4 align-items-center">
+        <div class="py-md-5">
+          <div class="row justify-content-start pb-3">
+            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+              <div class="pictos">
+                <%= link_to edit_flat_path(flat), class: 'pictoEdit mr-5' do %>
+                <i class="fas fa-pencil-alt fa-2x"></i>
+                <% end %>
+                <%= link_to  flat_path(flat), class: "pictoDelete",
+                method: :delete,
+                data: { confirm: "Êtes-vous sûr ?" }  do %>
+                <i class="fas fa-trash-alt fa-2x"></i>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row m-4 mb-3 themed-grid-col padding1 mt-4">
-          <div class="col-md-4 d-flex">
+      </div>
+
+      <div class="row d-flex">
+        <div class="col-md-6 col-lg-4 pl-lg-5 ">
+          <div class="img d-flex align-self-stretch align-items-center  p-2">
             <h6 class="mb-1 type"> Adresse : </h6>
-            <p class="grey mt-1 ml-5"> <%= flat.address %></p>
+            <p class="grey mt-1 ml-5"> <%= flat.address %> </p>
           </div>
-          <div class="col-md-4">
-            <h6 class="mb-1 type"> Type : <span class="grey ml-3"> <%= flat.flat_type %></span></h6>
+        </div>
+        <div class="col-md-6 col-lg-3 pl-lg-5 ">
+          <div class="p-2">
+            <div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                <h6 class="mb-1 type"> Type : <span class="grey ml-3"> <%= flat.flat_type %></span></h6>
+              </div>
+            </div>
           </div>
-          <div class="col-md-4">
-            <h6 class="mb-1 type"> Description :</h6>
-            <p class="grey"> <%= flat.description %> </p>
+        </div>
+        <div class="col-md-6 col-lg-5 pl-lg-5 ">
+          <div class="p-2">
+            <div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                <h6 class="mb-1 type"> Description :</h6>
+                <p class="grey"> <%= flat.description %> </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+    </section>
+    <% end %>
 
 
 
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-    </div>
-    <div class="modal-body">
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-      <form action="" method="POST">
-        <div class="col-auto d-none d-lg-flex m-4">
-          <div class="imgCircle">
-            <img src="https://picsum.photos/200" width="250" alt="">
-            <a class="text-blue" href=""><i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i></a>
-          </div>
-          <div class="ml-4 align-self-center">
-            <a href=""><i class="fas fa-plus-circle fa-3x" aria-hidden="true"></i></a>
-          </div>
-
-
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" id="close">&times;</span>
         </div>
-        <div class="row mb-3 padding1 m-3">
-          <div class="col-md-4 themed-grid-col">
-            <div class="row">
-              <div class="col-md-10 themed-grid-col mt-4">
-                <div class="form-group row formborder">
-                  <label for="example-date-input" class="col-4 col-form-label type1">Adresse :</label>
-                  <div class="col-8">
-                    <input type="text" class="form-control " placeholder="75 rue National 94000 Paris" name="adresse">
+        <div class="modal-body">
+
+          <%= simple_form_for(@flat) do |f| %>
+          <div class="col-auto d-none d-lg-flex m-4">
+            <div class="imgCircle">
+              <img src="https://picsum.photos/200" width="250" alt="">
+              <a class="text-blue" href=""><i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i></a>
+            </div>
+            <div class="ml-4 align-self-center">
+              <a href=""><i class="fas fa-plus-circle fa-3x" aria-hidden="true"></i></a>
+            </div>
+
+
+          </div>
+          <div class="row mb-3 padding1 m-3">
+            <div class="col-md-4 themed-grid-col">
+              <div class="row">
+                <div class="col-md-10 themed-grid-col mt-4">
+                  <div class="form-group row formborder">
+                    <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type1">Adresse :</label>
+                    <div class="col-8">
+                      <%= f.text_area :address, class:"form-control" %>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-4 themed-grid-col">
-            <div class="row">
-              <div class="col-md-12 themed-grid-col mt-4">
+            <div class="col-md-4 themed-grid-col">
+              <div class="row">
+                <div class="col-md-12 themed-grid-col mt-4">
 
-                <div class="form-group row formborder">
-                  <label for="example-date-input" class="col-3 col-form-label type1">Type :</label>
-                  <div class="col-6">
-                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                      <option value="studio">Studio</option>
-                      <option value="appartement">Appartement</option>
-                      <option value="maison">Maison</option>
-                      <option value="hotel">Hôtel</option>
-                    </select>
+                  <div class="form-group row formborder">
+                    <label for="example-date-input" class="col-3 col-form-label type1">Type :</label>
+                    <div class="col-6">
+                      <%= f.input :flat_type, label: false,  collection: ["Studio", "T1", "T2", "T3", "T4"], class:"custom-select my-1 mr-sm-2"  %>
+                    </div>
+                  </div>
+                  <div class="form-group row formborder">
+                    <%= f.input :accessibility_pmr, label: "Accessibilité PMR", label_html: { class: "col-12 col-form-label type1" } %>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-4 themed-grid-col mt-4">
-            <div class="form-group row formborder">
-              <label for="example-date-input" class="col-4 col-form-label type1">Description :</label>
-              <div class="col-8">
-                <textarea class="form-control" id="exampleTextarea" placeholder="Texte" rows="5"></textarea>
+            <div class="col-md-4 themed-grid-col mt-4">
+              <div class="form-group row formborder">
+                <label for="example-date-input" class="col-4 col-form-label type1">Description :</label>
+                <div class="col-8">
+                  <%= f.text_area :description, class:"form-control", rows: 5, placeholder: 'Donnez autant de détails que possible (ascenceur, machine à laver, ...)' %>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-12 text-center">
-            <input type="submit" class="btn btn-warning py-3 px-4" value="Enregistrer les modificationss">
+            <div class="col-12 text-center">
+              <%= f.button :submit, class: 'btn btn-warning py-3 px-4', value: "Proposer le logement" %>
+            </div>
+            <% end %>
           </div>
-        </form>
+        </div>
+
+        <div class="modal-footer">
+        </div>
       </div>
     </div>
-    <div class="modal-footer">
-    </div>
-  </div>
-</div>
 
 
-<%= simple_form_for(@flat) do |f| %>
-
-  <div class="form-inputs">
-    <%= f.input :address, :label => "Adresse" %>
-    <%= f.input :flat_type, :label => "Type du logement",  collection: ["Studio", "T1", "T2", "T3", "T4"]  %>
-    <%= f.input :description, :label => "Description" %>
-    <%= f.input :accessibility_pmr, :label => "Accessibilité PMR" %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn' %>
-  </div>
-<% end %>
-
-
-<div class="margintop"> </div>
+    <div class="margintop"> </div>

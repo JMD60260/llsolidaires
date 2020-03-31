@@ -33,7 +33,6 @@ function checkOut() {
 window.check = check;
 window.checkOut = checkOut;
 
-initAutocomplete();
 
 //  // Get the modal
 var modal = document.querySelector("#myModal");
@@ -97,3 +96,13 @@ function modalMap(type,number,addresse,about,date1, date2) {
 
 }
 
+
+window.modalForm = modalForm;
+window.modalOpen = modalOpen;
+window.modalMap = modalMap;
+
+
+
+
+
+initAutocomplete();
