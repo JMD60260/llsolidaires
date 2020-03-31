@@ -40,15 +40,15 @@ var modal = document.querySelector("#myModal");
 var close = document.getElementById("close");
 
 close.onclick = function() {
-  modal.style.display = "none";
+    modal.style.display = "none";
 
 
 }
 
 window.onclick = function(event) {
   if (event.target == modal) {
-   modal.style.display = "none";
- }
+     modal.style.display = "none";
+   }
 }
 
 function modalForm() {
@@ -59,44 +59,41 @@ function modalForm() {
 }
 
 function modalOpen(name,firstname,about,link) {
-  var modal = document.querySelector("#myModal");
-  var close = document.querySelector("#close");
-  var modal = document.querySelector("#myModal");
-  var modalName = document.querySelector("#modalName");
-  var modalFirstname =document.querySelector("#modalFirstname");
-  var modalAbout =document.querySelector("#modalAbout");
-  var modalLink =document.querySelector("#modalLink");
+var modal = document.querySelector("#myModal");
+var close = document.querySelector("#close");
+var modal = document.querySelector("#myModal");
+var modalName = document.querySelector("#modalName");
+var modalFirstname =document.querySelector("#modalFirstname");
+var modalAbout =document.querySelector("#modalAbout");
+var modalLink =document.querySelector("#modalLink");
 
-  modal.style.display = "block";
-  modalName.innerText =  name ;
-  modalFirstname.innerText = firstname ;
-  modalAbout.innerText =  about ;
-  modalLink.innerText =  link ;
+modal.style.display = "block";
+modalName.innerText =  name ;
+modalFirstname.innerText = firstname ;
+modalAbout.innerText =  about ;
+modalLink.innerText =  link ;
 
 }
 
 function modalMap(type,number,addresse,about,date1, date2) {
-  var modal = document.querySelector("#myModal");
+var modal = document.querySelector("#myModal");
 
 
-  var modalType = document.querySelector("#modalType");
-  var modalNumber =document.querySelector("#modalNumber");
-  var modalAbout =document.querySelector("#modalAbout");
-  var modalAdresse =document.querySelector("#modalAdresse");
-  var modalDate1 =document.querySelector("#modalDate1");
-  var modalDate2 =document.querySelector("#modalDate2");
+var modalType = document.querySelector("#modalType");
+var modalNumber =document.querySelector("#modalNumber");
+var modalAbout =document.querySelector("#modalAbout");
+var modalAdresse =document.querySelector("#modalAdresse");
+var modalDate1 =document.querySelector("#modalDate1");
+var modalDate2 =document.querySelector("#modalDate2");
 
 
-  modal.style.display = "block";
-  modalType.innerText =  type ;
-  modalNumber.innerText = number ;
-  modalAdresse.innerText =  addresse ;
-  modalDate2.innerText =  date2 ;
-  modalDate1.innerText =  date1 ;
-  modalAbout.innerText =  about ;
+modal.style.display = "block";
+modalType.innerText =  type ;
+modalNumber.innerText = number ;
+modalAdresse.innerText =  addresse ;
+modalDate2.innerText =  date2 ;
+modalDate1.innerText =  date1 ;
+modalAbout.innerText =  about ;
 
 }
-
-
-
 
