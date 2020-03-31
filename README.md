@@ -15,8 +15,9 @@
 + Slim (recrutement)
 + Julie (code review et testing)
 + Saad (PO)
++ Soulaiman (Fullstack)
 + Jean-Marc DARDY git ID JMD60260 (Chef de Projet Agile)
-  
+
 ***
 
 ### Outils de Gestion ###
