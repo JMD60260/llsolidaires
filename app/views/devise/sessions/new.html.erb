@@ -143,34 +143,53 @@
                             <%= f.button :submit, "S'inscrire", class: "button" %>
                           </div>
                         </div>
+                      </div> <!-- <div class="form-inputs"> -->
+                    </div> <!-- <div id="aa" class="col-12"> -->
 
-                  <div id="rr"> <!-- div qui apparaît si 'utilisateur selectionne medical au signUp -->
-                    <div class="group">
-                      <h6>Photocopie de votre carte d'identité (obligatoire)</h6>
-                      <br>
-                      <div  class="custom-file">
-                        <input type="file" class="custom-file-input" id="hFichier" name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
-                        <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
-                      </div>
-                      <br>
-                      <br>
-                      <h6>Photocopie de carte CPS / attestation de l’hôpital / contrat de travail de l’hôpital / carte d’enregistrement à l’ordre national des infirmiers / Fiche de paie, badge,<br> et d'une facon générale tout document daté de moins de 3 mois (obligatoire)</h6>
-                      <br>
-                      <div  class="custom-file">
-                        <input type="file" class="custom-file-input"  name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
-                        <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="form-group form-login ">
-                      <label for="exampleFormControlTextarea1" style="color: #ffb400;">VOUS EN QUELQUES MOTS </label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" required></textarea>
-                    </div>
-                  </div> <!-- <div id="rr"> -->
-                      <% end %> <%#= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                    </div>
-                  </div>
+                      <div id="rr"> <!-- div qui apparaît si 'utilisateur selectionne medical au signUp -->
+                        <div class="group">
 
+                          <h6>Photocopie de votre carte d'identité (obligatoire)</h6>
+                          <br>
+                          <div  class="custom-file">
+
+                            <!-- Malheureusement ce form HTML ne fonctionne pas, et je n'arrive pas à garder sa mise en page avec les helpers simple form -->
+                            <!-- <input type="file" class="custom-file-input" id="hFichier" name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" /> -->
+                            <!-- <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label> -->
+                            <%= f.label :identity_file do %>
+                              <%= f.file_field :identity_file %>
+                              <%= f.hidden_field :identity_file_cache %>
+                            <% end %>
+
+                          </div>
+                          <br>
+                          <br>
+                          <h6>Photocopie de carte CPS / attestation de l’hôpital / contrat de travail de l’hôpital / carte d’enregistrement à l’ordre national des infirmiers / Fiche de paie, badge,<br> et d'une facon générale tout document daté de moins de 3 mois (obligatoire)</h6>
+                          <br>
+                          <div  class="custom-file">
+
+                            <!-- Malheureusement ce form HTML ne fonctionne pas, et je n'arrive pas à garder sa mise en page avec les helpers simple form -->
+                            <!-- <input type="file" class="custom-file-input"  name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" /> -->
+                            <!-- <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label> -->
+                            <%= f.label :proof do %>
+                              <%= f.file_field :proof %>
+                              <%= f.hidden_field :proof_cache %>
+                            <% end %>
+
+                          </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-login ">
+
+                          <!-- Malheureusement ce form HTML ne fonctionne pas, et je n'arrive pas à garder sa mise en page avec les helpers simple form -->
+                          <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" required></textarea> -->
+                          <label for="exampleFormControlTextarea1" style="color: #ffb400;">VOUS EN QUELQUES MOTS </label>
+                          <%= f.input :description, label: false, input_html: { rows: 6 }, placeholder: "Décrivez-vous en quelques lignes" %>
+
+                        </div>
+                      </div> <!-- <div id="rr"> -->
+
+                    <% end %> <%#= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
                 </div>
               </div>
