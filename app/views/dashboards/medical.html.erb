@@ -13,97 +13,228 @@
   <div class="col-12">
     <div class="row cardRow">
       <div class="cardAppart">
-          <%= form_tag dashboard_medical_path, method: :get do %>
-          <div class="row mb-4 padding1 p-5">
-            <div class="col-md-6 themed-grid-col marginleft">
-              <div class="row ">
-               <div class="col-md-6 themed-grid-col formborder">
-                <div class="form-group row">
-                  <label for="example-date-input" class="col-2 col-form-label">De</label>
-                  <div class="col-10">
-                    <%= date_field_tag :start, params[:start], id: "start", required: true, value: Date.tomorrow, class:"form-control" %>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 themed-grid-col formborder">
-                <div class="form-group row">
-                  <label for="example-date-input" class="col-2 col-form-label">À</label>
-                  <div class="col-10">
-                    <%= date_field_tag :end, params[:end], id: "end", value: "", class:"form-control"  %>
-                  </div>
+        <%= form_tag dashboard_medical_path, method: :get do %>
+        <div class="row mb-4 padding1 p-5">
+          <div class="col-md-6 themed-grid-col marginleft">
+            <div class="row ">
+             <div class="col-md-6 themed-grid-col formborder">
+              <div class="form-group row">
+                <label for="example-date-input" class="col-2 col-form-label">De</label>
+                <div class="col-10">
+                  <%= date_field_tag :start, params[:start], id: "start", required: true, value: Date.tomorrow, class:"form-control" %>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12 themed-grid-col formborder">
-                <div class="form-group row">
-                  <label for="example-date-input" class="col-2 col-form-label">Où</label>
-                  <div class="col-10">
-                    <%= text_field_tag :query,
-                    params[:query],
-                    id: 'SearchBar',
-                    class: "form-control flat-search",
-                      placeholder: "Recherchez la ville de votre Hôpital",
-                      required: true,
-                      class:"form-control mb-2 mr-sm-2"
-                        %>
-                      </div>
+            <div class="col-md-6 themed-grid-col formborder">
+              <div class="form-group row">
+                <label for="example-date-input" class="col-2 col-form-label">À</label>
+                <div class="col-10">
+                  <%= date_field_tag :end, params[:end], id: "end", value: "", class:"form-control"  %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 themed-grid-col formborder">
+              <div class="form-group row">
+                <label for="example-date-input" class="col-2 col-form-label">Où</label>
+                <div class="col-10">
+                  <%= text_field_tag :query,
+                  params[:query],
+                  id: 'SearchBar',
+                  class: "form-control flat-search",
+                    placeholder: "Recherchez la ville de votre Hôpital",
+                    required: true,
+                    class:"form-control mb-2 mr-sm-2"
+                      %>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="row margin30">
-                <div class="col-md-12 themed-grid-col "><div class="form-check mb-2 mr-sm-2">
-                  La date de fin peut être laissée vide.
-                </div>
+            </div>
+            <div class="row margin30">
+              <div class="col-md-12 themed-grid-col "><div class="form-check mb-2 mr-sm-2">
+                La date de fin peut être laissée vide.
               </div>
             </div>
-            <div class="row align-items-end">
-              <!-- <div class="col-md-12 themed-grid-col"> <button type="submit" class="btn btn-warning text-white m-2 ">Recherche</button></div> -->
-              <%= submit_tag "Rechercher", class: "btn btn-warning text-white m-2 " %>
+          </div>
+          <div class="row align-items-end">
+            <!-- <div class="col-md-12 themed-grid-col"> <button type="submit" class="btn btn-warning text-white m-2 ">Recherche</button></div> -->
+            <%= submit_tag "Rechercher", class: "btn btn-warning text-white m-2 " %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<% if @query %>
+<div class="container" style="margin-top: 100px;">
+  <div class="col-12 marginleft mb-3">
+    <h4>Résultats</h4>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <div id="map" class="mr-1" style="width: 100%; height: 600px;" data-markers=<%= @markers.to_json %>>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <% if @flats.empty? %>
+      <h6 class="mb-4 type1">Pas de résultat.</h6>
+      <% end %>
+      <% @flats.each do |flat| %>
+      <div class="row marketing color-back w-100 p-3 mb-3">
+        <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block col-4 image-cara"></div>
+        <div class="col-8 d-flex flex-column justify-content-between">
+          <div>
+            <h6 class="mb-1 type"> Type : <span class="grey"> <%= flat.flat_type %></span></h6>
+            <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= flat.address %></span></h6>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button id="myBtn" class="btn btn-outline-warning py-1 px-3 radius"
+            onclick="modalMap('<%= flat.flat_type %>','<%= flat.accessibility_pmr %>','<%= flat.address %>',
+                              '<%= flat.description %>', '<%= @start_date %>', '<%= @end_date %>',
+                              '<%= flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }) %>')" >
+              Détail et demande
+            </button>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" id="close">&times;</span>
+
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="col-auto d-none d-lg-block m-4" >
+          <div class="container">
+            <div id="demo" class="carousel slide" data-ride="carousel" >
+              <!-- Indicateurs -->
+              <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+              </ul>
+
+              <!-- Carrousel -->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-1.jpg" alt="Carrousel slide 1" class="d-block w-100">
+                  <div class="carousel-caption d-none d-md-block">
+
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg" alt="Carrousel slide 2" class="d-block w-100">
+                  <div class="carousel-caption d-none d-md-block text-dark">
+
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-3.jpg" alt="Carrousel slide 3" class="d-block w-100">
+                  <div class="carousel-caption d-none d-md-block">
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contrôles -->
+              <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+              </a>
+              <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+              </a>
             </div>
           </div>
         </div>
-        <% end %>
       </div>
+      <div class="row mb-3 padding1 m-3">
+        <div class="col-md-12 col-lg-4 themed-grid-col">
+          <div class="row">
+            <div class="col-md-10 themed-grid-col mt-4">
+              <h6 class="mb-1 type"> Type : <span class="grey" id="modalType"> </span></h6>
+              <h6 class="mb-1 type"> Accessibile PMR : <span class="grey" id="modalPMR">  </span></h6>
+              <br>
+              <h6 class="mb-4 type"> Adresse : <span class="grey" id="modalAdresse"> </span></h6>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4themed-grid-col">
+          <div class="row">
+            <div class="col-md-12 themed-grid-col mt-4" >
+              <h6 class="mb-1 type"> Description :</h6>
+              <p class="grey" id="modalAbout"> </p>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-12 col-lg-4 themed-grid-col mt-4">
+            <a id="modalRequestLink" data-method="post" href="" type="submit" class="center btn btn-warning text-white m-4 ">Envoyer une demande de logement</a>
+            <br>
+            <h6 class="mb-4 type center"> Du : <span class="grey" id="modalDate1"> </span>&nbsp; Au : <span class="grey" id="modalDate2"> </span></h6>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
     </div>
   </div>
 </div>
+<% end %>
 
+
+
+<div class="margintop"> </div>
+
+<!-- POUR TESTS -->
 
 <div class="header">
-  <h1>Voici la liste des appartements disponibles :</h1>
-</div>
-<div class="flat-container d-flex">
-  <div class="flat-list">
-    <% @flats.each do |flat| %>
-    <div class="card">
-      <%= flat.description %>
-      <%= flat.flat_type %>
-      <%= flat.address %>
-    </div>
-    <% end %>
+    <h1>Voici la liste des appartements disponibles :</h1>
   </div>
-  <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers=<%= @markers.to_json %>
-  >
-</div>
-</div>
+  <div class="flat-container d-flex">
+    <div class="flat-list">
+      <% @flats.each do |flat| %>
+        <div class="card">
+          <%= flat.description %>
+          <%= flat.flat_type %>
+          <%= flat.address %>
+        </div>
+      <% end %>
+    </div>
+    <div
+      id="map"
+      style="width: 100%;
+      height: 600px;"
+      data-markers=<%= @markers.to_json %>
+      >
+    </div>
+  </div>
 
 
 <h2>Logements:</h2>
 <% @flats.each do |flat| %>
-<div class="card">
-  <%= flat.description %>
-  <%= flat.flat_type %>
-  <%= flat.address %>
-  <%= link_to "Envoyer une demande", flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }), method: :post %>
-</div>
+  <div class="card">
+    <%= flat.description %>
+    <%= flat.flat_type %>
+    <%= flat.address %>
+    <%= link_to "Envoyer une demande", flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }), method: :post %>
+  </div>
 <% end %>
 
-</div>
-
-<div class="margintop"> </div>
