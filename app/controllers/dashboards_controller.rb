@@ -19,7 +19,7 @@ class DashboardsController < ApplicationController
         else
           @end_date = Date.parse(params[:end])
         end
-        @flats = Flat.near(params[:query], 20)
+        @flats = Flat.near(params[:query], 5)
       else
         @query = false
         @flats = Flat.all
