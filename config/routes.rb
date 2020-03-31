@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   get 'dashboard/owner_profile', to: "dashboards#owner_profile"
   get 'dashboard/medical_profile', to: "dashboards#medical_profile"
 
-  resources :flats, only: [:create, :edit, :update, :destroy] do
+  resources :flats do
     resources :rentals, only: [:create]
+    collection { post :import }
   end
 
   resources :rentals, only: [:destroy] do

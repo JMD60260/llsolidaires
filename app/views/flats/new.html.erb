@@ -1,0 +1,19 @@
+<%= render 'shared/banner' %>
+
+<section>
+  <div class="container" style="margin-top: 100px;">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 d-flex justify-content-center">
+        <div class="flex-column">
+          <h3>Importer une liste d'appartements</h3>
+          <%= form_tag import_flats_path, multipart: true do |f| %>
+            <%= file_field_tag :file %>
+            <%= submit_tag "Importer depuis ce fichier CSV", class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="margintop"> </div>
