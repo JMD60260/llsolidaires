@@ -62,6 +62,8 @@
           <div class="row justify-content-start pb-3">
             <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
               <h6 class="mb-1 type"> Type : <span class="grey"> <%= rental.flat.flat_type %></span></h6>
+              <h6 class="mb-1 type"> Accessible PMR : <span class="grey ml-3"> <%= rental.flat.accessibility_pmr ? 'Oui' : 'Non' %></span></h6>
+
               <br>
               <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= rental.flat.address %></span></h6>
               <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp; Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "n. d." %></span></h6>
