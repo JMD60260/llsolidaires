@@ -17,8 +17,8 @@
 <% @flats.each do |flat| %>
 <section>
   <div class="container marketing color-back" style="margin-top:8rem;">
-    <div class="row d-flex " >
-      <div class="col-md-6 col-lg-4 pl-lg-5 py-4">
+    <div class="row d-flex">
+      <div class="col-md-12 col-lg-4 pl-lg-5 py-4">
         <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
 
 
@@ -27,6 +27,7 @@
             <div class="carousel-item imgCircle">
               <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
               <div class="carousel-caption d-none d-md-block " >
+                <a class="text-blue" href=""><i class="fas fa-plus-circle fa-2x"></i></a>
               </div>
             </div>
             <div class="carousel-item active">
@@ -66,13 +67,13 @@
 
         </div>
       </div>
-      <div class="col-md-6 col-lg-4 pl-lg-7 py-4">
-        <div class="py-md-5">
+      <div class="col-md-0 col-lg-4 pl-lg-7 py-4">
+        <div class="py-md-0">
 
 
         </div>
       </div>
-      <div class="col-md-6 col-lg-4 pl-lg-4 py-4 align-items-center">
+      <div class="col-md-12 col-lg-4 pl-lg-4 py-4 text-right" id="cnt-btn">
         <div class="py-md-5">
           <div class="row justify-content-start pb-3">
             <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
@@ -91,7 +92,7 @@
         </div>
       </div>
 
-      <div class="row d-flex justify-content-between w-100">
+      <div class="row d-flex">
         <div class="col-md-6 col-lg-4 pl-lg-5 ">
           <div class="img d-flex align-self-stretch align-items-center  p-2">
             <h6 class="mb-1 type"> Adresse : </h6>
@@ -102,18 +103,18 @@
           <div class="p-2">
             <div class="row justify-content-start pb-3">
               <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                <h6 class="mb-1 type"> Type : <span class="grey ml-3"> <%= flat.flat_type %></span></h6>
-                <h6 class="mb-1 type"> Accessible PMR : <span class="grey ml-3"> <%= flat.accessibility_pmr ? 'Oui' : 'Non' %></span></h6>
+                <h6 class="mb-1 type"> Type : <span class="grey ml-3">  <%= flat.flat_type %></span></h6>
+                <h6 class="mb-1 type"> Accessible PMR : <span class="grey ml-3"> <%= flat.accessibility_pmr ? 'Oui' : 'Non' %></span> </h6>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-5 pl-lg-5 ">
+        <div class="col-md-12 col-lg-5 pl-lg-5 ">
           <div class="p-2">
             <div class="row justify-content-start pb-3">
               <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
                 <h6 class="mb-1 type"> Description :</h6>
-                <p class="grey"> <%= flat.description %> </p>
+                <p class="grey">  <%= flat.description %> </p>
               </div>
             </div>
           </div>
@@ -124,6 +125,83 @@
 
 
 
+    <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close" id="close">&times;</span>
+          </div>
+          <div class="modal-body">
+
+            <%= simple_form_for(@flat) do |f| %>
+              <div class="row d-flex">
+                <div class="col-md-6 col-lg-10 pl-lg-5 formborder">
+                  <div class="custom-file mt-3 mb-3 ">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Une image</label>
+                  </div>
+                  </div>
+                <div class="col-md-8 col-lg-4 pl-lg-5 ">
+                <div class="img d-flex align-self-stretch align-items-end  p-2">
+                  <div class="form-group row formborder">
+                    <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Adresse :</label>
+                    <div class="col-lg-8 col-sm-10">
+                      <%= f.text_area :address, class:"form-control" %>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="col-md-6 col-lg-4 pl-lg-5 ">
+                <div class="p-2">
+                  <div class="row justify-content-start pb-3">
+                    <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                      <div class="form-group row formborder">
+                        <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Type :</label>
+                        <div class="col-lg-8 col-sm-10">
+                          <%= f.input :flat_type, label: false,  collection: ["Studio", "T1", "T2", "T3", "T4"], class:"custom-select my-1 mr-sm-2"  %>
+                        </div>
+                      </div>
+                      <div class="form-group row formborder">
+                        <div class="col-lg-6 col-sm-10">
+                          <%= f.input :accessibility_pmr, label: "Accessibilité PMR", label_html: { class: "col-12 col-form-label type1" } %>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+                </div>
+                </div>
+                <div class="col-md-12 col-lg-4 pl-lg-5 ">
+                  <div class="p-2">
+                    <div class="row justify-content-start pb-3">
+                      <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                        <div class="form-group row formborder">
+                          <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Description </label>
+                          <div class="col-lg-8 col-sm-10">
+                              <%= f.text_area :description, class:"form-control", rows: 5, placeholder: 'Donnez autant de détails que possible (ascenceur, machine à laver, ...)' %>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+              <div >
+                <div class="col-12 text-center">
+                <%= f.button :submit, class: 'btn btn-warning py-3 px-4', value: "Proposer le logement" %>
+                </div>
+              </div>
+        </div>
+
+
+
+           <% end %>
+
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+      </div>
 
 
     <!-- The Modal -->
@@ -155,7 +233,6 @@
                   <div class="form-group row formborder">
                     <label for="example-date-input" class="col-lg- col-sm-10 col-form-label type1">Adresse :</label>
                     <div class="col-8">
-                      <%= f.text_area :address, class:"form-control" %>
                     </div>
                   </div>
                 </div>
@@ -168,11 +245,9 @@
                   <div class="form-group row formborder">
                     <label for="example-date-input" class="col-3 col-form-label type1">Type :</label>
                     <div class="col-6">
-                      <%= f.input :flat_type, label: false,  collection: ["Studio", "T1", "T2", "T3", "T4"], class:"custom-select my-1 mr-sm-2"  %>
                     </div>
                   </div>
                   <div class="form-group row formborder">
-                    <%= f.input :accessibility_pmr, label: "Accessibilité PMR", label_html: { class: "col-12 col-form-label type1" } %>
                   </div>
                 </div>
               </div>
@@ -181,13 +256,11 @@
               <div class="form-group row formborder">
                 <label for="example-date-input" class="col-4 col-form-label type1">Description :</label>
                 <div class="col-8">
-                  <%= f.text_area :description, class:"form-control", rows: 5, placeholder: 'Donnez autant de détails que possible (ascenceur, machine à laver, ...)' %>
                 </div>
               </div>
             </div>
 
             <div class="col-12 text-center">
-              <%= f.button :submit, class: 'btn btn-warning py-3 px-4', value: "Proposer le logement" %>
             </div>
             <% end %>
           </div>
