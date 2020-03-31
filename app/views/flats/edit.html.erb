@@ -2,26 +2,131 @@
 
 <%= render 'shared/navbar_user' %>
 
-<div class="container pt-4 pb-4 mt-4 mb-4">
-  <h1 class="mt-4 pt-4 mb-4 pb-4">Editer un logement</h1>
-
-<%= simple_form_for @flat do |f| %>
-
-
-  <div class="form-inputs">
-    <%= f.input :address, :label => "Adresse" %>
-    <%= f.input :flat_type, :label => "Type du logement",  collection: ["Studio", "T1", "T2", "T3", "T4"]  %>
-    <%= f.input :description, :label => "Description" %>
-    <%= f.input :accessibility_pmr, :label => "Accessibilité PMR" %>
-    <%= f.file_field :photos, multiple: true %>
-  </div>
-
-   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-</div>
+<section>
+  <div class="container marketing color-back" style="margin-top:8rem;">
+    <div class="row d-flex">
+      <div class="col-md-6 col-lg-4 pl-lg-5 py-5">
+        <%= simple_form_for @flat do |f| %>
+        <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
 
 
-<div class="margintop"> </div>
+          <!-- Carrousel -->
+          <div class="carousel-inner">
+            <div class="carousel-item imgCircle">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block " >
+                <a class="text-blue" href=""><i class="fas fa-plus-circle fa-2x"></i></a>
+              </div>
+            </div>
+            <div class="carousel-item active">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block text-dark">
+
+              </div>
+            </div>
+            <div class="carousel-item ">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block text-dark">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <!-- Contrôles -->
+            <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Suivant</span>
+            </a>
+          </div>
+
+        </div>
+
+
+
+      </div>
+      <div class="col-md-6 col-lg-4 pl-lg-5 py-4">
+        <div class="py-md-5">
+
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 pl-lg-5 py-5">
+        <div class="py-md-5">
+          <div class="row justify-content-start pb-3">
+            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+              <div class="pictos">
+                <%= f.button :submit, "Enregistrer les modifications", class:"btn btn-outline-warning py-1 px-3 m-2 radius" %>
+                <%= link_to  flat_path(@flat), class: "pictoDelete",
+                method: :delete,
+                data: { confirm: "Êtes-vous sûr ?" }  do %>
+                <i class="fas fa-trash-alt fa-2x"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex">
+        <div class="col-md-6 col-lg-4 pl-lg-5 ">
+          <div class="img d-flex align-self-stretch align-items-end  p-2">
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Adresse :</label>
+              <div class="col-lg-8 col-sm-10">
+                <%= f.text_area :address, class:"form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pl-lg-5 ">
+          <div class="p-2">
+            <div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                <div class="form-group row formborder">
+                  <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Type :</label>
+                  <div class="col-lg-8 col-sm-10">
+                    <%= f.input :flat_type, label: false,  collection: ["Studio", "T1", "T2", "T3", "T4"], class:"custom-select my-1 mr-sm-2"  %>
+                  </div>
+                </div>
+                <div class="form-group row formborder">
+                  <%= f.input :accessibility_pmr, label: "Accessibilité PMR", label_html: { class: "col-12 col-form-label type1" } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pl-lg-5 ">
+          <div class="p-2">
+            <div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                <div class="form-group row formborder">
+                  <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Description </label>
+                  <div class="col-lg-8 col-sm-10">
+                    <%= f.text_area :description, class:"form-control", rows: 5 %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="margintop"> </div>
+
+
+
