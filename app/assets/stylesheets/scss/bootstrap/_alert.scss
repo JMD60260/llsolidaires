@@ -21,6 +21,7 @@
   font-weight: $alert-link-font-weight;
 }
 
+
 // Dismissible alerts
 //
 // Expand the right padding and account for the close button's positioning.
@@ -38,44 +39,13 @@
   }
 }
 
+
 // Alternate styles
 //
 // Generate contextual modifier classes for colorizing the alert.
 
 @each $color, $value in $theme-colors {
   .alert-#{$color} {
-    @include alert-variant(
-      theme-color-level($color, $alert-bg-level),
-      theme-color-level($color, $alert-border-level),
-      theme-color-level($color, $alert-color-level)
-    );
+    @include alert-variant(theme-color-level($color, $alert-bg-level), theme-color-level($color, $alert-border-level), theme-color-level($color, $alert-color-level));
   }
-}
-
-//Styles for alerts while login/logout with success or not
-@keyframes disapear {
-  99% {
-    visibility: visible;
-  }
-  100% {
-    visibility: hidden;
-  }
-}
-.nok {
-  background-color: #ce5034;
-  color: white;
-  border-radius: 8px;
-  border: none !important;
-  animation-duration: 3s;
-  animation-name: disapear;
-  visibility: hidden;
-}
-.ok {
-  background-color: #56983d;
-  color: white;
-  border-radius: 8px;
-  border: none !important;
-  animation-duration: 3s;
-  animation-name: disapear;
-  visibility: hidden;
 }

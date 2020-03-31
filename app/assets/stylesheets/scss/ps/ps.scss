@@ -52,7 +52,7 @@ $secondary: #6b76ff;
     }
   }
   .marginleft{
-    margin-left: 30px;
+    margin-left: 1px;
     h4{
         color: #ffb400;
     }
@@ -76,6 +76,12 @@ $secondary: #6b76ff;
     font-size: 18px;
     line-height: 1.8;
     font-weight: 700;
+  }
+  .type2{
+    color: #04148a;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 500;
   }
   .grey{
     color: $grey;
@@ -140,6 +146,9 @@ $secondary: #6b76ff;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s
+}
+.type4{
+  color:#04148a ;
 }
 
 /* Add Animation */

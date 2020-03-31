@@ -7108,10 +7108,6 @@ a.text-dark:hover, a.text-dark:focus {
       background-color: #E89F20 !important;
       border-color: #E89F20 !important; }
 
-.container-fluid .cardAppart:hover {
-  box-shadow: 2px 2px 5px #6c757d;
-  border-radius: 25px; }
-
 .container-fluid .cardRow {
   margin-left: 9vw;
   padding-top: 9vh;
@@ -7192,7 +7188,7 @@ a.text-dark:hover, a.text-dark:focus {
         transition: ease-in-out 1s; }
 
 .marginleft {
-  margin-left: 30px; }
+  margin-left: 1px; }
   .marginleft h4 {
     color: #ffb400; }
 
@@ -7213,6 +7209,12 @@ a.text-dark:hover, a.text-dark:focus {
   font-size: 18px;
   line-height: 1.8;
   font-weight: 700; }
+
+.type2 {
+  color: #04148a;
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 500; }
 
 .grey {
   color: #6c757d;
@@ -7282,6 +7284,9 @@ a.text-dark:hover, a.text-dark:focus {
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s; }
+
+.type4 {
+  color: #04148a; }
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
@@ -7876,6 +7881,9 @@ body::-webkit-scrollbar-button {
 .soulignement {
   text-decoration: underline  #ffb400; }
 
+.dashboardLink {
+  margin-left: -150px; }
+
 .btn-warning {
   color: white;
   background-color: #ffc107;
@@ -7961,3 +7969,12 @@ body::-webkit-scrollbar-button {
     font-size: 1em; }
   #hero {
     margin-left: 0px; } }
+
+.dashboardLink {
+  margin-left: -150px; }
+
+.color-back {
+  background-color: #FEF8EC !important; }
+
+.margintop100 {
+  margin-top: 100px; }
