@@ -2,76 +2,100 @@
 
 
 
-    <div class="hero-wrap" style="background-image: url(<%= image_url('bg_1.jpg') %>);" >
-      <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-            <div class="col-md-6 " id="hero"  >
-                <div class="login-wrap">
+<div class="hero-wrap" style="background-image: url(<%= image_url('bg_1.jpg') %>);" >
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 " id="hero"  >
+        <div class="login-wrap">
 
-                    <div class="login-html" style="cursor: pointer;">
-                        <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label for="tab-1" class="tab"></label>
-                        <input id="tab-2" type="radio"  name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+          <div class="login-html" style="cursor: pointer;">
+            <input id="tab-1" type="radio"  name="tab" class="sign-in" checked=""><label for="tab-1" class="tab"></label>
+            <input id="tab-2" type="radio"  name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
 
-                        <div class="login-form">
+            <div class="login-form">
 
-                            <div class="sign-in-htm mt-4 " style="margin-top: 125px;">
-                            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                                <div class="group">
-                                    <label for="user" class="label">ADRESSE EMAIL</label>
-                                    <%= f.input :email,
-                                                label: false,
-                                                input_html: { autocomplete: "email", class: "input", type: "email" },
-                                                label_html: { class: 'label' } %>
-                                </div>
-                                <div class="group">
-                                    <label for="pass" class="label">MOT DE PASSE</label>
-                                    <%= f.input :password,
-                                                label: false,
-                                                input_html: { autocomplete: "current-password", class: "input" },
-                                                label_html: { class: 'label' } %>
-                                </div>
-
-                                <div class="group" style="margin-top: 50px;">
-                                    <%= f.button :submit, "Se connecter", class: 'button' %>
-                                </div>
-
-                                <% end %>
-                                 <div class="text-center m-3">
-                                  <%= link_to "S'INSCRIRE", new_registration_path(resource_name), id:"link-cnx" %>
-                                </div>
-                                <div  style="margin-top: 25px; text-align: center;">
-                                  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), style: "color: #6c757d;"   %>
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
-                    </div>
+              <div class="sign-in-htm mt-4 " style="margin-top: 125px;">
+                <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="group">
+                  <label for="user" class="label">ADRESSE EMAIL</label>
+                  <%= f.input :email,
+                  label: false,
+                  input_html: { autocomplete: "email", class: "input", type: "email" },
+                  label_html: { class: 'label' } %>
                 </div>
-            </div>
-<div class="col-md-6 " style="margin-top: 550px;">
-            <div class="row no-gutters slider-text align-items-center " >
-                <div class="col-md-12 order-md-last  mt-5 text-left" >
-                  <h1 class="mb-4 soulignement">DES LOGEMENTS GRATUITS POUR NOS SOIGNANTS</h1>
-                  <p> <%= link_to "PROPOSER UN HEBERGEMENT", new_registration_path(resource_name), class:'btn btn-warning py-3 px-4' %></p>
+                <div class="group">
+                  <label for="pass" class="label">MOT DE PASSE</label>
+                  <%= f.input :password,
+                  label: false,
+                  input_html: { autocomplete: "current-password", class: "input" },
+                  label_html: { class: 'label' } %>
+                </div>
+
+                <div class="group" style="margin-top: 50px;">
+                  <%= f.button :submit, "Se connecter", class: 'button' %>
+                </div>
+
+                <% end %>
+                <div class="text-center m-3">
+                  <%= link_to "S'INSCRIRE", new_registration_path(resource_name), id:"link-cnx" %>
+                </div>
+                <div  style="margin-top: 25px; text-align: center;">
+                  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), style: "color: #6c757d;"   %>
                 </div>
 
               </div>
+
+
+
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-md-6 " style="margin-top: 550px;">
+        <div class="row no-gutters slider-text align-items-center " >
+          <div class="col-md-12 order-md-last  mt-5 text-left" >
+            <h1 class="mb-4 soulignement">DES LOGEMENTS GRATUITS POUR NOS SOIGNANTS</h1>
+            <p> <%= link_to "PROPOSER UN HEBERGEMENT", new_registration_path(resource_name), class:'btn btn-warning py-3 px-4' %></p>
+          </div>
+
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-
-<% @cities.each do |city| %>
-  <% if city  %>
-    <li>
-      <%= city %> : <%= Flat.where(city: city).count %>
-    </li>
-  <% end %>
+<% if !@cities.empty? && @cities.any? %>
+  <section>
+    <div class="container" style="margin-top: 100px;">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 py-5 m-5">
+          <h6 class="mb-4"><span class="text-primary">DES LOGEMENTS DISPONIBLES POUR AIDER NOTRE PERSONNEL SOIGNANT À TRAVERS LA FRANCE</span> </h6>
+          <br>
+          <div>
+            <div class="py-5 color-back" >
+              <div class="col-12">
+                <div id="scroll">
+                  <div class=" col-md-4">
+                    <ul class="nav nav-pills nav-stacked anyClass">
+                      <div class="tool-card">
+                        <% @cities.each do |city| %>
+                          <% if city  %>
+                            <li class="text-body ">
+                              <%= city %>  :<span class=" colorwar" >&nbsp; <%= Flat.where(city: city).count %> </span> <span class="text-body" > Logements</span>
+                            </li>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
 <% end %>
-
-
