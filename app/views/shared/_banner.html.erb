@@ -9,22 +9,26 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <% if current_user.role == "medical" %>
-            <% if @as == "owner" %>
-              <li class="nav-item active mr-3">
-                <%= link_to dashboard_medical_path, class:'nav-link' do%>
-                  Espace soignant
-                <% end %>
-              </li>
-            <% else %>
-              <li class="nav-item active mr-3">
-                <%= link_to dashboard_owner_path, class:'nav-link' do%>
-                 Espace propriétaire
-                <% end %>
-              </li>
+          <% if current_user %>
+            <% if current_user.role == "medical" %>
+              <% if @as == "owner" %>
+                <li class="nav-item active mr-3">
+                  <%= link_to dashboard_medical_path, class:'nav-link' do%>
+                    Espace soignant
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item active mr-3">
+                  <%= link_to dashboard_owner_path, class:'nav-link' do%>
+                   Espace propriétaire
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
+            <li class="nav-item active"><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class:'nav-link' %></li>
+            <% else %>
+            <li class="nav-item active"><%= link_to "Accueil", root_path, class:'nav-link' %></li>
           <% end %>
-          <li class="nav-item active"><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class:'nav-link' %></li>
         </ul>
       </div>
     </div>
@@ -34,3 +38,4 @@
     <div class="overlay1"></div>
     </div>
   </div>
+
