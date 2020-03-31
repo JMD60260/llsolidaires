@@ -3,84 +3,119 @@
 <%= render 'shared/navbar_user' %>
 
 
-<h2>Modifier <%= resource_name.to_s.humanize %></h2>
-
-<% if @as == "medical" %>
-  <%= link_to "SOS", pages_sos_mailer_path, class: "nav-link text-danger font-weight-bold" %>
-<% end %>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-    <%# A mon avis dans le profil on modifie que nos infos perso %>
-    <%= f.input :password,
+<section>
+  <div class="container marketing color-back" style="margin-top:8rem;">
+    <div class="row d-flex">
+      <div class="col-md-8 col-lg-8 d-flex p-5">
+        <div class="row m-3">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
+          <form action="" method="post" >
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-lg-3 col-sm-10  col-form-label">Nom :</label>
+              <div class="col-lg-8 col-sm-10">
+                <%= f.input :last_name, label: false, class:"form-control" %>
+              </div>
+            </div>
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Prénom :</label>
+              <div class="col-lg-8 col-sm-10">
+                <%= f.input :first_name, label: false, class:"form-control" %>
+              </div>
+            </div>
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Numéro de téléphone :</label>
+              <div class="col-lg-8 col-sm-10">
+                <%= f.input :phone, label: false, class:"form-control" %>
+              </div>
+            </div>
+            <% if current_user.role == 'medical' %>
+              <div class="form-group row formborder">
+                <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Description :</label>
+                <div class="col-lg-8 col-sm-10">
+                  <%= f.text_area :description, class:"form-control", rows: 5, class:"form-control" %>
+                </div>
+              </div>
+              <%= f.label :identity_file do %>
+                <%= f.file_field :identity_file %>
+                <%= f.hidden_field :identity_file_cache %>
+              <% end %>
+              <p>Pièce d'identité : </p>
+              <p> Justificatif professionnel : </p>
+              <%= f.label :proof do %>
+                <%= f.file_field :proof %>
+                <%= f.hidden_field :proof_cache %>
+              <% end %>
+            <% end %>
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Adresse mail : </label>
+              <div class="col-lg-8 col-sm-10">
+                <%= f.input :email, label: false, class:"form-control" %>
+              </div>
+            </div>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Nouveau mot de passe :</label>
+              <div class="col-lg-8 col-sm-10">
+                <%= f.input :password, label: false,
                 hint: "Laisser le champ vide si vous ne souhaitez pas changer de mot de passe",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+              </div>
+            </div>
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Confirmation du mot de passe :</label>
+              <div class="col-lg-8 col-sm-10">
+                <%= f.input :password_confirmation, label: false,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+              </div>
+            </div>
+            <div class="form-group row formborder">
+              <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Mot de passe actuel :</label>
+              <div class="col-lg-8 col-sm-10">
+                <%= f.input :current_password, label: false,
+                hint: "Vous devez indiquer votre mot de passe actuel pour enregistrer les modifications.",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :first_name,
-                label: false,
-                placeholder: "Prénom" %>
-    <%= f.input :last_name,
-                label: false,
-                placeholder: "Nom" %>
-    <%= f.input :phone,
-                label: false,
-                placeholder: "Téléphone" %>
-    <% if current_user.role == 'medical' %>
-      <%= f.input_field :role,
-                  collection: [["Personnel médical", "medical"],["Propriétaire", "owner"]],
-                  label_method: :first,
-                  value_method: :last,
-                  as: :radio_buttons,
-                  checked: ["Personnel médical", "medical"],
-                  :item_wrapper_class => 'inline' %>
-
-      <p>Modifier la pièce d'identité</p>
-      <%= f.label :identity_file do %>
-        <%= f.file_field :identity_file %>
-        <%= f.hidden_field :identity_file_cache %>
-      <% end %>
-
-      <p> justificatif</p>
-      <%= f.label :proof do %>
-        <%= f.file_field :proof %>
-        <%= f.hidden_field :proof_cache %>
-      <% end %>
-
-    <% elsif current_user.role == 'owner' %>
-      <%= f.input_field :role,
-                  collection: [["Personnel médical", "medical"],["Propriétaire", "owner"]],
-                  label_method: :first,
-                  value_method: :last,
-                  as: :radio_buttons,
-                  checked: ["Propriétaire", "owner"],
-                  :item_wrapper_class => 'inline' %>
-    <% end %>
-
-
-
+              </div>
+            </div>
+            <div class="col-12 text-center" style="text-align: end;">
+              <%= f.button :submit, "Enregistrer les modifications", class:"btn btn-warning text-white" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+          <div class="py-md-5">
+            <div class="row justify-content-start pb-3">
+              <% if current_user.role == "medical" %>
+                <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated text-center">
+                  <p class="m-4">Si vous avez un problème ou une urgence, cliquez sur ce bouton et nous vous contacterons au plus vite.</p>
+                  <%= link_to "SOS", pages_sos_mailer_path, class: "btn btn-danger text-white m-4 btnsos" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+</section>
+
+
+
+
+<section>
+  <div class="container" style="margin-top: 100px;">
+    <div class="row text-center">
+      <div class="col-lg-12 col-md-12">
+        <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete, class:"btn btn-outline-warning text-warning radius p-3" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p><%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete %></p>
+</section>
 
 
 

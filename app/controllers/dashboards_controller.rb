@@ -46,6 +46,14 @@ class DashboardsController < ApplicationController
   #   @markers = geocoded_flats
   # end
 
+  def owner_profile
+    redirect_to edit_user_registration_path(as: 'owner')
+  end
+
+  def medical_profile
+    redirect_to edit_user_registration_path(as: 'medical')
+  end
+
   private
 
   def geocoded_flats(flats)
@@ -68,11 +76,4 @@ class DashboardsController < ApplicationController
   #   end
   # end
 
-  def owner_profile
-    redirect_to edit_user_registration_path(as: 'owner')
-  end
-
-  def medical_profile
-    redirect_to edit_user_registration_path(as: 'medical')
-  end
 end
