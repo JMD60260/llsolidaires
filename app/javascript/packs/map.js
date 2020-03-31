@@ -29,10 +29,10 @@ const initAutocomplete = () => {
   searchBox.addListener('places_changed', function () {
     var places = searchBox.getPlaces();
     console.log(places);
-    query = places[0].location
     if (places.length == 0) {
       return;
     }
+    query = places[0].formatted_address
 
     // Clear out the old markers.
     markers.forEach(function (marker) {
@@ -76,7 +76,7 @@ const initAutocomplete = () => {
     let target = document.getElementById('SearchBar');
     target.addEventListener('submit', (e)=> {
       e.removeAttribute('value');
-      e.setAttribute('value', `${query}`);
+      e.setAttribute('value', query);
     });
     document.getElementById('search-bar-button').click();
   });
