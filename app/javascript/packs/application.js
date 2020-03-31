@@ -65,12 +65,18 @@ function modalOpen(name,firstname,about,link) {
   var modalFirstname =document.querySelector("#modalFirstname");
   var modalAbout =document.querySelector("#modalAbout");
   var modalLink =document.querySelector("#modalLink");
+  var modalLinkSpan =document.querySelector("#modalLinkSpan");
 
   modal.style.display = "block";
   modalName.innerText =  name ;
   modalFirstname.innerText = firstname ;
   modalAbout.innerText =  about ;
-  modalLink.innerText =  link ;
+  if (link){
+    modalLink.href =  link ;
+    modalLink.innerText =  `justificatif_${name}_${firstname}` ;
+  } else{
+    modalLinkSpan.innerText = ' Non chargé';
+  }
 
 }
 
