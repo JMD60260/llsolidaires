@@ -1,0 +1,41 @@
+<div class="container blogMenu" style="margin-top: 25px;">
+  <div class="dashboardLink">
+      <ul class="nav justify-content-center" >
+        <li class="nav-item">
+          <% if @tab == "Mes logements" %>
+            <%= link_to "Mes logements", dashboard_owner_path, class: "activeLink" %>
+          <% else %>
+            <%= link_to "Mes logements", dashboard_owner_path %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if @tab == "Réservations" %>
+            <%= link_to "Réservations", owner_validated_rentals_path, class: "activeLink"  %>
+          <% else %>
+            <%= link_to "Réservations", owner_validated_rentals_path %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if @tab == "Demandes" %>
+            <%= link_to "Demandes", owner_pending_requests_path, class: "activeLink"  %>
+          <% else %>
+            <%= link_to "Demandes", owner_pending_requests_path %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if @tab == "Aide et documentation" %>
+            <%= link_to "Aide et documentation", pages_owner_doc_path, class: "activeLink" %>
+          <% else %>
+            <%= link_to "Aide et documentation", pages_owner_doc_path%>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if @tab == "Mon profil" %>
+            <%= link_to "Mon profil", edit_user_registration_path, class: "activeLink"  %>
+          <% else %>
+            <%= link_to "Mon profil", dashboard_owner_profile_path %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+</div>
