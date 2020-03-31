@@ -92,6 +92,19 @@
                   as: :radio_buttons,
                   checked: ["Personnel médical", "medical"],
                   :item_wrapper_class => 'inline' %>
+
+      <p>Modifier la pièce d'identité</p>
+      <%= f.label :identity_file do %>
+        <%= f.file_field :identity_file %>
+        <%= f.hidden_field :identity_file_cache %>
+      <% end %>
+
+      <p> justificatif</p>
+      <%= f.label :proof do %>
+        <%= f.file_field :proof %>
+        <%= f.hidden_field :proof_cache %>
+      <% end %>
+
     <% elsif current_user.role == 'owner' %>
       <%= f.input_field :role,
                   collection: [["Personnel médical", "medical"],["Propriétaire", "owner"]],
@@ -102,17 +115,6 @@
                   :item_wrapper_class => 'inline' %>
     <% end %>
 
-    <p>Modifier la pièce d'identité</p>
-    <%= f.label :identity_file do %>
-      <%= f.file_field :identity_file %>
-      <%= f.hidden_field :identity_file_cache %>
-    <% end %>
-
-    <p> justificatif</p>
-    <%= f.label :proof do %>
-      <%= f.file_field :proof %>
-      <%= f.hidden_field :proof_cache %>
-    <% end %>
 
 
   </div>

@@ -32,7 +32,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background: #f3f3f3; min-width: 350px; font-size: 1px; line-height: normal;">
  	<tr>
-   	<td align="center" valign="top">   			
+   	<td align="center" valign="top">
    		<!--[if (gte mso 9)|(IE)]>
          <table border="0" cellspacing="0" cellpadding="0">
          <tr><td align="center" valign="top" width="750"><![endif]-->
@@ -66,6 +66,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                         <td align="left" valign="top">
                            <font face="Poppins, sans-serif" color="#ffb400" style="font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">
 <<<<<<< HEAD
+<<<<<<< HEAD
                               <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #ffb400; font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">Bonjour,</span>
                            </font>
                            <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
@@ -78,6 +79,13 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                            <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
                               <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;"> Votre appartement situé : <%=@flat.address%> , a été réservé par : <%=@rental.user.last_name%>, <%=@rental.user.first_name%> adresse mail : <%=@rental.user.email%> .</span>
 >>>>>>> integration-front
+=======
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #ffb400; font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">Bonjour,  <%=@owner.user.first_name%> </span>
+                           </font>
+                           <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
+                           <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;"> Votre appartement situé : <%= @flat.address %> , a été réservé par : <%= @rental.user.last_name %> <%= @rental.user.first_name %>, adresse mail : <%= @rental.user.email %> .</span>
+>>>>>>> 64eeb4b03da9d19cf8ac0fbcef9af6ce14d59ce6
                            </font>
                            <div style="height: 20px; line-height: 20px; font-size: 18px;">&nbsp;</div>
                            <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
@@ -86,7 +94,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                            <div style="height: 20px; line-height: 20px; font-size: 18px;">&nbsp;</div>
                            <table class="mob_btn" cellpadding="0" cellspacing="0" border="0" style="background: #ffb400; border-radius: 25px;">
                             <tr>
-                               <td align="center" valign="top"> 
+                               <td align="center" valign="top">
                                   <a href="https://les-logements-soldaires.com" target="_blank" style="display: block; border: 1px solid #ffb400; border-radius: 25px; padding: 12px 23px; font-family:Poppins, Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;">
                                      <font face="Poppins, sans-serif" color="#ffffff" style="font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;">
                                         <span style="font-family:Poppins, Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;">Mon Compte</span>
@@ -97,10 +105,10 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                          </table>
                            <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
                            <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
-                            <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Nous vous remercions encore de votre soutient au personnel soignant.</span>
+                            <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Nous vous remercions encore de votre soutien au personnel soignant.</span>
                          </font>
                          <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
-                          
+
                            <div style="height: 75px; line-height: 75px; font-size: 73px;">&nbsp;</div>
                         </td>
                      </tr>
@@ -126,7 +134,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                                     <td align="center" valign="top">
                                        <div style="height: 13px; line-height: 13px; font-size: 11px;">&nbsp;</div>
                                        <div style="display: block; max-width: 50px;">
-                                         
+
                                     </td>
                                  </tr>
                               </table>
@@ -153,7 +161,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                                     <td align="center" valign="top">
                                        <div style="height: 13px; line-height: 13px; font-size: 11px;">&nbsp;</div>
                                        <div style="display: block; max-width: 177px;">
-                                         
+
                                        </div>
                                     </td>
                                  </tr>
@@ -174,7 +182,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                            <table cellpadding="0" cellspacing="0" border="0" width="88%" style="width: 88% !important; min-width: 88%; max-width: 88%;">
                               <tr>
                                  <td align="center" valign="top">
-                                    
+
                                     <div style="height: 34px; line-height: 34px; font-size: 32px;">&nbsp;</div>
                                     <font face="Poppins, sans-serif" color="#868686" style="font-size: 17px; line-height: 20px;">
                                        <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;">Copyright &copy; 2020 </span>
@@ -184,14 +192,14 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                                        <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px;"><a href="#" target="_blank" style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;">LES LOGEMENTS SOLIDAIRES.com</a> </span>
                                     </font>
                                     <div style="height: 35px; line-height: 35px; font-size: 33px;">&nbsp;</div>
-                                   
+
                                     <div style="height: 35px; line-height: 35px; font-size: 33px;">&nbsp;</div>
                                  </td>
                               </tr>
                            </table>
                         </td>
                      </tr>
-                  </table>  
+                  </table>
 
                </td>
                <td class="mob_pad" width="25" style="width: 25px; max-width: 25px; min-width: 25px;">&nbsp;</td>
