@@ -3,12 +3,11 @@
 <%= render 'shared/navbar_user' %>
 
 
-
 <% @rentals.each do |rental| %>
 <section>
   <div class="container marketing color-back" style="margin-top:8rem;">
     <div class="row d-flex">
-      <div class="col-md-6 col-lg-4 pl-lg-5 py-5">
+      <div class="col-md-12 col-lg-4 pl-lg-5 py-5">
         <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
 
 
@@ -63,7 +62,6 @@
             <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
               <h6 class="mb-1 type"> Type : <span class="grey"> <%= rental.flat.flat_type %></span></h6>
               <h6 class="mb-1 type"> Accessible PMR : <span class="grey ml-3"> <%= rental.flat.accessibility_pmr ? 'Oui' : 'Non' %></span></h6>
-
               <br>
               <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= rental.flat.address %></span></h6>
               <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp; Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "n. d." %></span></h6>
@@ -75,10 +73,12 @@
         <div class="py-md-5">
           <div class="row justify-content-start pb-3">
             <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-              <div class="text-right p-2">
-                <%= link_to rental_path(rental), method: :delete do %>
+              <div  id="cnt-btn" class="pictos text-right p-2">
+                <div class="text-right p-2">
+                  <%= link_to rental_path(rental), method: :delete do %>
                   <button class="btn btn-outline-warning py-1 px-3 mb-2 radius" id="myBtn">Annuler la demande</button>
-                <% end %>
+                  <% end %>
+                </div>
               </div>
               <h6 class="mb-4 type"> Description :</h6>
               <p> <%= rental.flat.description %></p>
@@ -95,9 +95,10 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 </section>
 <% end %>
-
 
 
 <div class="margintop"> </div>
