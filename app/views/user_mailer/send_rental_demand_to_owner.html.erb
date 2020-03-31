@@ -65,11 +65,19 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                      <tr>
                         <td align="left" valign="top">
                            <font face="Poppins, sans-serif" color="#ffb400" style="font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">
+<<<<<<< HEAD
                               <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #ffb400; font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">Bonjour,</span>
                            </font>
                            <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
                            <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
                               <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Votre appartement situé : X, a été réservé par : Y adresse mail : Z.</span>
+=======
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #ffb400; font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">Bonjour,  <%=@owner.user.first_name%> </span>
+                           </font>
+                           <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
+                           <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;"> Votre appartement situé : <%=@flat.address%> , a été réservé par : <%=@rental.user.last_name%>, <%=@rental.user.first_name%> adresse mail : <%=@rental.user.email%> .</span>
+>>>>>>> integration-front
                            </font>
                            <div style="height: 20px; line-height: 20px; font-size: 18px;">&nbsp;</div>
                            <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
