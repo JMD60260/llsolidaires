@@ -19,7 +19,6 @@
 
                   <div class="row ">
                     <div id="aa" class="col-12">
-
                       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                       <%= f.error_notification %>
 
@@ -90,12 +89,10 @@
                                     input_html: { autocomplete: "new-password", class: "input" },
                                     label_html: { class: 'label' }  %>
                       </div><div class="group">
-                        <div class="form-group row">
+                        <div class="form-group row mb-1">
                           <div class="col-sm-10">
                             <div class="form-check">
-                              <label class="form-check-label">
-                                <%= f.input :rgpd, label: "J'ai lu et j'accepte les", class:'mb-0' %>
-                                <%= link_to "mentions légales.", pages_legal_notice_path, class: 'text', target: "_blank" %>
+                                <%= f.input :rgpd, label: ("J'ai lu et j'accepte les #{link_to 'mentions légales', pages_legal_notice_path}.").html_safe %>
                               </div>
                             </div>
                           </div>
