@@ -38,6 +38,8 @@ window.checkOut = checkOut;
 var modal = document.querySelector("#myModal");
 // var close = document.getElementById("close");
 
+
+// J'ai commenté ca pour pas que la map pète merci 
 // close.onclick = function() {
 //   modal.style.display = "none";
 

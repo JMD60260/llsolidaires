@@ -7160,7 +7160,6 @@ a.text-dark:hover, a.text-dark:focus {
   margin: 1.2rem; }
 
 .dashboardLink ul {
-  margin-left: -150px;
   display: flex;
   list-style: none;
   color: #6b76ff;
@@ -7255,7 +7254,7 @@ a.text-dark:hover, a.text-dark:focus {
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
-  z-index: 1;
+  z-index: 100;
   /* Sit on top */
   padding-top: 100px;
   /* Location of the box */
@@ -7381,7 +7380,7 @@ h1, h2, h3, h4, h5,
   padding: 0; }
   @media (max-width: 991.98px) {
     .ftco-navbar-light {
-      background: #000000 !important;
+      background: #3385bb !important;
       position: relative;
       top: 0;
       padding: 10px 15px; } }
@@ -7907,9 +7906,18 @@ body::-webkit-scrollbar-button {
 .custom-file-input ~ .custom-file-label:lang(es)::after {
   content: "Elegir...`"; }
 
+#cnt-btn-in {
+  display: none; }
+
 @media (min-width: 1101px) and (max-width: 1199px) {
   #hero {
+    margin-left: 0px; }
+  .dashboardLink {
     margin-left: 0px; } }
+
+@media (min-width: 600px) and (max-width: 850px) {
+  .login-wrap {
+    width: 700px; } }
 
 @media (min-width: 200px) and (max-width: 991px) {
   .overlay1 {
@@ -7920,12 +7928,34 @@ body::-webkit-scrollbar-button {
 @media (min-width: 650px) and (max-width: 1100px) {
   #hero {
     margin-left: 0px; }
-  .dashboardLink ul {
-    margin-left: -100px; }
+  .dashboardLink {
+    margin-left: 0px; }
   .no-gutters {
-    display: none; } }
+    display: none; }
+  #cnt-btn {
+    display: none; }
+  #cnt-btn-in {
+    display: block; } }
+
+.mdl-type1 {
+  color: #04148a;
+  font-size: 20px;
+  line-height: 1.8;
+  font-weight: 700; }
+
+@media (min-width: 650px) and (max-width: 1024px) {
+  .mdl-type1 {
+    color: #04148a;
+    font-size: 12px;
+    line-height: 1.8;
+    font-weight: 700; } }
 
 @media (min-width: 300px) and (max-width: 649px) {
+  .mdl-type1 {
+    color: #04148a;
+    font-size: 10px;
+    line-height: 1.8;
+    font-weight: 700; }
   #aa {
     font-size: 10px; }
   #rr {
@@ -7953,14 +7983,12 @@ body::-webkit-scrollbar-button {
     width: 300px; }
   .padding1 {
     padding: 0px; }
-  .dashboardLink ul {
+  .dashboardLink {
     margin-left: 0px; }
-  .type {
-    font-size: 10px; }
-  .grey {
-    font-size: 10px; }
-  .type1 {
-    font-size: 10px; }
+  #cnt-btn {
+    display: none; }
+  #cnt-btn-in {
+    display: block; }
   h4, .h4 {
     font-size: 15px !important; }
   p {
@@ -7973,9 +8001,6 @@ body::-webkit-scrollbar-button {
     font-size: 1em; }
   #hero {
     margin-left: 0px; } }
-
-.dashboardLink {
-  margin-left: -150px; }
 
 .color-back {
   background-color: #FEF8EC !important; }

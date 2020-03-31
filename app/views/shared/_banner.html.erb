@@ -1,37 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-  <div class="container">
-    <%= link_to root_path do%>
-      <img class="mb-4" src="<%= image_url('logo-sl.png') %>" alt="" width="200" >
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="oi oi-menu"></span> Menu
-    </button>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <%= link_to root_path do%>
+        <img class="mb-4" src="<%= image_url('logo-sl.png') %>" alt="" width="200" >
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
 
-    <div class="collapse navbar-collapse" id="ftco-nav">
-      <ul class="navbar-nav ml-auto">
-        <div class="d-flex align-items-center">
-          <% if current_user.role == "medical" %>
-            <% if @as == "owner" %>
-              <li class="mr-3">
-                <%= link_to dashboard_medical_path do%>
-                  <button class="btn btn-warning text-white radius" id="myBtn">Espace soignant</button>
-                <% end %>
-              </li>
-            <% else %>
-              <li class="mr-3">
-                <%= link_to dashboard_owner_path do%>
-                  <button class="btn btn-warning text-white radius" id="myBtn">Espace propriétaire</button>
-                <% end %>
-              </li>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <% if current_user %>
+            <% if current_user.role == "medical" %>
+              <% if @as == "owner" %>
+                <li class="nav-item active mr-3">
+                  <%= link_to dashboard_medical_path, class:'nav-link' do%>
+                    Espace soignant
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item active mr-3">
+                  <%= link_to dashboard_owner_path, class:'nav-link' do%>
+                   Espace propriétaire
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
+            <li class="nav-item active"><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class:'nav-link' %></li>
+            <% else %>
+            <li class="nav-item active"><%= link_to "Accueil", root_path, class:'nav-link' %></li>
           <% end %>
-          <li class="nav-item active"><%= link_to "Déconnexion", destroy_user_session_path, method: :delete %></li>
-        </div>
-      </ul>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END nav -->
+  <div class="hero-wrap1" style="background-image: url(<%= image_url('banner.png') %>);" >
+    <div class="overlay1"></div>
     </div>
   </div>
-</nav>
-<div class="hero-wrap1" style="background-image: url(<%= image_url('banner.png') %>);" >
-  <div class="overlay1"></div>
-  </div>
-</div>
+

@@ -5,105 +5,109 @@
 
 <section>
   <div class="container marketing color-back" style="margin-top:8rem;">
-    <div class="row d-flex">
-      <div class="col-md-8 col-lg-8 d-flex p-5">
+    <div class="row ">
+      <div class="col-md-12 col-lg-8 d-flex p-5">
         <div class="row m-3">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
-          <form action="" method="post" >
-            <div class="form-group row formborder">
-              <label for="example-date-input" class="col-lg-3 col-sm-10  col-form-label">Nom :</label>
-              <div class="col-lg-8 col-sm-10">
-                <%= f.input :last_name, label: false, class:"form-control" %>
-              </div>
+          <div class="form-group row formborder">
+            <label for="example-date-input" class="col-lg-3 col-sm-10  col-form-label">Nom :</label>
+            <div class="col-lg-8 col-sm-10 col-md-12">
+              <%= f.input :last_name, label: false, class:"form-control" %>
             </div>
-            <div class="form-group row formborder">
-              <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Prénom :</label>
-              <div class="col-lg-8 col-sm-10">
-                <%= f.input :first_name, label: false, class:"form-control" %>
-              </div>
+          </div>
+          <div class="form-group row formborder">
+            <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Prénom :</label>
+            <div class="col-lg-8 col-sm-10 col-md-12">
+              <%= f.input :first_name, label: false, class:"form-control" %>
             </div>
-            <div class="form-group row formborder">
-              <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Numéro de téléphone :</label>
-              <div class="col-lg-8 col-sm-10">
-                <%= f.input :phone, label: false, class:"form-control" %>
-              </div>
+          </div>
+          <div class="form-group row formborder">
+            <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Numéro de téléphone :</label>
+            <div class="col-lg-8 col-sm-10 col-md-12">
+              <%= f.input :phone, label: false, class:"form-control" %>
             </div>
-            <% if current_user.role == 'medical' %>
-              <div class="form-group row formborder">
-                <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Description :</label>
-                <div class="col-lg-8 col-sm-10">
-                  <%= f.text_area :description, class:"form-control", rows: 5, class:"form-control" %>
-                </div>
-              </div>
+          </div>
+          <% if current_user.role == 'medical' %>
+          <div class="form-group row formborder">
+            <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Description :</label>
+            <div class="col-lg-8 col-sm-10 col-md-12">
+              <%= f.text_area :description, class:"form-control", rows: 5, class:"form-control" %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-8 col-sm-10 col-md-12">
               <p>Pièce d'identité : </p>
               <%= f.label :identity_file do %>
-                <%= f.file_field :identity_file %>
-                <%= f.hidden_field :identity_file_cache %>
+              <%= f.file_field :identity_file %>
+              <%= f.hidden_field :identity_file_cache %>
               <% end %>
               <p> Justificatif professionnel : </p>
               <%= f.label :proof do %>
-                <%= f.file_field :proof %>
-                <%= f.hidden_field :proof_cache %>
+              <%= f.file_field :proof %>
+              <%= f.hidden_field :proof_cache %>
               <% end %>
-            <% end %>
-            <div class="form-group row formborder">
-              <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Adresse mail : </label>
-              <div class="col-lg-8 col-sm-10">
-                <%= f.input :email, label: false, class:"form-control" %>
-              </div>
-            </div>
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-            <% end %>
-            <div class="form-group row formborder">
-              <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Nouveau mot de passe :</label>
-              <div class="col-lg-8 col-sm-10">
-                <%= f.input :password, label: false,
-                hint: "Laisser le champ vide si vous ne souhaitez pas changer de mot de passe",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-              </div>
-            </div>
-            <div class="form-group row formborder">
-              <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Confirmation du mot de passe :</label>
-              <div class="col-lg-8 col-sm-10">
-                <%= f.input :password_confirmation, label: false,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-              </div>
-            </div>
-            <div class="form-group row formborder">
-              <label for="example-date-input" class="col-lg-3 col-sm-10 col-form-label">Mot de passe actuel :</label>
-              <div class="col-lg-8 col-sm-10">
-                <%= f.input :current_password, label: false,
-                hint: "Vous devez indiquer votre mot de passe actuel pour enregistrer les modifications.",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-              </div>
-            </div>
-            <div class="col-12 text-center" style="text-align: end;">
-              <%= f.button :submit, "Enregistrer les modifications", class:"btn btn-warning text-white" %>
             </div>
           </div>
+          <% end %>
+          <div class="form-group row formborder">
+            <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Adresse mail :</label>
+            <div class="col-lg-8 col-sm-10 col-md-12">
+              <%= f.input :email, label: false, class:"form-control" %>
+            </div>
+          </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <div class="form-group row formborder">
+            <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Nouveau mot de passe :</label>
+            <div class="col-lg-8 col-sm-10 col-md-12">
+              <%= f.input :password, label: false,
+              hint: "Laisser le champ vide si vous ne souhaitez pas changer de mot de passe",
+              required: false,
+              input_html: { autocomplete: "new-password" } %>
+            </div>
+          </div>
+
+          <div class="form-group row formborder">
+            <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Confirmation :</label>
+            <div class="col-lg-8 col-sm-10 col-md-12">
+              <%= f.input :password_confirmation, label: false,
+              required: false,
+              input_html: { autocomplete: "new-password" } %>
+            </div>
+          </div>
+          <div class="form-group row formborder">
+            <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Mot de passe actuel :</label>
+            <div class="col-lg-8 col-sm-10 col-md-12">
+              <%= f.input :current_password, label: false,
+              hint: "Vous devez indiquer votre mot de passe actuel pour enregistrer les modifications.",
+              required: true,
+              input_html: { autocomplete: "current-password" } %>
+            </div>
+          </div>
+          <div class="col-12 text-center" style="text-align: end;">
+            <%= f.button :submit, "Enregistrer les modifications", class:"btn btn-warning text-white" %>
+          </div>
+          <% end %>
         </div>
-        <div class="col-md-6 col-lg-4 ">
-          <div class="py-md-5">
-            <div class="row justify-content-start pb-3">
-              <% if current_user.role == "medical" %>
-                <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated text-center">
-                  <p class="m-4">Si vous avez un problème ou une urgence, cliquez sur ce bouton et nous vous contacterons au plus vite.</p>
-                  <%= link_to "SOS", pages_sos_mailer_path, class: "btn btn-danger text-white m-4 btnsos" %>
-                </div>
-              <% end %>
+      </div>
+      <div class="col-md-12 col-lg-4 ">
+        <div class="py-md-5">
+          <div class="row justify-content-start pb-3">
+            <% if current_user.role == "medical" %>
+            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated text-center">
+              <p class="m-4">Si vous avez un problème ou une urgence, cliquez sur ce bouton et nous vous contacterons au plus vite.</p>
+              <%= link_to "SOS", pages_sos_mailer_path, class: "btn btn-danger text-white m-4 btnsos" %>
+            </div>
             <% end %>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 
 
