@@ -1,5 +1,6 @@
 class FlatsController < ApplicationController
   before_action :set_flat, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:new, :import]
 
   def create
     @flat = Flat.new(flat_params)
@@ -44,6 +45,15 @@ class FlatsController < ApplicationController
     end
     @flat.destroy
     redirect_to dashboard_owner_path
+  end
+
+  def new
+  end
+
+  def import
+    Flat.import(params[:file])
+    redirect_to new_flat_path, notice: "Les propriétaires et appartements ont été ajoutés avec succès"
+    flash[:succes] = "Les propriétaires et appartements ont été ajoutés avec succès"
   end
 
   private

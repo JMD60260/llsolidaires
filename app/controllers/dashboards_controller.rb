@@ -12,6 +12,7 @@ class DashboardsController < ApplicationController
       @tab = "Recherche de logements"
       @as = "medical"
       if params[:query]
+        @query = true
         @start_date = Date.parse(params[:start])
         if params[:end] == ""
           @end_date = nil
@@ -20,6 +21,7 @@ class DashboardsController < ApplicationController
         end
         @flats = Flat.near(params[:query], 20)
       else
+        @query = false
         @flats = Flat.all
       end
       @markers = geocoded_flats(@flats)

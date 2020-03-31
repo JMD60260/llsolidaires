@@ -2,7 +2,7 @@
 
 ## Membres bénévoles ayant participé à cette aventure ##
 
-+ Paul (back)
++ Paul (Github ApaeP)(back)
 + Inés (back + front)
 + Brian (Github BrianRid)(back)
 + Emilie (back)
@@ -15,8 +15,9 @@
 + Slim (recrutement)
 + Julie (code review et testing)
 + Saad (PO)
++ Soulaiman (Fullstack)
 + Jean-Marc DARDY git ID JMD60260 (Chef de Projet Agile)
-  
+
 ***
 
 ### Outils de Gestion ###
