@@ -82,25 +82,34 @@ function modalOpen(name,firstname,about,link) {
 
 }
 
-function modalMap(type,number,addresse,about,date1, date2) {
+function modalMap(type,pmr,addresse,about,date1, date2, requestLink) {
   var modal = document.querySelector("#myModal");
 
 
   var modalType = document.querySelector("#modalType");
-  var modalNumber =document.querySelector("#modalNumber");
+  var modalPMR =document.querySelector("#modalPMR");
   var modalAbout =document.querySelector("#modalAbout");
   var modalAdresse =document.querySelector("#modalAdresse");
   var modalDate1 =document.querySelector("#modalDate1");
   var modalDate2 =document.querySelector("#modalDate2");
+  var modalRequestLink =document.querySelector("#modalRequestLink");
 
 
   modal.style.display = "block";
   modalType.innerText =  type ;
-  modalNumber.innerText = number ;
+  if (pmr === "true"){
+    modalPMR.innerText = "Oui";
+  } else {
+    modalPMR.innerText = "Non" ;
+  }
   modalAdresse.innerText =  addresse ;
-  modalDate2.innerText =  date2 ;
   modalDate1.innerText =  date1 ;
+  modalDate2.innerText =  date2 ;
+  if (date2 === "") {
+    modalDate2.innerText =  "n. d." ;
+  }
   modalAbout.innerText =  about ;
+  modalRequestLink.href =  requestLink ;
 
 }
 
