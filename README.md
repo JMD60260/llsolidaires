@@ -2,7 +2,7 @@
 
 ## Membres bénévoles ayant participé à cette aventure ##
 
-+ Paul (back)
++ Paul (Github ApaeP)(back)
 + Inés (back + front)
 + Brian (Github BrianRid)(back)
 + Emilie (back)
