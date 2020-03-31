@@ -84,7 +84,7 @@
               <p> <%= rental.flat.description %></p>
               <br>
               <% justificatif = rental.user.proof.url.present? ? download_proof_rental_path(rental) : '' %>
-              <h6 class="mb-4 type"> Propriétaire :<button class="mb-1 type colorwar btnout" id="myBtn" onclick="modalOpen('<%= rental.user.last_name %>','<%= rental.user.first_name %>','<%= rental.user.description %>','<%= justificatif %>')"> <%= rental.user.first_name + " " + rental.user.last_name %></button></h6>
+              <h6 class="mb-4 type"> Occupant :<button class="mb-1 type colorwar btnout" id="myBtn" onclick="modalOpen('<%= rental.user.last_name %>','<%= rental.user.first_name %>','<%= rental.user.description %>','<%= justificatif %>')"> <%= rental.user.first_name + " " + rental.user.last_name %></button></h6>
             </div>
           </div>
         </div>
@@ -176,7 +176,7 @@
               <p> <%= rental.flat.description %></p>
               <br>
               <% justificatif = rental.user.proof.url.present? ? download_proof_rental_path(rental) : '' %>
-              <h6 class="mb-4 type"> Propriétaire :<button class="mb-1 type colorwar btnout" id="myBtn" onclick="modalOpen('<%= rental.user.last_name %>','<%= rental.user.first_name %>','<%= rental.user.description %>','<%= justificatif %>')"> <%= rental.user.first_name + " " + rental.user.last_name %></button></h6>
+              <h6 class="mb-4 type"> Occupant :<button class="mb-1 type colorwar btnout" id="myBtn" onclick="modalOpen('<%= rental.user.last_name %>','<%= rental.user.first_name %>','<%= rental.user.description %>','<%= justificatif %>')"> <%= rental.user.first_name + " " + rental.user.last_name %></button></h6>
             </div>
           </div>
         </div>
@@ -205,7 +205,7 @@
                 <div class="row justify-content-start pb-3">
                   <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
                     <h6 class="mb-1 type"> Nom : <span class="grey" id="modalName"> </span></h6>
-                    <h6 class="mb-1 type"> Prénom :<span class="grey" id="modalFirstname">  </span></h6>
+                    <h6 class="mb-1 type"> Prénom : <span class="grey" id="modalFirstname">  </span></h6>
                   </div>
                 </div>
               </div>
@@ -214,7 +214,7 @@
               <div class="py-md-5">
                 <div class="row justify-content-start pb-3">
                   <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                    <h6 class="mb-4 type"> Description :</h6>
+                    <h6 class="mb-4 type"> Description : </h6>
                     <p id="modalAbout"> </p>
                   </div>
                 </div>
@@ -224,9 +224,9 @@
               <div class="py-md-5">
                 <div class="row justify-content-start pb-3">
                   <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                    <h6 class="mb-4 type">Pièce d'identité :<span class="grey"> Oui</span></h6>
+                    <h6 class="mb-4 type">Pièce d'identité : <span class="grey"> Chargée</span></h6>
                     <br>
-                    <h6 class="mb-4 type"> Justificatif professionnel :<span class="grey" id="modalLinkSpan"> <a id="modalLink" href=""> </a></span></h6>
+                    <h6 class="mb-4 type"> Justificatif professionnel : <span class="grey" id="modalLinkSpan"> <a id="modalLink" href=""> </a></span></h6>
                   </div>
                 </div>
               </div>

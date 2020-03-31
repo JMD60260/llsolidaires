@@ -1,7 +1,0 @@
-<h1>Réservation de l'appartement situé <%= @rental.flat.address %></h1>
-<h3>Demandeur: <%= @rental.user.first_name %> <%= @rental.user.last_name %></h3>
-
-<% if @rental.user.proof.url.present? %>
-  <p>justificatif du demandeur</p>
-  <%= link_to 'Télécharger le justificatif du demandeur',  download_proof_rental_path(@rental) %>
-<% end %>
