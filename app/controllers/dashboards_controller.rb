@@ -61,8 +61,8 @@ class DashboardsController < ApplicationController
   def geocoded_flats(flats)
     flats.map do |flat|
       {
-        lat: flat.geocode[0],
-        lng: flat.geocode[1]
+        lat: flat.latitude,
+        lng: flat.longitude
         # infoWindow: { content: render_to_string(partial: "/flats/maps", locals: { flat: flat }) }
       }
     end
