@@ -1,25 +1,6 @@
-<div class="container blogMenu" style="margin-top: 25px;">
-  <div class="dashboardLink">
-      <ul class="nav justify-content-center" >
-        <li class="nav-item">
-          <%= link_to "Mes logements", dashboard_owner_path, class: "activeLink" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Réservations", owner_validated_rentals_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Demandes", owner_pending_requests_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Aide et documentation", pages_owner_doc_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Mon profil", edit_user_registration_path %>
-        </li>
-      </ul>
-    </div>
-</div>
+<%= render 'shared/banner' %>
 
+<%= render 'shared/navbar_user' %>
 
 <div class="container pt-4 pb-4 mt-4 mb-4">
   <h1 class="mt-4 pt-4 mb-4 pb-4">Editer un logement</h1>

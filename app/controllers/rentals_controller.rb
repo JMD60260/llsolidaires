@@ -58,49 +58,45 @@ class RentalsController < ApplicationController
   end
 
   def owner_validated
+    @tab = "Réservations"
+    @as = "owner"
     # Les rentals du current owner, validated==true, a trier par "en cours" et "a venir" (du plus récent au plus vieux), (contendra partial show)
-    if current_user.role == "owner"
-      @current_rentals = []
-      @future_rentals = []
-      current_user.flats.each do |flat|
-        flat.rentals.each do |rental|
-          if rental.validated
-            if rental.start_date > Date.today
-              @future_rentals << rental
-            elsif rental.start_date <= Date.today && (!rental.end_date || rental.end_date >= Date.today)
-              @current_rentals << rental
-            end
+    @current_rentals = []
+    @future_rentals = []
+    current_user.flats.each do |flat|
+      flat.rentals.each do |rental|
+        if rental.validated
+          if rental.start_date > Date.today
+            @future_rentals << rental
+          elsif rental.start_date <= Date.today && (!rental.end_date || rental.end_date >= Date.today)
+            @current_rentals << rental
           end
         end
       end
-      @current_rentals.sort_by{ |rental| rental.end_date }
-      @future_rentals.sort_by{ |rental| rental.start_date }
-    else
-      flash[:error] = "Vous n'avez pas accés à cette page.'"
-      redirect_to root_path
     end
+    @current_rentals.sort_by{ |rental| rental.end_date }
+    @future_rentals.sort_by{ |rental| rental.start_date }
   end
 
   def owner_pending
+    @tab = "Demandes"
+    @as = "owner"
     # Les rentals du current_owner, validated==false, a trier par date de début, (contiendra boutons valider et refuse + partial rental show)
-    if current_user.role == "owner"
-      @rentals = []
-      @rentals
-      current_user.flats.each do |flat|
-        flat.rentals.each do |rental|
-          if !rental.validated && (!rental.end_date || rental.end_date >= Date.tomorrow)
-            @rentals << rental
-          end
+    @rentals = []
+    @rentals
+    current_user.flats.each do |flat|
+      flat.rentals.each do |rental|
+        if !rental.validated && (!rental.end_date || rental.end_date >= Date.tomorrow)
+          @rentals << rental
         end
       end
-      @rentals.sort_by{ |rental| rental.start_date }
-    else
-      flash[:error] = "Vous n'avez pas accés à cette page.'"
-      redirect_to root_path
     end
+    @rentals.sort_by{ |rental| rental.start_date }
   end
 
   def medical_validated
+    @tab = "Mes réservations"
+    @as = "medical"
     # Les rentals du current medical, validated==true, celles en cours et dans le futur
     if current_user.role == 'medical'
        # all_rentals_from_medic = Rental.joins(:flat).where(user: current_user)
@@ -113,6 +109,8 @@ class RentalsController < ApplicationController
   end
 
   def medical_pending
+    @tab = "Demandes"
+    @as = "medical"
     # Les rentals du current medical, validated==false, celles à venir seulement
     if current_user.role == 'medical'
        # all_rentals_from_medic = Rental.joins(:flat).where(user: current_user)
