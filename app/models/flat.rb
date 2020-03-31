@@ -15,8 +15,23 @@ class Flat < ApplicationRecord
   #   end
   # end
 
-  after_validation :geocode, if: :will_save_change_to_address?
 
+  validate :found_address_presence?
+  after_validation :geocode, if: :will_save_change_to_address?
+  validate :define_city
+
+  def define_city
+    geocoded_adress = Geocoder.search("#{self.latitude}, #{self.longitude}")[0].data["address"]
+    city = geocoded_adress["city"]
+    town = geocoded_adress["town"]
+    (city != nil) ? self.city = city : self.city = town
+  end
+
+  def found_address_presence?
+    if self.geocode[1] == nil
+      errors.add(:address, "Cette addresse n'est pas valide, merci de la compléter.")
+    end
+  end
 
   def self.import(file)
     csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
@@ -61,3 +76,11 @@ class Flat < ApplicationRecord
     end
   end
 end
+
+
+
+
+
+
+
+

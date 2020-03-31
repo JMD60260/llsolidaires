@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2020_03_29_142559) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "longitude"
     t.float "latitude"
+    t.float "longitude"
     t.string "status", default: "libre"
     t.json "photos"
     t.string "city"
