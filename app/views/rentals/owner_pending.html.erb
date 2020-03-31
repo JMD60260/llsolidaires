@@ -2,13 +2,12 @@
 
 <%= render 'shared/navbar_user' %>
 
-
 <% @rentals.each do |rental| %>
 <section>
   <div class="container marketing color-back" style="margin-top:8rem;">
 
     <div class="row d-flex">
-      <div class="col-md-6 col-lg-4 pl-lg-5 py-5">
+      <div class="col-md-12 col-lg-4 pl-lg-5 py-5">
         <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
 
 
@@ -87,7 +86,10 @@
 </section>
 <% end %>
 
+
 <div class="margintop"></div>
+
+
 
 <!-- The Modal -->
 <div id="myModal" class="modal">               <!--    ID  myModal  -->
@@ -98,30 +100,43 @@
       <span class="close" id="close">&times;</span>
     </div>
     <div class="modal-body">
-      <div class="row mb-3 padding1 m-3">
-        <div class="col-md-4 themed-grid-col">
-          <div class="row">
-            <div class="col-md-10 themed-grid-col mt-4">
-              <h6 class="mb-1 type"> Nom : <span class="grey" id="modalName"> </span></h6>
-              <h6 class="mb-1 type"> Prénom : <span class="grey" id="modalFirstname">  </span></h6>
-              <br>
+      <section>
+        <div class="container marketing color-back">
+          <div class="row d-flex">
+            <div class="col-md-6 col-lg-4 pl-lg-5 ">
+              <div class="py-md-5">
+                <div class="row justify-content-start pb-3">
+                  <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                    <h6 class="mb-1 type"> Nom : <span class="grey" id="modalName"></span></h6>
+                    <h6 class="mb-1 type"> Prénom : <span class="grey" id="modalFirstname"></span></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 pl-lg-5 ">
+              <div class="py-md-5">
+                <div class="row justify-content-start pb-3">
+                  <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                    <h6 class="mb-4 type"> Description : </h6>
+                    <p id="modalAbout"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-lg-4 pl-lg-5 ">
+              <div class="py-md-5">
+                <div class="row justify-content-start pb-3">
+                  <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                    <h6 class="mb-4 type">Pièce d'identité : <span class="grey">Chargée </span></h6>
+                    <br>
+                    <h6 class="mb-4 type"> Justificatif professionnel : <span class="grey" id="modalLinkSpan"><a id="modalLink" href=""> </a></span></h6>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 themed-grid-col">
-          <div class="row">
-            <div class="col-md-12 themed-grid-col mt-4">
-              <h6 class="mb-4 type"> Description : </h6>
-              <p id="modalAbout"> </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 themed-grid-col mt-4">
-          <h6 class="mb-4 type">Pièce d'identité : <span class="grey"> Chargée</span></h6>
-          <br>
-          <h6 class="mb-4 type"> Justificatif professionnel : <span class="grey" id="modalLinkSpan"><a id="modalLink" href=""> </a></span></h6>
-        </div>
-      </div>
+      </section>
     </div>
     <div class="modal-footer">
     </div>
