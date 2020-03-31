@@ -732,7 +732,9 @@ body::-webkit-scrollbar {
    
   
   }
-
+  .dashboardLink{
+	  margin-left: -150px;
+  }
 
   .btn-warning {
     color: white;
@@ -871,4 +873,15 @@ body::-webkit-scrollbar {
 		margin-left: 0px ;
 	  }
 	 
+}
+
+.dashboardLink{
+	margin-left: -150px;
+}
+
+.color-back{
+	background-color: #FEF8EC !important;
+}
+.margintop100{
+	margin-top: 100px;
 }
