@@ -66,13 +66,13 @@
 
 <% if !@cities.empty? && @cities.any? %>
 <section>
-  <div class="container" style="margin-top: 100px;">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-12 col-md-12 py-5 m-5">
+      <div class="col-lg-12 col-md-12 py-5">
         <h6 class="mb-4"><span class="text-primary">DES LOGEMENTS DISPONIBLES POUR AIDER NOTRE PERSONNEL SOIGNANT À TRAVERS LA FRANCE</span> </h6>
         <br>
         <div>
-          <div class="py-5 color-back" >
+          <div class="py-3 color-back" >
             <div class="col-12">
               <div id="scroll">
                 <div class=" col-md-4">
@@ -81,7 +81,8 @@
                       <% @cities.sort_by{ |city| Flat.where(city: city).count }.reverse.each do |city| %>
                       <% if city  %>
                       <li class="text-body ">
-                        <%= city %>  :<span class=" colorwar" >&nbsp; <%= Flat.where(city: city).count %> </span> <span class="text-body" > Logements</span>
+                        <% nb_apparts = Flat.where(city: city).count  %>
+                        <%= city %>  :<span class=" colorwar" >&nbsp; <%= nb_apparts %> </span> <span class="text-body" > Logement<%= "s" if nb_apparts > 1  %></span>
                       </li>
                       <% end %>
                       <% end %>

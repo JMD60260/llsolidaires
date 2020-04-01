@@ -184,7 +184,7 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: 0.1rem; }
+  margin-bottom: 0.5rem; }
 
 button {
   border-radius: 0; }
@@ -7699,7 +7699,7 @@ h1, h2, h3, h4, h5,
   transform-style: preserve-3d; }
 
 .login-form .group {
-  margin-bottom: 10px; }
+  margin-bottom: 15px; }
 
 .login-form .group .label,
 .login-form .group .input,
@@ -8057,15 +8057,39 @@ body::-webkit-scrollbar-button {
   font-weight: 700; }
 
 @media (min-width: 650px) and (max-width: 1024px) {
+  .blogMenu li {
+    margin: auto; }
+  .dashboardLink ul li {
+    padding: 0rem 0rem; }
   .mdl-type1 {
     color: #04148a;
     font-size: 12px;
     line-height: 1.8;
     font-weight: 700; }
   #btn-hr-blue {
-    padding: 15px 120px !important; } }
+    padding: 15px 120px !important; }
+  .dashboardLink ul li {
+    padding: 0rem 0rem;
+    font-size: 14px; } }
 
 @media (min-width: 300px) and (max-width: 649px) {
+  #user_proof {
+    font-size: 10px; }
+  #user_identity_file {
+    font-size: 10px; }
+  .overlay1 {
+    height: 322px !important; }
+  .ftco-navbar-light .navbar-toggler {
+    font-size: 12px; }
+  .type1 {
+    font-size: 12px; }
+  #ftco-navbaner img {
+    width: 100px; }
+  .dashboardLink ul li {
+    padding: 0rem 1rem;
+    font-size: 10px; }
+  .blogMenu li {
+    margin: 0.2rem; }
   #aa {
     font-size: 9px; }
   #rr {
