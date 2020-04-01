@@ -124,7 +124,7 @@ window.modalMap = modalMap;
 
 setTimeout(function () {
   $('.alert').fadeOut('fast');
-}, 4000);
+}, 2750);
 
 
 
