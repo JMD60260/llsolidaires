@@ -16,7 +16,7 @@
         <div class="flex-column">
           <h3>Importer une liste d'appartements</h3>
           <%= form_tag import_flats_path, multipart: true do |f| %>
-            <%= file_field_tag :file %>
+            <%= file_field_tag :file, accept: 'text/csv' %>
             <%= submit_tag "Importer depuis ce fichier CSV", class: 'btn btn-primary' %>
           <% end %>
         </div>

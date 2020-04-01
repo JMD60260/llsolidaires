@@ -9,12 +9,6 @@ class Flat < ApplicationRecord
   validates :address, presence: true
 
   geocoded_by :address
-  # do |obj, results|
-  #   if geo = results.first
-  #     obj.city = geo.city
-  #   end
-  # end
-
 
   validate :found_address_presence?
   after_validation :geocode, if: :will_save_change_to_address?
@@ -28,8 +22,10 @@ class Flat < ApplicationRecord
   end
 
   def found_address_presence?
-    if self.geocode[1] == nil
+    # Impossible de raise des flashes d'erreurs ici, donc cette methode renvoie une 500 si ladresse n'est pas géocodable. A ameliorer
+    if self.geocode == nil || self.geocode[1] == nil
       errors.add(:address, "Cette addresse n'est pas valide, merci de la compléter.")
+      flash[:error] = "Cette addresse n'est pas valide, merci de la compléter."
     end
   end
 
