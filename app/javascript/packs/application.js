@@ -45,15 +45,14 @@ window.checkOut = checkOut;
 
 //  // Get the modal
 var modal = document.querySelector("#myModal");
-// var close = document.getElementById("close");
+var close = document.getElementById("close");
 
 
-// J'ai commenté ca pour pas que la map pète merci
-// close.onclick = function() {
-//   modal.style.display = "none";
-
-
-// }
+if (close){
+  close.onclick = function() {
+    modal.style.display = "none";
+  }
+}
 
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -95,15 +94,14 @@ function modalMap(
   type,
   pmr,
   addresse,
-  photos,
+  photosUrlsArrayAsString,
   about,
   date1,
   date2,
   requestLink
 ) {
-  var arrayPhotos = [];
   var modal = document.querySelector("#myModal");
-  var modalPhoto = document.querySelector("#modalPhotos");
+  var modalCarousel = document.querySelector("#modalCarousel");
   var modalType = document.querySelector("#modalType");
   var modalPMR = document.querySelector("#modalPMR");
   var modalAbout = document.querySelector("#modalAbout");
@@ -118,13 +116,21 @@ function modalMap(
   } else {
     modalPMR.innerText = "Non";
   }
-
-  arrayPhotos.push(photos)
-  arrayPhotos.forEach(photo => {
-      console.log(photo);
-      modalPhoto.innerHTML = `<img src=${photo}  >`
-  })
-
+  var photosUrlsArray = photosUrlsArrayAsString.slice(1,-1).split(", ");
+  var carouselInnerHTML = "";
+  if (photosUrlsArray[0] != ""){
+    photosUrlsArray.forEach((photoUrl, i) => {
+      if (i === 0){
+        carouselInnerHTML += "<div class='carousel-item active'>";
+      } else {
+        carouselInnerHTML += "<div class='carousel-item'>";
+      }
+      carouselInnerHTML += `<div style="background-image:url(${photoUrl.slice(1,-1)});" class="d-block  image-cara"></div>`;
+      carouselInnerHTML += "<div class='carousel-caption d-none d-md-block'></div>";
+      carouselInnerHTML += "</div>";
+    })
+    modalCarousel.innerHTML = carouselInnerHTML;
+  }
   modalAdresse.innerText = addresse;
   modalDate1.innerText = date1;
   modalDate2.innerText = date2;

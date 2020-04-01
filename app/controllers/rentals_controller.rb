@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:download_proof, :edit, :update, :destroy, :refuse_rental]
+  before_action :set_rental, only: [:download_proof, :edit, :update, :destroy]
 
   def download_proof
     data = open(@rental.user.proof.url)
