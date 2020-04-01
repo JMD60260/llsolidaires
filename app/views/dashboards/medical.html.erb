@@ -19,7 +19,12 @@
               <div class="form-group row">
                 <label for="example-date-input" class="col-2 col-form-label">De</label>
                 <div class="col-10">
-                  <%= date_field_tag :start, params[:start], id: "start", required: true, value: Date.tomorrow, class:"form-control" %>
+                  <% if @start_date %>
+                    <% default_start_date = @start_date %>
+                  <% else %>
+                    <% default_start_date = Date.tomorrow %>
+                  <% end %>
+                  <%= date_field_tag :start, params[:start], id: "start", required: true, value: default_start_date, class:"form-control" %>
                 </div>
               </div>
             </div>
@@ -27,7 +32,12 @@
               <div class="form-group row">
                 <label for="example-date-input" class="col-2 col-form-label">À</label>
                 <div class="col-10">
-                  <%= date_field_tag :end, params[:end], id: "end", value: "", class:"form-control"  %>
+                  <% if @end_date %>
+                    <% default_end_date = @end_date %>
+                  <% else %>
+                    <% default_end_date = "" %>
+                  <% end %>
+                  <%= date_field_tag :end, params[:end], id: "end", value: default_end_date, class:"form-control"  %>
                 </div>
               </div>
             </div>
@@ -41,7 +51,7 @@
                   params[:query],
                   id: 'SearchBar',
                   class: "form-control flat-search",
-                    placeholder: "Recherchez la ville de votre Hôpital",
+                    placeholder: "Recherchez votre lieu de mobilisation",
                     required: true,
                     class:"form-control mb-2 mr-sm-2"
                       %>

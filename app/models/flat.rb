@@ -75,7 +75,7 @@ class Flat < ApplicationRecord
   def available_between(start_date, end_date)
     self.rentals.where(validated: true).each do |rental|
       if rental.end_date
-        if start_date <= rental.end_date && start_date >= rental.start_date
+        if start_date < rental.end_date && start_date >= rental.start_date
           return false
         elsif end_date <= rental.end_date && end_date > rental.start_date
           return false
