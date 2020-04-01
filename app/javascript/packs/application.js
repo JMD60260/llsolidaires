@@ -8,6 +8,12 @@ require('google-maps');
 
 import "bootstrap";
 import { initAutocomplete } from "./map";
+import { validationForDates } from "./search_form_valid_dates";
+
+
+validationForDates();
+
+
 
 var bouton = document.querySelector("#soignant");
 var rr = document.querySelector("#rr");
