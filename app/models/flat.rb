@@ -12,20 +12,20 @@ class Flat < ApplicationRecord
 
   validate :found_address_presence?
   after_validation :geocode, if: :will_save_change_to_address?
-  validate :define_city
+  after_save :define_city
 
   def define_city
+    return unless city.present?
     geocoded_adress = Geocoder.search("#{self.latitude}, #{self.longitude}")[0].data["address"]
-    city = geocoded_adress["city"]
-    town = geocoded_adress["town"]
-    (city != nil) ? self.city = city : self.city = town
+    geocoded_city = geocoded_adress["city"]
+    geocoded_town = geocoded_adress["town"]
+    (geocoded_city != nil) ? self.city = geocoded_city : self.city = geocoded_town
   end
 
   def found_address_presence?
     # Impossible de raise des flashes d'erreurs ici, donc cette methode renvoie une 500 si ladresse n'est pas géocodable. A ameliorer
     if self.geocode == nil || self.geocode[1] == nil
       errors.add(:address, "Cette addresse n'est pas valide, merci de la compléter.")
-      flash[:error] = "Cette addresse n'est pas valide, merci de la compléter."
     end
   end
 
