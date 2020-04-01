@@ -83,7 +83,7 @@
               <% justificatif = rental.user.proof.url.present? ? download_proof_rental_path(rental) : '' %>
               <h6 class="mb-1 type"> Demandeur :<button class="mb-1 type colorwar btnout" id="myBtn" onclick="modalOpen('<%= rental.user.last_name %>','<%= rental.user.first_name %>','<%= rental.user.description %>','<%= justificatif %>')"> <%= rental.user.first_name + " " + rental.user.last_name %></button></h6>
               <br>
-              <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date %></span>&nbsp;&nbsp;  Au : <span class="grey"> <%= rental.end_date ? rental.end_date : "n. d." %></span></h6>
+              <h6 class="mb-4 type"> Du : <span class="grey"> <%= rental.start_date.strftime("%d/%m/%Y") %></span>&nbsp;&nbsp;  Au : <span class="grey"> <%= rental.end_date ? rental.end_date.strftime("%d/%m/%Y") : "n. d." %></span></h6>
               <%= link_to 'Accepter', rental_validate_path(rental), method: :patch, class: "btn btn-success m-2 py-3 px-4 radius"  %>
               <%= link_to 'Décliner', rental_refuse_path(rental), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-danger m-2 py-3 px-4 radius" %>
             </div>
