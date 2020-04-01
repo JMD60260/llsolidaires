@@ -19,7 +19,12 @@
               <div class="form-group row">
                 <label for="example-date-input" class="col-2 col-form-label">De</label>
                 <div class="col-10">
-                  <%= date_field_tag :start, params[:start], id: "start", required: true, value: Date.tomorrow, class:"form-control" %>
+                  <% if @start_date %>
+                    <% default_start_date = @start_date %>
+                  <% else %>
+                    <% default_start_date = Date.tomorrow %>
+                  <% end %>
+                  <%= date_field_tag :start, params[:start], id: "start", required: true, value: default_start_date, class:"form-control" %>
                 </div>
               </div>
             </div>
@@ -27,7 +32,12 @@
               <div class="form-group row">
                 <label for="example-date-input" class="col-2 col-form-label">À</label>
                 <div class="col-10">
-                  <%= date_field_tag :end, params[:end], id: "end", value: "", class:"form-control"  %>
+                  <% if @end_date %>
+                    <% default_end_date = @end_date %>
+                  <% else %>
+                    <% default_end_date = "" %>
+                  <% end %>
+                  <%= date_field_tag :end, params[:end], id: "end", value: default_end_date, class:"form-control"  %>
                 </div>
               </div>
             </div>
@@ -41,7 +51,7 @@
                   params[:query],
                   id: 'SearchBar',
                   class: "form-control flat-search",
-                    placeholder: "Recherchez la ville de votre Hôpital",
+                    placeholder: "Recherchez votre lieu de mobilisation",
                     required: true,
                     class:"form-control mb-2 mr-sm-2"
                       %>
@@ -94,16 +104,17 @@
       <div class="row marketing color-back w-100 p-3 mb-3">
       <% flat.photos.each do |photo| %>
         <div style="background-image:url(<%= flat.photos[0].url %>);" class="d-block col-4 image-cara"></div>
-        <% end %>
+      <% end %>
         <div class="col-8 d-flex flex-column justify-content-between">
           <div>
             <h6 class="mb-1 type"> Type : <span class="grey"> <%= flat.flat_type %></span></h6>
             <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= flat.address %></span></h6>
           </div>
           <div class="d-flex justify-content-end">
+            <% photos_urls = flat.photos.map {|photo| photo.url } %>
             <button id="myBtn" class="btn btn-outline-warning py-1 px-3 radius"
             onclick="modalMap('<%= flat.flat_type %>','<%= flat.accessibility_pmr %>','<%= flat.address %>',
-                                <% flat.photos.each do |photo| %>'<%= photo.url%>'<%end%>,
+                              '<%= photos_urls %>',
                               '<%= flat.description %>', '<%= @start_date %>', '<%= @end_date %>',
                               '<%= flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }) %>')" >
               Détail et demande
@@ -133,19 +144,10 @@
         <div class="col-auto d-none d-lg-block m-4" >
           <div class="container">
             <div id="demo" class="carousel slide" data-ride="carousel" >
-              <!-- Indicateurs -->
-              <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-              </ul>
 
               <!-- Carrousel -->
-              <div class="carousel-inner">
-                <div class="carousel-item active" id="modalPhotos">
-                  <div class="carousel-caption d-none d-md-block">
-                  </div>
-                </div>
+              <div class="carousel-inner" id="modalCarousel">
+
               </div>
 
               <!-- Contrôles -->
