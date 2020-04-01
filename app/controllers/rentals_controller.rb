@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:download_proof, :edit, :update, :destroy, :validate_rental, :refuse_rental]
+  before_action :set_rental, only: [:download_proof, :edit, :update, :destroy]
 
   def download_proof
     data = open(@rental.user.proof.url)
@@ -35,6 +35,7 @@ class RentalsController < ApplicationController
 
   def validate_rental
     # Supprimer toutes les autres rentals.validated == false pour le @rental.user, seuleùent celles qui ont une date en commun avec @rental
+    @rental = Rental.find(params[:rental_id])
     if @rental.flat.user == current_user && @rental.validated == false
       @flat_rentals = @rental.flat.rentals
       @rentals_to_delete = []
