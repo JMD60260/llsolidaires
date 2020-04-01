@@ -89,7 +89,9 @@
       <% end %>
       <% @flats.each do |flat| %>
       <div class="row marketing color-back w-100 p-3 mb-3">
-        <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block col-4 image-cara"></div>
+      <% flat.photos.each do |photo| %>
+        <div style="background-image:url(<%= flat.photos[0].url %>);" class="d-block col-4 image-cara"></div>
+        <% end %>
         <div class="col-8 d-flex flex-column justify-content-between">
           <div>
             <h6 class="mb-1 type"> Type : <span class="grey"> <%= flat.flat_type %></span></h6>
@@ -97,7 +99,7 @@
           </div>
           <div class="d-flex justify-content-end">
             <button id="myBtn" class="btn btn-outline-warning py-1 px-3 radius"
-            onclick="modalMap('<%= flat.flat_type %>','<%= flat.accessibility_pmr %>','<%= flat.address %>',
+            onclick="modalMap('<%= flat.flat_type %>','<%= flat.accessibility_pmr %>','<%= flat.address %>', '<%= flat.photos[0].url %>',
                               '<%= flat.description %>', '<%= @start_date %>', '<%= @end_date %>',
                               '<%= flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }) %>')" >
               Détail et demande
@@ -136,22 +138,8 @@
 
               <!-- Carrousel -->
               <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-1.jpg" alt="Carrousel slide 1" class="d-block w-100">
+                <div class="carousel-item active" id="modalPhotos">
                   <div class="carousel-caption d-none d-md-block">
-
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg" alt="Carrousel slide 2" class="d-block w-100">
-                  <div class="carousel-caption d-none d-md-block text-dark">
-
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-3.jpg" alt="Carrousel slide 3" class="d-block w-100">
-                  <div class="carousel-caption d-none d-md-block">
-
                   </div>
                 </div>
               </div>

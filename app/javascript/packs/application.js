@@ -85,31 +85,41 @@ function modalOpen(name,firstname,about,link) {
 
 }
 
-function modalMap(type,pmr,addresse,about,date1, date2, requestLink) {
+function modalMap(
+  type,
+  pmr,
+  addresse,
+  photos,
+  photos2,
+  photos3,
+  about,
+  date1,
+  date2,
+  requestLink
+) {
   var modal = document.querySelector("#myModal");
-
-
+  var modalPhoto = document.querySelector("#modalPhotos");
   var modalType = document.querySelector("#modalType");
-  var modalPMR =document.querySelector("#modalPMR");
-  var modalAbout =document.querySelector("#modalAbout");
-  var modalAdresse =document.querySelector("#modalAdresse");
-  var modalDate1 =document.querySelector("#modalDate1");
-  var modalDate2 =document.querySelector("#modalDate2");
-  var modalRequestLink =document.querySelector("#modalRequestLink");
-
-
+  var modalPMR = document.querySelector("#modalPMR");
+  var modalAbout = document.querySelector("#modalAbout");
+  var modalAdresse = document.querySelector("#modalAdresse");
+  var modalDate1 = document.querySelector("#modalDate1");
+  var modalDate2 = document.querySelector("#modalDate2");
+  var modalRequestLink = document.querySelector("#modalRequestLink");
   modal.style.display = "block";
-  modalType.innerText =  type ;
-  if (pmr === "true"){
+  modalType.innerText = type;
+  if (pmr === "true") {
     modalPMR.innerText = "Oui";
   } else {
-    modalPMR.innerText = "Non" ;
+    modalPMR.innerText = "Non";
   }
-  modalAdresse.innerText =  addresse ;
-  modalDate1.innerText =  date1 ;
-  modalDate2.innerText =  date2 ;
+  modalPhoto.innerHTML = `<img src=${photos}  >`
+
+  modalAdresse.innerText = addresse;
+  modalDate1.innerText = date1;
+  modalDate2.innerText = date2;
   if (date2 === "") {
-    modalDate2.innerText =  "n. d." ;
+    modalDate2.innerText = "n. d.";
   }
   modalAbout.innerText =  about ;
   modalRequestLink.href =  requestLink ;
