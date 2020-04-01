@@ -68,6 +68,7 @@ class FlatsController < ApplicationController
                                  :flat_type,
                                  :description,
                                  :accessibility_pmr,
+                                 :photos_cache,
                                  { photos: [] }
                                  )
   end
