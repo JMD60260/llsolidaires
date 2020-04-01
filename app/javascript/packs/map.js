@@ -26,6 +26,8 @@ const initAutocomplete = () => {
   // more details for that place.
 
   let query
+  let lat
+  let lng
   searchBox.addListener('places_changed', function () {
     var places = searchBox.getPlaces();
 
@@ -33,6 +35,8 @@ const initAutocomplete = () => {
       return;
     }
     query = places[0].formatted_address
+    lat = places[0].geometry.location.lat()
+    lng = places[0].geometry.location.lng()
 
     // Clear out the old markers.
     markers.forEach(function (marker) {
@@ -74,11 +78,15 @@ const initAutocomplete = () => {
     });
     map.fitBounds(bounds);
     let target = document.getElementById('SearchBar');
+    let lat_hidden_field = document.getElementById('hidden_lat');
+    let lng_hidden_field = document.getElementById('hidden_lng');
+    lat_hidden_field.setAttribute('value', lat);
+    lng_hidden_field.setAttribute('value', lng);
     target.addEventListener('submit', (e)=> {
       e.removeAttribute('value');
       e.setAttribute('value', query);
     });
-    document.getElementById('search-bar-button').click();
+    //document.getElementById('search-bar-button').click();
   });
 
 

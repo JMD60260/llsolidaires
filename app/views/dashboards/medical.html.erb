@@ -45,6 +45,9 @@
                     required: true,
                     class:"form-control mb-2 mr-sm-2"
                       %>
+
+                  <%= hidden_field_tag :lat, params[:lat], id: 'hidden_lat' %>
+                  <%= hidden_field_tag :lng, params[:lng], id: 'hidden_lng' %>
                     </div>
                   </div>
                 </div>
