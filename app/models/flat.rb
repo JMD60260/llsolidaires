@@ -92,7 +92,7 @@ class Flat < ApplicationRecord
   end
 
   def available_from(start_date)
-    return available_from(start_date, start_date + 15)
+    return available_between(start_date, start_date + 15)
   end
 
   def available_for(start_date, end_date)
