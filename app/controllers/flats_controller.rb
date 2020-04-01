@@ -6,12 +6,12 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user_id = current_user.id
     if @flat.save
-      @flat.update(city: Geocoder.search("#{@flat.latitude}, #{@flat.longitude}").first.data["address"]["city"])
       redirect_to dashboard_owner_path
     else
       @tab = "Mes logements"
       @as = "owner"
       @flats = current_user.flats
+      flash[:error] = @flat.errors.full_messages
       render 'dashboards/owner'
     end
   end
