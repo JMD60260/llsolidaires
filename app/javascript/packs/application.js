@@ -99,8 +99,6 @@ function modalMap(
 ) {
   var modal = document.querySelector("#myModal");
   var modalPhoto = document.querySelector("#modalPhotos");
-  var modalPhoto2 = document.querySelector("#modalPhotos2");
-  var modalPhoto3 = document.querySelector("#modalPhotos3");
   var modalType = document.querySelector("#modalType");
   var modalPMR = document.querySelector("#modalPMR");
   var modalAbout = document.querySelector("#modalAbout");
@@ -116,8 +114,7 @@ function modalMap(
     modalPMR.innerText = "Non";
   }
   modalPhoto.innerHTML = `<img src=${photos}  >`
-  modalPhoto2.innerHTML = `<img src=${photos2}  >`
-  modalPhoto3.innerHTML = `<img src=${photos3}  >`
+
   modalAdresse.innerText = addresse;
   modalDate1.innerText = date1;
   modalDate2.innerText = date2;
