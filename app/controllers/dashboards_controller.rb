@@ -19,9 +19,7 @@ class DashboardsController < ApplicationController
         else
           @end_date = Date.parse(params[:end])
         end
-        @flats = Flat.near([params[:lat], params[:lng]], 5)
-        # @flats = Flat.near([params[:lat], params[:lng]], 5).select { |flat| flat.available_for(@start_date, @end_date) }
-        @flats = Flat.all
+        @flats = Flat.near([params[:lat], params[:lng]], 5).select { |flat| flat.available_for(@start_date, @end_date) }
       else
         @query = false
         @flats = Flat.all
