@@ -90,13 +90,12 @@ function modalMap(
   pmr,
   addresse,
   photos,
-  photos2,
-  photos3,
   about,
   date1,
   date2,
   requestLink
 ) {
+  var arrayPhotos = [];
   var modal = document.querySelector("#myModal");
   var modalPhoto = document.querySelector("#modalPhotos");
   var modalType = document.querySelector("#modalType");
@@ -113,7 +112,12 @@ function modalMap(
   } else {
     modalPMR.innerText = "Non";
   }
-  modalPhoto.innerHTML = `<img src=${photos}  >`
+
+  arrayPhotos.push(photos)
+  arrayPhotos.forEach(photo => {
+      console.log(photo);
+      modalPhoto.innerHTML = `<img src=${photo}  >`
+  })
 
   modalAdresse.innerText = addresse;
   modalDate1.innerText = date1;

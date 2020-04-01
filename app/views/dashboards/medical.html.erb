@@ -99,7 +99,8 @@
           </div>
           <div class="d-flex justify-content-end">
             <button id="myBtn" class="btn btn-outline-warning py-1 px-3 radius"
-            onclick="modalMap('<%= flat.flat_type %>','<%= flat.accessibility_pmr %>','<%= flat.address %>', '<%= flat.photos[0].url %>',
+            onclick="modalMap('<%= flat.flat_type %>','<%= flat.accessibility_pmr %>','<%= flat.address %>',
+                                <% flat.photos.each do |photo| %>'<%= photo.url%>'<%end%>,
                               '<%= flat.description %>', '<%= @start_date %>', '<%= @end_date %>',
                               '<%= flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }) %>')" >
               Détail et demande
