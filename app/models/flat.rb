@@ -15,11 +15,12 @@ class Flat < ApplicationRecord
   after_save :define_city
 
   def define_city
-    return unless city.present?
-    geocoded_adress = Geocoder.search("#{self.latitude}, #{self.longitude}")[0].data["address"]
-    geocoded_city = geocoded_adress["city"]
-    geocoded_town = geocoded_adress["town"]
-    (geocoded_city != nil) ? self.city = geocoded_city : self.city = geocoded_town
+    unless city.present?
+      geocoded_adress = Geocoder.search("#{self.latitude}, #{self.longitude}")[0].data["address"]
+      geocoded_city = geocoded_adress["city"]
+      geocoded_town = geocoded_adress["town"]
+      (geocoded_city != nil) ? self.city = geocoded_city : self.city = geocoded_town
+    end
   end
 
   def found_address_presence?
