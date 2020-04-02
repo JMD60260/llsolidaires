@@ -9,12 +9,6 @@ const initAutocomplete = () => {
     zoom: 10
   });
   search(map);
-  // let rechercheBouton = document.querySelector('#submit-search');
-  // let click1 = rechercheBouton.addEventListener(('click'), event => {
-  //   event.preventDefault();
-  //   console.log("cliqué");
-  //   search()
-  // });
 };
 const search = map => {
   // Create the search box and link it to the UI element.
