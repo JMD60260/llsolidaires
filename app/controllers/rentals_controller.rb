@@ -136,9 +136,11 @@ class RentalsController < ApplicationController
 
   def refuse_rental_to_delete(rentals_to_delete)
     rentals_to_delete.each do |rental|
-      flash[:error] = "Vous avez refusé la réservation de l'appartement situé #{rental.flat.address} par #{rental.user.first_name} #{rental.user.last_name}, du #{rental.start_date} au #{rental.end_date.nil? ? "Date non définie" : rental.end_date}"
-      rental.destroy
-      UserMailer.send_refusal_to_medical(rental).deliver
+      if rental.flat.user == current_user && rental.validated == false
+        flash[:error] = "Vous avez refusé la réservation de l'appartement situé #{rental.flat.address} par #{rental.user.first_name} #{rental.user.last_name}, du #{rental.start_date} au #{rental.end_date.nil? ? "Date non définie" : rental.end_date}"
+        rental.destroy
+        UserMailer.send_refusal_to_medical(rental).deliver
+      end
     end
   end
 
