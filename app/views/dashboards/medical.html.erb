@@ -102,8 +102,8 @@
       <% end %>
       <% @flats.each do |flat| %>
       <div class="row marketing color-back w-100 p-3 mb-3">
-      <% flat.photos.each do |photo| %>
-        <div style="background-image:url(<%= flat.photos[0].url %>);" class="d-block col-4 image-cara"></div>
+      <% if flat.photos.present? %>
+        <div style="background-image:url(<%= flat.photos[0].url %>); background-size: 100% auto; background-repeat: no-repeat;" class="d-block col-4 image-cara"></div>
       <% end %>
         <div class="col-8 d-flex flex-column justify-content-between">
           <div>
@@ -183,7 +183,7 @@
           <div class="row">
             <div class="col-md-12 themed-grid-col mt-4" >
               <h6 class="mb-4 type"> Description :</h6>
-              <p id="modalAbout"> </p>
+              <p class="grey" id="modalAbout"> </p>
             </div>
           </div>
         </div>

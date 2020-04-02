@@ -14,37 +14,36 @@
 </section>
 
 
+
 <% @flats.each do |flat| %>
 <section>
   <div class="container marketing color-back" style="margin-top:8rem;">
     <div class="row d-flex">
       <div class="col-md-12 col-lg-4 pl-lg-5 py-4">
-        <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
+        <div id="demo<%= flat.id %>" class="carousel slide pointer-event" data-ride="carousel">
 
 
           <!-- Carrousel -->
           <div class="carousel-inner">
             <% if flat.photos.present? %>
-              <% flat.photos.each_with_index do |photo, i| %>
-                <% if i == 0 %>
-                  <div class="carousel-item imgCircle">
-               
-                <% else %>
-                  <div class="carousel-item">
-                <% end %>
-                  <div style="background-image:url(<%= photo.url %>);" class="d-block image-cara"></div>
-                  <div class="carousel-caption d-none d-md-block " >
-                    <!-- <a class="text-blue" href=""><i class="fas fa-plus-circle fa-2x"></i></a> -->
-                  </div>
-                </div>
+            <% flat.photos.each_with_index do |photo, i| %>
+              <% if i==0 %>
+                <div class="carousel-item active">
+              <% else %>
+                <div class="carousel-item">
               <% end %>
+                <div style="background-image:url('<%= photo.url %>');" class="d-block  image-cara"></div>
+                <div class="carousel-caption d-none d-md-block text-dark">
+                </div>
+              </div>
+            <% end %>
             <% end %>
             <!-- Contrôles -->
-            <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#demo<%= flat.id %>" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Précédent</span>
             </a>
-            <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#demo<%= flat.id %>" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Suivant</span>
             </a>
@@ -81,7 +80,7 @@
       <div class="row d-flex">
         <div class="col-md-6 col-lg-4 pl-lg-5 ">
           <div class="img d-flex align-self-stretch align-items-center  p-2">
-            <h6 class="mb-1 type"> Adresse : </h6>
+            <h6 class="mb-1 type"> Adresse: </h6>
             <p class="grey mt-1 ml-5"> <%= flat.address %> </p>
           </div>
         </div>
@@ -108,7 +107,6 @@
       </div>
     </section>
     <% end %>
-
 
 
     <!-- The Modal -->
