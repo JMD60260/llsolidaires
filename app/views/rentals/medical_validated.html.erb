@@ -20,32 +20,33 @@
   <div class="container marketing color-back" style="margin-top:8rem;">
     <div class="row d-flex">
       <div class="col-md-12 col-lg-4 pl-lg-5 py-5">
-        <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
+        <div id="demo<%= rental.id %>" class="carousel slide pointer-event" data-ride="carousel">
 
 
           <!-- Carrousel -->
           <div class="carousel-inner">
-            <div class="carousel-item imgCircle">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block " >
-
+            <% if rental.flat.photos.present? %>
+            <% rental.flat.photos.each_with_index do |photo, i| %>
+              <% if i==0 %>
+                <div class="carousel-item active">
+              <% else %>
+                <div class="carousel-item">
+              <% end %>
+                <div style="background-image:url('<%= photo.url %>');" class="d-block  image-cara"></div>
+                <div class="carousel-caption d-none d-md-block text-dark">
+                </div>
               </div>
-            </div>
-            <div class="carousel-item active">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block text-dark">
-
-              </div>
-            </div>
+            <% end %>
+            <% end %>
 
 
 
             <!-- Contrôles -->
-            <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#demo<%= rental.id %>" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Précédent</span>
             </a>
-            <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#demo<%= rental.id %>" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Suivant</span>
             </a>
@@ -107,32 +108,31 @@
   <div class="container marketing color-back" style="margin-top:8rem;">
     <div class="row d-flex">
       <div class="col-md-12 col-lg-4 pl-lg-5 py-5">
-        <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
+        <div id="demo<%= rental.id %>" class="carousel slide pointer-event" data-ride="carousel">
 
 
           <!-- Carrousel -->
           <div class="carousel-inner">
-            <div class="carousel-item imgCircle">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block " >
-
+            <% if rental.flat.photos.present? %>
+            <% rental.flat.photos.each_with_index do |photo, i| %>
+              <% if i==0 %>
+                <div class="carousel-item active">
+              <% else %>
+                <div class="carousel-item">
+              <% end %>
+                <div style="background-image:url('<%= photo.url %>');" class="d-block  image-cara"></div>
+                <div class="carousel-caption d-none d-md-block text-dark">
+                </div>
               </div>
-            </div>
-            <div class="carousel-item active">
-              <div style="background-image:url('https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg');" class="d-block  image-cara"></div>
-              <div class="carousel-caption d-none d-md-block text-dark">
-
-              </div>
-            </div>
-
-
+            <% end %>
+            <% end %>
 
             <!-- Contrôles -->
-            <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#demo<%= rental.id %>" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Précédent</span>
             </a>
-            <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#demo<%= rental.id %>" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Suivant</span>
             </a>
