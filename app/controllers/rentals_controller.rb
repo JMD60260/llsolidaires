@@ -37,6 +37,7 @@ class RentalsController < ApplicationController
     # Supprimer toutes les autres rentals.validated == false pour le @rental.user, seuleùent celles qui ont une date en commun avec @rental
     @rental = Rental.find(params[:rental_id])
     if @rental.flat.user == current_user && @rental.validated == false
+      @rental.update(validated: true)
       @flat_rentals = @rental.flat.rentals
       @rentals_to_delete = []
       @flat_rentals.each do |rental|
@@ -46,7 +47,6 @@ class RentalsController < ApplicationController
           @rentals_to_delete << rental
         end
       end
-      @rental.update(validated: true)
       UserMailer.send_acceptation_to_medical(@rental).deliver
       refuse_rental_to_delete(@rentals_to_delete)
       redirect_to owner_pending_requests_path
