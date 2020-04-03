@@ -35,6 +35,9 @@ group :development do
 end
 
 group :development, :test do
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
+  end
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'
@@ -43,9 +46,6 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-group :development, :test do
-  # There may be other lines in this block already. Simply append the following after:
-  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master' # Previously '4-0-dev' or '4-0-maintenance' branch
-  end
+group :test do
+  gem 'factory_bot_rails'
 end
