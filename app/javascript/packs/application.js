@@ -125,7 +125,7 @@ function modalMap(
       } else {
         carouselInnerHTML += "<div class='carousel-item'>";
       }
-      carouselInnerHTML += `<div style="background-image:url(${photoUrl.slice(1,-1)});" class="d-block  image-cara"></div>`;
+      carouselInnerHTML += `<div style="background-image:url(${photoUrl.slice(1,-1)}); height: 500px !important;" class="d-block  image-cara"></div>`;
       carouselInnerHTML += "<div class='carousel-caption d-none d-md-block'></div>";
       carouselInnerHTML += "</div>";
     })
