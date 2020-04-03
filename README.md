@@ -68,10 +68,5 @@ Tu peux alors coder normalement / puis
 
 #### Pour Merger ####
 
-    git checkout master
-    git pull origin master
-    git checkout nom_de_ta_branche
-    git merge master
-    git checkout master
-    git merge nom_de_ta_branche
-    git push origin master
+    git push origin nom_de_ta_branche
+    aller sur github et faire la pull request de ta branche
