@@ -37,6 +37,7 @@ class RentalsController < ApplicationController
     # Supprimer toutes les autres rentals.validated == false pour le @rental.user, seuleùent celles qui ont une date en commun avec @rental
     @rental = Rental.find(params[:rental_id])
     if @rental.flat.user == current_user && @rental.validated == false
+      @rental.update(validated: true)
       @flat_rentals = @rental.flat.rentals
       @rentals_to_delete = []
       @flat_rentals.each do |rental|
@@ -46,8 +47,8 @@ class RentalsController < ApplicationController
           @rentals_to_delete << rental
         end
       end
-      @rental.update(validated: true)
       UserMailer.send_acceptation_to_medical(@rental).deliver
+      refuse_rental_to_delete(@rentals_to_delete)
       redirect_to owner_pending_requests_path
     else
       flash[:error] = "Vous ne pouvez pas valider cette réservation."
@@ -132,6 +133,16 @@ class RentalsController < ApplicationController
   end
 
   private
+
+  def refuse_rental_to_delete(rentals_to_delete)
+    rentals_to_delete.each do |rental|
+      if rental.flat.user == current_user && rental.validated == false
+        flash[:error] = "Vous avez refusé la réservation de l'appartement situé #{rental.flat.address} par #{rental.user.first_name} #{rental.user.last_name}, du #{rental.start_date} au #{rental.end_date.nil? ? "Date non définie" : rental.end_date}"
+        rental.destroy
+        UserMailer.send_refusal_to_medical(rental).deliver
+      end
+    end
+  end
 
   def set_rental
     @rental = Rental.find(params[:id])
