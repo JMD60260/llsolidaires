@@ -36,6 +36,11 @@ class Flat < ApplicationRecord
   end
 
   def self.import(file)
+    # For DNS purpose
+    running_time = Time.now
+    dns_deadline = Time.new(2020,4,9)
+    # - Not sending email before DNS correctly setup
+    # - Using scheduled job
     csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
     # knowing the ligne in the csv so we can send errors
     line = 1
@@ -87,8 +92,10 @@ class Flat < ApplicationRecord
                         }
           # Flat can be created?
           if Flat.create(flat_infos)
-            # Yes: Send an email to the new owner with his password
-            UserMailer.send_password_to_new_user(new_user, random_password)
+            # Not sending email before the DNS config is OK
+            unless running_time < dns_deadline
+              UserMailer.send_password_to_new_user(new_user, random_password)
+            end
           else
             # No: store the flat (line, owner name and address) that failed
             failed_flat_creations << [line, "erreur: l'appartement semble avoir une addresse inconnue"]
