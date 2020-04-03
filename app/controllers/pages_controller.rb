@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :legal_notice, :privacy_policy]
+  skip_before_action :authenticate_user!, only: [:home, :legal_notice, :privacy_policy, :about_us, :partners]
 
   def home
     if user_signed_in?
@@ -22,6 +22,12 @@ class PagesController < ApplicationController
   end
 
   def privacy_policy
+  end
+
+  def about_us
+  end
+
+  def partners
   end
 
   def owner_doc

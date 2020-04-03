@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'pages/owner-doc', to: "pages#owner_doc"
   get 'pages/medical-doc', to: "pages#medical_doc"
   get 'pages/sos_mailer', to: "pages#sos_mailer"
+  get 'pages/about_us', to: "pages#about_us"
+  get 'pages/partners', to: "pages#partners"
 
   get 'dashboard/owner', to: "dashboards#owner"
   get 'dashboard/medical', to: "dashboards#medical"
