@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700" rel="stylesheet">
 <style type="text/css">
 html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
+
    @media only screen and (min-device-width: 750px) {
       .table750 {width: 750px !important;}
    }
@@ -64,22 +65,20 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                      <tr>
                         <td align="left" valign="top">
                            <font face="Poppins, sans-serif" color="#ffb400" style="font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">
-                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #ffb400; font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">Bonjour <%= @rental.user.first_name ? @rental.user.first_name : @rental.user.last_name %>, </span>
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #ffb400; font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">Bonjour,</span>
                            </font>
                            <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
                            <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
-                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Votre réservation pour l’appartement situé : <%= @flat.address %> , a été acceptée par : <%= @owner.first_name ? "#{@owner.first_name} #{@owner.last_name}" : @owner.last_name %>, email : <%= @owner.email %>.</span>
-                           </font>
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Un fichier CSV a été envoyé dans la base de données du site, des erreurs ont été relevées:</span>
                            <div style="height: 20px; line-height: 20px; font-size: 18px;">&nbsp;</div>
-                           <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
-                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Vous êtes invité à échanger directement avec lui par email, pour un premier contact.</span>
-                           </font>
+                           <% errors.each do |error| %>
+                             <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
+                                <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">ligne n°<%= error[0] %> - <%= error[1] %></span>
+                             </font>
+                           <% end %>
                            <div style="height: 20px; line-height: 20px; font-size: 18px;">&nbsp;</div>
-
-                           <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
-                            <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Nous sommes heureux d’avoir pu vous aider à trouver ce logement.</span>
-                         </font>
-                         <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
+                           <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
+                           <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
                            <div style="height: 75px; line-height: 75px; font-size: 73px;">&nbsp;</div>
                         </td>
                      </tr>
@@ -105,6 +104,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                                     <td align="center" valign="top">
                                        <div style="height: 13px; line-height: 13px; font-size: 11px;">&nbsp;</div>
                                        <div style="display: block; max-width: 50px;">
+
                                     </td>
                                  </tr>
                               </table>
@@ -131,6 +131,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                                     <td align="center" valign="top">
                                        <div style="height: 13px; line-height: 13px; font-size: 11px;">&nbsp;</div>
                                        <div style="display: block; max-width: 177px;">
+
                                        </div>
                                     </td>
                                  </tr>
@@ -151,6 +152,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                            <table cellpadding="0" cellspacing="0" border="0" width="88%" style="width: 88% !important; min-width: 88%; max-width: 88%;">
                               <tr>
                                  <td align="center" valign="top">
+
                                     <div style="height: 34px; line-height: 34px; font-size: 32px;">&nbsp;</div>
                                     <font face="Poppins, sans-serif" color="#868686" style="font-size: 17px; line-height: 20px;">
                                        <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;">Copyright &copy; 2020 </span>
@@ -160,6 +162,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                                        <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px;"><a href="#" target="_blank" style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;">LES LOGEMENTS SOLIDAIRES.com</a> </span>
                                     </font>
                                     <div style="height: 35px; line-height: 35px; font-size: 33px;">&nbsp;</div>
+
                                     <div style="height: 35px; line-height: 35px; font-size: 33px;">&nbsp;</div>
                                  </td>
                               </tr>
@@ -167,6 +170,7 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                         </td>
                      </tr>
                   </table>
+
                </td>
                <td class="mob_pad" width="25" style="width: 25px; max-width: 25px; min-width: 25px;">&nbsp;</td>
             </tr>
