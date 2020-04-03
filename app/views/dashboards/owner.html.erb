@@ -128,6 +128,16 @@
                                        input_html: { class: "custom-file-input" },
                                        label_html: { class: 'custom-file-label' } %>
                       <%= f.hidden_field :photos_cache %>
+                      <%= f.file_field :photos,
+                                       multiple: true,
+                                       input_html: { class: "custom-file-input" },
+                                       label_html: { class: 'custom-file-label' } %>
+                      <%= f.hidden_field :photos_cache %>
+                      <%= f.file_field :photos,
+                                       multiple: true,
+                                       input_html: { class: "custom-file-input" },
+                                       label_html: { class: 'custom-file-label' } %>
+                      <%= f.hidden_field :photos_cache %>
                     <!-- <input type="file" class="custom-file-input" id="customFile"> -->
                     <!-- <label class="custom-file-label" for="customFile">Une image</label> -->
                   </div>
