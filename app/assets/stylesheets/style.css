@@ -7337,7 +7337,10 @@ a.text-dark:hover, a.text-dark:focus {
 
 .image-cara {
   height: 250px;
-  background-size: cover; }
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 body {
   font-family: "Poppins", Arial, sans-serif;
