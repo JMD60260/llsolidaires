@@ -1,206 +1,201 @@
 <%= render 'shared/banner' %>
 
-<%= render 'shared/navbar_user' %>
+    <%= render 'shared/navbar_user' %>
 
 
-<section>
-  <div class="container" style="margin-top: 100px;">
-    <div class="row text-center">
-      <div class="col-lg-12 col-md-12">
-        <button class="btn btn-warning text-white radius mb-1 p-2" onclick="modalForm()">Proposer un logement</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<% @flats.each do |flat| %>
-<section>
-  <div class="container marketing color-back" style="margin-top:8rem;">
-    <div class="row d-flex">
-      <div class="col-md-12 col-lg-4 pl-lg-5 py-4">
-        <div id="demo<%= flat.id %>" class="carousel slide pointer-event" data-ride="carousel">
-
-
-          <!-- Carrousel -->
-          <div class="carousel-inner">
-            <% if flat.photos.present? %>
-            <% flat.photos.each_with_index do |photo, i| %>
-              <% if i==0 %>
-                <div class="carousel-item active">
-              <% else %>
-                <div class="carousel-item">
-              <% end %>
-                <div style="background-image:url('<%= photo.url %>');" class="d-block  image-cara"></div>
-                <div class="carousel-caption d-none d-md-block text-dark">
+        <section>
+            <div class="container" style="margin-top: 100px;">
+                <div class="row text-center">
+                    <div class="col-lg-12 col-md-12">
+                        <button class="btn btn-warning text-white radius mb-1 p-2" onclick="modalForm()">Proposer un logement</button>
+                    </div>
                 </div>
-              </div>
-            <% end %>
-            <% end %>
-            <!-- Contrôles -->
-            <a class="carousel-control-prev" href="#demo<%= flat.id %>" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Précédent</span>
-            </a>
-            <a class="carousel-control-next" href="#demo<%= flat.id %>" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Suivant</span>
-            </a>
-          </div>
-          <!-- Carousel end -->
-
-        </div>
-      </div>
-      <div class="col-md-0 col-lg-4 pl-lg-7 py-4">
-        <div class="py-md-0">
+            </div>
+        </section>
 
 
-        </div>
-      </div>
-      <div class="col-md-12 col-lg-4 pl-lg-4 py-4 text-right" id="cnt-btn">
-        <div class="py-md-5">
-          <div class="row justify-content-start pb-3">
-            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-              <div class="pictos">
-                <%= link_to edit_flat_path(flat), class: 'pictoEdit mr-5' do %>
-                <i class="fas fa-pencil-alt fa-2x"></i>
-                <% end %>
-                <%= link_to  flat_path(flat), class: "pictoDelete",
+
+        <% @flats.each do |flat| %>
+            <section>
+                <div class="container marketing color-back" style="margin-top:8rem;">
+                    <div class="row d-flex">
+                        <div class="col-md-12 col-lg-4 pl-lg-5 py-4">
+                            <div id="demo<%= flat.id %>" class="carousel slide pointer-event" data-ride="carousel">
+
+
+                                <!-- Carrousel -->
+                                <div class="carousel-inner">
+                                    <% if flat.photos.present? %>
+                                        <% flat.photos.each_with_index do |photo, i| %>
+                                            <% if i==0 %>
+                                                <div class="carousel-item active">
+                                                    <% else %>
+                                                        <div class="carousel-item">
+                                                            <% end %>
+                                                                <div style="background-image:url('<%= photo.url %>');" class="d-block  image-cara"></div>
+                                                                <div class="carousel-caption d-none d-md-block text-dark">
+                                                                </div>
+                                                        </div>
+                                                        <% end %>
+                                                            <% end %>
+                                                                <!-- Contrôles -->
+                                                                <a class="carousel-control-prev" href="#demo<%= flat.id %>" role="button" data-slide="prev">
+                                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                    <span class="sr-only">Précédent</span>
+                                                                </a>
+                                                                <a class="carousel-control-next" href="#demo<%= flat.id %>" role="button" data-slide="next">
+                                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                    <span class="sr-only">Suivant</span>
+                                                                </a>
+                                                </div>
+                                                <!-- Carousel end -->
+
+                                </div>
+                            </div>
+                            <div class="col-md-0 col-lg-4 pl-lg-7 py-4">
+                                <div class="py-md-0">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-4 pl-lg-4 py-4 text-right" id="cnt-btn">
+                                <div class="py-md-5">
+                                    <div class="row justify-content-start pb-3">
+                                        <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                                            <div class="pictos">
+                                                <%= link_to edit_flat_path(flat), class: 'pictoEdit mr-5' do %>
+                                                    <i class="fas fa-pencil-alt fa-2x"></i>
+                                                    <% end %>
+                                                        <%= link_to  flat_path(flat), class: "pictoDelete",
                 method: :delete,
                 data: { confirm: "Êtes-vous sûr ?" }  do %>
-                <i class="fas fa-trash-alt fa-2x"></i>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                                                            <i class="fas fa-trash-alt fa-2x"></i>
+                                                            <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-      <div class="row d-flex">
-        <div class="col-md-6 col-lg-4 pl-lg-5 ">
-          <div class="img d-flex align-self-stretch align-items-center  p-2">
-            <h6 class="mb-1 type"> Adresse: </h6>
-            <p class="grey mt-1 ml-5"> <%= flat.address %> </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 pl-lg-5 ">
-          <div class="p-2">
-            <div class="row justify-content-start pb-3">
-              <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                <h6 class="mb-1 type"> Type : <span class="grey ml-3">  <%= flat.flat_type %></span></h6>
-                <h6 class="mb-1 type"> Accessible PMR : <span class="grey ml-3"> <%= flat.accessibility_pmr ? 'Oui' : 'Non' %></span> </h6>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 col-lg-5 pl-lg-5 ">
-          <div class="p-2">
-            <div class="row justify-content-start pb-3">
-              <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                <h6 class="mb-1 type"> Description :</h6>
-                <p class="grey">  <%= flat.description %> </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <% end %>
+                            <div class="row d-flex">
+                                <div class="col-md-6 col-lg-4 pl-lg-5 ">
+                                    <div class="img d-flex align-self-stretch align-items-center  p-2">
+                                        <h6 class="mb-1 type"> Adresse: </h6>
+                                        <p class="grey mt-1 ml-5">
+                                            <%= flat.address %>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 pl-lg-5 ">
+                                    <div class="p-2">
+                                        <div class="row justify-content-start pb-3">
+                                            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                                                <h6 class="mb-1 type"> Type : <span class="grey ml-3">  <%= flat.flat_type %></span></h6>
+                                                <h6 class="mb-1 type"> Accessible PMR : <span class="grey ml-3"> <%= flat.accessibility_pmr ? 'Oui' : 'Non' %></span> </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-5 pl-lg-5 ">
+                                    <div class="p-2">
+                                        <div class="row justify-content-start pb-3">
+                                            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                                                <h6 class="mb-1 type"> Description :</h6>
+                                                <p class="grey">
+                                                    <%= flat.description %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </section>
+            <% end %>
 
 
-    <!-- The Modal -->
-      <div id="myModal" class="modal">
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close" id="close">&times;</span>
-          </div>
-          <div class="modal-body">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close" id="close">&times;</span>
+                        </div>
+                        <div class="modal-body">
 
-            <%= simple_form_for(@flat) do |f| %>
-              <div class="row d-flex">
-                <div class="col-md-6 col-lg-10 pl-lg-5 formborder">
-                  <div class="custom-file mt-3 mb-3 ">
-                      <%= f.file_field :photos,
+                            <%= simple_form_for(@flat) do |f| %>
+                                <div class="row d-flex">
+                                    <div class="col-md-6 col-lg-10 pl-lg-5 formborder">
+                                        <div class="custom-file mt-3 mb-3 ">
+                                            <%= f.file_field :photos,
                                        multiple: true,
                                        input_html: { class: "custom-file-input" },
                                        label_html: { class: 'custom-file-label' } %>
-                      <%= f.hidden_field :photos_cache %>
-                      <%= f.file_field :photos,
-                                       multiple: true,
-                                       input_html: { class: "custom-file-input" },
-                                       label_html: { class: 'custom-file-label' } %>
-                      <%= f.hidden_field :photos_cache %>
-                      <%= f.file_field :photos,
-                                       multiple: true,
-                                       input_html: { class: "custom-file-input" },
-                                       label_html: { class: 'custom-file-label' } %>
-                      <%= f.hidden_field :photos_cache %>
-                    <!-- <input type="file" class="custom-file-input" id="customFile"> -->
-                    <!-- <label class="custom-file-label" for="customFile">Une image</label> -->
-                  </div>
-                  </div>
-                <div class="col-md-8 col-lg-4 pl-lg-5 ">
-                <div class="img d-flex align-self-stretch align-items-end  p-2">
-                  <div class="form-group row formborder">
-                    <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Adresse :</label>
-                    <div class="col-lg-8 col-sm-10">
-                      <%= f.text_area :address, class:"form-control" %>
+                                                <%= f.hidden_field :photos_cache %>
+
+                                                    <!-- <input type="file" class="custom-file-input" id="customFile"> -->
+                                                    <!-- <label class="custom-file-label" for="customFile">Une image</label> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-4 pl-lg-5 ">
+                                        <div class="img d-flex align-self-stretch align-items-end  p-2">
+                                            <div class="form-group row formborder">
+                                                <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Adresse :</label>
+                                                <div class="col-lg-8 col-sm-10">
+                                                    <%= f.text_area :address, class:"form-control" %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 pl-lg-5 ">
+                                        <div class="p-2">
+                                            <div class="row justify-content-start pb-3">
+                                                <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                                                    <div class="form-group row formborder">
+                                                        <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Type :</label>
+                                                        <div class="col-lg-8 col-sm-10">
+                                                            <%= f.input :flat_type, label: false,  collection: ["Studio", "T1", "T2", "T3", "T4"], class:"custom-select my-1 mr-sm-2"  %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row formborder">
+                                                        <div class="col-lg-6 col-sm-10">
+                                                            <%= f.input :accessibility_pmr, label: "Accessibilité PMR", label_html: { class: "col-12 col-form-label type1" } %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-4 pl-lg-5 ">
+                                        <div class="p-2">
+                                            <div class="row justify-content-start pb-3">
+                                                <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                                                    <div class="form-group row formborder">
+                                                        <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Description </label>
+                                                        <div class="col-lg-8 col-sm-10">
+                                                            <%= f.text_area :description, class:"form-control", rows: 5, placeholder: 'Donnez autant de détails que possible (ascenceur, machine à laver, ...)' %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="col-12 text-center">
+                                            <%= f.button :submit, class: 'btn btn-warning py-3 px-4', value: "Proposer le logement" %>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <% end %>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
                     </div>
-                  </div>
                 </div>
-                </div>
-                <div class="col-md-6 col-lg-4 pl-lg-5 ">
-                <div class="p-2">
-                  <div class="row justify-content-start pb-3">
-                    <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                      <div class="form-group row formborder">
-                        <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Type :</label>
-                        <div class="col-lg-8 col-sm-10">
-                          <%= f.input :flat_type, label: false,  collection: ["Studio", "T1", "T2", "T3", "T4"], class:"custom-select my-1 mr-sm-2"  %>
-                        </div>
-                      </div>
-                      <div class="form-group row formborder">
-                        <div class="col-lg-6 col-sm-10">
-                          <%= f.input :accessibility_pmr, label: "Accessibilité PMR", label_html: { class: "col-12 col-form-label type1" } %>
-                        </div>
-                      </div>
-                  </div>
-                  </div>
-                </div>
-                </div>
-                <div class="col-md-12 col-lg-4 pl-lg-5 ">
-                  <div class="p-2">
-                    <div class="row justify-content-start pb-3">
-                      <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                        <div class="form-group row formborder">
-                          <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label type4">Description </label>
-                          <div class="col-lg-8 col-sm-10">
-                              <%= f.text_area :description, class:"form-control", rows: 5, placeholder: 'Donnez autant de détails que possible (ascenceur, machine à laver, ...)' %>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-                  </div>
-              </div>
-              <div >
-                <div class="col-12 text-center">
-                <%= f.button :submit, class: 'btn btn-warning py-3 px-4', value: "Proposer le logement" %>
-                </div>
-              </div>
-        </div>
 
 
-
-           <% end %>
-
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-      </div>
-
-
-    <div class="margintop"> </div>
+                <div class="margintop"> </div>
