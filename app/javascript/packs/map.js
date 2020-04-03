@@ -32,6 +32,9 @@ const search = map => {
     query = places[0].formatted_address;
     lat = places[0].geometry.location.lat();
     lng = places[0].geometry.location.lng();
+
+    localStorage.setItem("lat", lat);
+    localStorage.setItem("lng", lng);
     // Clear out the old markers.
     markers.forEach(function(marker) {
       marker.setMap(null);
@@ -92,8 +95,6 @@ const search = map => {
         lat: json.lat,
         lng: json.lng
       });
-      localStorage.setItem("lat", json.lat);
-      localStorage.setItem("lng", json.lng);
     });
   }
 };
