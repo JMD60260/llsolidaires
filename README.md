@@ -2,8 +2,8 @@
 
 ## Membres bénévoles ayant participé à cette aventure ##
 
-+ Paul (Github ApaeP)(back)
-+ Inés (back + front)
++ Paul Portier (Github ApaeP)(back)
++ Inès (back + front)
 + Brian (Github BrianRid)(back)
 + Emilie (back)
 + Alexandre (back)
@@ -22,7 +22,7 @@
 
 ### Outils de Gestion ###
 
-    Trello publique (https://trello.com/b/i1IQ3aIw)
+    Trello public (https://trello.com/b/i1IQ3aIw)
     Slack
     Zoom
     Serveur Jitsi
@@ -36,7 +36,7 @@
     Rails version 6.0.2.1
     Bundler 2.1.4
     CSS : Bootstrap
-    Licence AGPL3 (Merci de ne pas faire une utilisation commerciale de ce repository car nous l'avons concu pour aider les personnels de première ligne respectez notre philosophie)
+    Licence AGPL3 (Merci de ne pas faire une utilisation commerciale de ce repository car nous l'avons concu pour aider les personnels de première ligne, respectez notre philosophie)
 
 ***
 
