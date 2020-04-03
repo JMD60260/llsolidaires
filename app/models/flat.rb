@@ -36,7 +36,7 @@ class Flat < ApplicationRecord
   end
 
   def self.import(file)
-    csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
+    csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
     # knowing the ligne in the csv so we can send errors
     line = 1
     # storing the numbers of new flats for already existing users
