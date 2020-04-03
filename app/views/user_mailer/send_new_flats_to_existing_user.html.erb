@@ -65,14 +65,16 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                      <tr>
                         <td align="left" valign="top">
                            <font face="Poppins, sans-serif" color="#ffb400" style="font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">
-                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #ffb400; font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">Bonjour, <%= @user.first_name ? "#{@user.first_name} #{@user.last_name}" : @user.last_name %></span>
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #ffb400; font-size: 52px; line-height: 60px; font-weight: 300; letter-spacing: -1.5px;">Bonjour, <%= user_mail %></span>
                            </font>
                            <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
                            <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
-                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Un compte a été créé pour vous et votre(vos) logement(s) est(sont) enregistré(s).
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">
+                                <%= nb_of_new_flats == 1 ? "Un logement a été crée à votre nom sur le site" : "#{nb_of_new_flats} ont été crées à votre nom sur le site" %>
+                              </span>
                            <div style="height: 20px; line-height: 20px; font-size: 18px;">&nbsp;</div>
                            <font face="Poppins, sans-serif" color="#585858" style="font-size: 24px; line-height: 32px;">
-                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Connectez-vous avec votre adresse email et le mot de passe suivant : <%= @password %> </span>
+                              <span style="font-family:Poppins, Arial, Tahoma, Geneva, sans-serif; color: #585858; font-size: 24px; line-height: 32px;">Connectez-vous avec votre adresse email</span>
                            </font>
                            <div style="height: 20px; line-height: 20px; font-size: 18px;">&nbsp;</div>
                            <table class="mob_btn" cellpadding="0" cellspacing="0" border="0" style="background: #ffb400; border-radius: 25px;">

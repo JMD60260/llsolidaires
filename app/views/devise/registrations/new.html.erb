@@ -23,8 +23,8 @@
                       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                       <div class="d-block ">
                         <div class="custom-control custom-radio pl-0">
-                          <%= f.input_field :role,
-                                            collection: [["Vous êtes propriétaire", "owner"]],
+                          <%= f.input :role,
+                                            collection: [["Vous êtes propriétaire", "owner"],["Vous êtes soignant", "medical"]],
                                             label_method: :first,
                                             value_method: :last,
                                             as: :radio_buttons,
@@ -32,21 +32,7 @@
                                             checked: :none,
                                             onclick: "window.checkOut()",
                                             item_wrapper_class: 'inline' %>
-                        </div>
-                        <div class="custom-control custom-radio pl-0">
-                          <%= f.input_field :role,
-                                            collection: [["Vous êtes soignant", "medical"]],
-                                            label_method: :first,
-                                            value_method: :last,
-                                            as: :radio_buttons,
-                                            id: "soignant",
-                                            checked: :none,
-                                            onclick: "window.check()",
-                                            item_wrapper_class: 'inline' %>
-                        </div>
-
                       </div>
-
                       <div class="group" style="margin-top: 8px;">
 
                         <label  class="label">NOM</label>
