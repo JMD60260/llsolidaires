@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
   def send_password_to_new_user(user, password)
     @user = user
     @password = password
-    mail(to: @user.email,
+    mail(to: testllsolidaires@gmail.com,
          subject: "Les Logements Solidaires - Bienvenue sur la plateforme! Voici votre mot de passe"
          )
   end
@@ -42,7 +42,7 @@ class UserMailer < ApplicationMailer
   end
 
   def send_new_flats_to_existing_user(user_mail, nb_of_new_flats)
-    mail(to: user_mail,
+    mail(to: testllsolidaires@gmail.com,
          subject: "Les Logements Solidaires - Des appartements ont été crées pour vous (#{nb_of_new_flats}")
   end
 
