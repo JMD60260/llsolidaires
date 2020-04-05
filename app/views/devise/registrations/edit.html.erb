@@ -41,12 +41,25 @@
               <%= f.label :identity_file do %>
               <%= f.file_field :identity_file %>
               <%= f.hidden_field :identity_file_cache %>
+               <% if current_user.identity_file.present? %>       
+              <p class = "text-success">Vous nous avez déjà envoyé une pièce d'identité</p>
+              <% else %>
+              <p class = "text-danger">Merci de nous envoyer vos documents</p>
               <% end %>
+              <% end %>
+             
               <p> Justificatif professionnel : </p>
               <%= f.label :proof do %>
               <%= f.file_field :proof %>
               <%= f.hidden_field :proof_cache %>
+                <% if current_user.proof.present? %>
+              
+              <p class = "text-success">Vous nous avez déjà envoyé une pièce d'identité</p>
+              <% else %>
+              <p class = "text-danger">Merci de nous envoyer vos documents</p>
               <% end %>
+              <% end %>
+             
             </div>
           </div>
           <% end %>
