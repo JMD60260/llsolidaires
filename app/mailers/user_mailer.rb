@@ -47,7 +47,7 @@ class UserMailer < ApplicationMailer
   end
 
   def send_parsing_errors_to_uploader(errors)
-    mail(to: "paulportier@gmail.com",
+    mail(to: "contact@les-logements-solidaires.com",
          subject: "Vous avez implémenté la base de données avec un csv, des erreurs étaient présentes")
   end
 end

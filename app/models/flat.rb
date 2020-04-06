@@ -51,10 +51,9 @@ class Flat < ApplicationRecord
         # User already existed : creating his related flat
         existing_user = User.find_by(email: row[2])
         flat_infos = {user: existing_user,
-                      address: row[14],
+                      address: row[13],
                       flat_type: "T1",
-                      description: "Parking: #{row[6]}\nLinge fourni: #{row[8]}\nRemise des clés: #{row[10]}",
-                      city: row[5]
+                      description: "Parking: #{row[6] ? row[6] : " : non communiqué"}\nLinge fourni: #{row[8] ? row[8] : " : non communiqué"}\nRemise des clés: #{row[10] ? row[10] : " : non communiqué"}\nHôpital le plus proche#{row[7] ? row[7] : " : non communiqué"}",
                       }
         # Flat can be created?
         if Flat.create(flat_infos)
@@ -67,8 +66,8 @@ class Flat < ApplicationRecord
       else
         # User didn't exist: creating the user(owner) and his related first flat
         random_password = (('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a).shuffle.first(6).join
-        user_infos = {last_name: row[0],
-                      first_name: row[1],
+        user_infos = {last_name: row[0] ? row[0].downcase.capitalize : nil,
+                      first_name: row[1] ? row[1].downcase.capitalize : nil,
                       phone: row[3],
                       email: row[2],
                       password: random_password,
@@ -80,10 +79,9 @@ class Flat < ApplicationRecord
         if new_user = User.create(user_infos)
           # Yes : Create his related flat
           flat_infos = {user: new_user,
-                        address: row[14],
+                        address: row[13],
                         flat_type: "T1",
-                        description: "Parking: #{row[6]}\nLinge fourni: #{row[8]}\nRemise des clés: #{row[10]}",
-                        city: row[5]
+                        description: "Parking: #{row[6] ? row[6] : " : non communiqué"}\nLinge fourni: #{row[8] ? row[8] : " : non communiqué"}\nRemise des clés: #{row[10] ? row[10] : " : non communiqué"}\nHôpital le plus proche#{row[7] ? row[7] : " : non communiqué"}",
                         }
           # Flat can be created?
           if Flat.create(flat_infos)

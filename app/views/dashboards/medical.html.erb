@@ -92,8 +92,10 @@
   </div>
   <div class="row">
     <div class="col-lg-6 col-md-12 col-sm-12">
-      <div id="map" class="mr-1" style="width: 100%; height: 600px;" data-markers=<%= @markers.to_json %>>
-      </div>
+      <% if params[:query] %>
+        <div id="map" class="mr-1" style="width: 100%; height: 600px;" data-markers=<%= @markers.to_json %> >
+      <% end %>
+    </div>
     </div>
     <% if @query %>
     <div class="col-lg-6 col-md-12 col-sm-12">
@@ -202,4 +204,26 @@
 
 
 
-<div class="margintop"> </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

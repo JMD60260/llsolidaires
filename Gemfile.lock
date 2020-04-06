@@ -308,6 +308,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sweet-alert2-rails (0.1.0)
+    table_print (1.5.6)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -367,6 +368,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sweet-alert2-rails
+  table_print
   uglifier
   web-console (>= 3.3.0)
   webpacker

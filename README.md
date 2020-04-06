@@ -3,17 +3,17 @@
 ## Membres bénévoles ayant participé à cette aventure ##
 
 + Paul Portier (Github ApaeP)(back)
-+ Inès (back + front)
++ Inès (Github inesb18)(back + front)
 + Brian (Github BrianRid)(back)
-+ Emilie (back)
-+ Alexandre (back)
-+ Hugo (back + front)
-+ Julien (front)
-+ Pavel (front)
-+ Maximilien (front)
-+ Youenn (back)
++ Emilie (Github Kwette)(back)
++ Alexandre (Github VirAlex)(back)
++ Hugo (Github HugoWith)(back + front)
++ Julien (Github juju4492)(front)
++ Pavel (Github PavelKlimovich)(front)
++ Maximilien (Github Elkawaie)(front)
++ Youenn (Github youenn-priser) (back)
 + Slim (recrutement)
-+ Julie (code review et testing)
++ Julie (Github maslorzj)(code review et testing)
 + Saad (PO)
 + Soulaiman (Fullstack)
 + Jean-Marc DARDY git ID JMD60260 (Chef de Projet Agile)
@@ -68,10 +68,5 @@ Tu peux alors coder normalement / puis
 
 #### Pour Merger ####
 
-    git checkout master
-    git pull origin master
-    git checkout nom_de_ta_branche
-    git merge master
-    git checkout master
-    git merge nom_de_ta_branche
-    git push origin master
+    git push origin nom_de_ta_branche
+    aller sur github et faire la pull request de ta branche
