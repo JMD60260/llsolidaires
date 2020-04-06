@@ -19,15 +19,14 @@ class DashboardsController < ApplicationController
         else
           @end_date = Date.parse(params[:end])
         end
-        # @flats = Flat.near([params[:lat], params[:lng]], 20).first(30).select { |flat| flat.available_for(@start_date, @end_date) }
-        @flats = Flat.near([params[:lat], params[:lng]], 20).select { |flat| flat.available_for(@start_date, @end_date) }
-        p @flats
+        @flats = Flat.near([params[:lat], params[:lng]], 20).first(30).select { |flat| flat.available_for(@start_date, @end_date) }
+        # @flats = Flat.near([params[:lat], params[:lng]], 20).select { |flat| flat.available_for(@start_date, @end_date) }
       else
         @query = false
         @flats = Flat.all
       end
-      # @markers = geocoded_flats(@flats, params[:lat], params[:lng])
-      @markers = geocoded_flats(@flats)
+      @markers = geocoded_flats(@flats, params[:lat], params[:lng])
+      # @markers = geocoded_flats(@flats)
     else
       flash[:error] = "Vous n'avez pas accès à cette page.'"
       redirect_to root_path
@@ -44,15 +43,15 @@ class DashboardsController < ApplicationController
 
   private
 
-  # def geocoded_flats(flats, point_lat, point_lng)
-  def geocoded_flats(flats)
+  def geocoded_flats(flats, point_lat, point_lng)
+  # def geocoded_flats(flats)
     flats.map do |flat|
       {
         lat: flat.latitude,
         lng: flat.longitude,
-        # address: flat.address.gsub(" ", "&nbsp;"),
-        # type: flat.flat_type.to_s,
-        # distance: flat.distance_to([point_lat, point_lng]).round(2).to_s
+        address: flat.address.gsub(" ", "&nbsp;"),
+        type: flat.flat_type.to_s,
+        distance: flat.distance_to([point_lat, point_lng]).round(2).to_s
       }
     end
   end
