@@ -1,36 +1,47 @@
-
-
-
 <footer class="ftco-footer ftco-section">
-  <div class="container">
-    <div class="row ">
-      <div class="col-md">
-        <div class="ftco-footer-widget mb-4">
-          <p> &copy;<script>document.write(new Date().getFullYear());</script> Les Logements Solidaires</p>
-          <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-6">
-            <li><a href="https://www.malt.fr/" ><img class="mb-4" src="<%= image_url('malt_logo.svg')%>" alt="" width="150" ></a></li>
-            <li><a href="https://www.lewagon.com/fr" ><img class="mb-4" src="<%= image_url('le-wagon-color.png')%>" alt="" width="150" ></a></a></li>
+    <div class="container">
+        <div class="row ">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <p> &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> Les Logements Solidaires</p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-6">
+                        <li><a href="https://www.malt.fr/"><img class="mb-4" src="<%= image_url('malt_logo.svg')%>" alt="" width="150" ></a></li>
+                        <li><a href="https://www.lewagon.com/fr"><img class="mb-4" src="<%= image_url('le-wagon-color.png')%>" alt="" width="150" ></a></a>
+                        </li>
+                        <li><a href="https://djs-avocats.com/"><img class="mb-4" src="<%= image_url('djs.png')%>" alt="" width="150" ></a></a>
+                        </li>
 
-          </ul>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+            </div>
+
+            <div class="col-md">
+                <ul class="list-unstyled text alignend icon-footer">
+                    <li><span><a href="https://www.facebook.com/leslogementssolidaires/?__tn__=%2Cd%2CP-R&eid=ARCWzVQLWgKhlknBFf9LyyvzKNFQ4Bb5RXgUJcNPvIV2GKluuGJyDeXxaaDZAevPukfQ5J2XjoqlMBU9" class="fab fa-facebook" ></a></span></li>
+                </ul>
+                <ul class="list-unstyled text alignend">
+                    <li>
+                        <%= link_to "Qui sommes nous ?", pages_about_us_path, class: 'text' %>
+                    </li>
+                    <li>
+                        <%= link_to "Nos partenaires", pages_partners_path, class: 'text' %>
+                    </li>
+                    <li>
+                        <%= link_to "Mentions légales", pages_legal_notice_path, class: 'text' %>
+                    </li>
+                    <li>
+                        <%= link_to "Politique de confidentialité", pages_privacy_policy_path, class: 'text' %>
+                    </li>
+                    <a href='mailto:contact@les-logements-solidares.com'>Contact</a>
+                </ul>
+            </div>
         </div>
-      </div>
-
-      <div class="col-md">
-      </div>
-
-      <div class="col-md">
-        <ul class="list-unstyled text alignend icon-footer" >
-          <li><span><a href="https://www.facebook.com/leslogementssolidaires/?__tn__=%2Cd%2CP-R&eid=ARCWzVQLWgKhlknBFf9LyyvzKNFQ4Bb5RXgUJcNPvIV2GKluuGJyDeXxaaDZAevPukfQ5J2XjoqlMBU9" class="fab fa-facebook" ></a></span></li>
-        </ul>
-        <ul class="list-unstyled text alignend">
-          <li><%= link_to "Qui sommes nous ?", pages_about_us_path, class: 'text' %></li>
-          <li><%= link_to "Nos partenaires", pages_partners_path, class: 'text' %></li>
-          <li><%= link_to "Mentions légales", pages_legal_notice_path, class: 'text' %></li>
-          <li><%= link_to "Politique de confidentialité", pages_privacy_policy_path, class: 'text' %></li>
-          <a href='mailto:contact@les-logements-solidares.com'>Contact</a>
-        </ul>
-      </div>
-      </div>
     </div>
 
 
