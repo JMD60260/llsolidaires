@@ -2,7 +2,7 @@
 
 ## Membres bénévoles ayant participé à cette aventure ##
 
-+ Paul Portier (Github ApaeP)(back)
++ Paul Portier (Github ApaeP)(Lead Dev)
 + Inès (Github inesb18)(back + front)
 + Brian (Github BrianRid)(back)
 + Emilie (Github Kwette)(back)
