@@ -13,7 +13,7 @@ const initAutocomplete = () => {
   search(map);
 };
 
-const search = map => {
+const search = (map) => {
   // Create the search box and link it to the UI element.
   var input = document.getElementById("SearchBar");
   var searchBox = new google.maps.places.SearchBox(input);
