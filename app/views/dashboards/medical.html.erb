@@ -122,7 +122,7 @@
                                           '<%= flat.accessibility_pmr %>',
                                           '<%= flat.address %>',
                                           '<%= photos_urls %>',
-                                          '<%= flat.description %>',
+                                          '<%= flat.description.gsub(/[\x00\t\n\v\f\r ]/," ") %>',
                                           '<%= @start_date.strftime("%d/%m/%Y") %>',
                                           '<%= @end_date ? @end_date.strftime("%d/%m/%Y") : @end_date %>',
                                           '<%= flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }) %>')" >
