@@ -4,16 +4,23 @@ export { initAutocomplete };
 require("google-maps");
 
 const initAutocomplete = () => {
+  var input = document.getElementById("SearchBar");
+  var searchBox = new google.maps.places.SearchBox(input);
+  // Bias the SearchBox results towards current map's viewport.
+
   const map = new GMaps({
     el: "#map",
     lat: localStorage.getItem("lat") ? localStorage.getItem("lat") : 48.8534,
     lng: localStorage.getItem("lng") ? localStorage.getItem("lng") : 2.3488,
     zoom: 11
   });
+  map.addListener("bounds_changed", function () {
+    searchBox.setBounds(map.getBounds());
+  });
   search(map);
 };
 
-const search = map => {
+const search = (map) => {
   // Create the search box and link it to the UI element.
   var input = document.getElementById("SearchBar");
   var searchBox = new google.maps.places.SearchBox(input);
@@ -44,44 +51,54 @@ const search = map => {
     });
     markers = [];
     // For each place, get the icon, name and location.
-    // var bounds = new google.maps.LatLngBounds();
-    // places.forEach(function(place) {
-    //   if (!place.geometry) {
-    //     return;
-    //   }
-    //   var icon = {
-    //     url: place.icon,
-    //     size: new google.maps.Size(71, 71),
-    //     origin: new google.maps.Point(0, 0),
-    //     anchor: new google.maps.Point(17, 34),
-    //     scaledSize: new google.maps.Size(25, 25)
-    //   };
-    //   if (place.geometry.viewport) {
-    //     // Only geocodes have viewport.
-    //     bounds.union(place.geometry.viewport);
-    //   } else {
-    //     bounds.extend(place.geometry.location);
-    //   }
-    // });
-    // map.fitBounds(bounds);
-    // let target = document.getElementById("SearchBar");
-    // let lat_hidden_field = document.getElementById("hidden_lat");
-    // let lng_hidden_field = document.getElementById("hidden_lng");
-    // lat_hidden_field.setAttribute("value", lat);
-    // lng_hidden_field.setAttribute("value", lng);
-    // target.addEventListener("submit", e => {
-    //   e.removeAttribute("value");
-    //   e.setAttribute("value", query);
-    // });
-    //document.getElementById('search-bar-button').click();
+    var bounds = new google.maps.LatLngBounds();
+
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        return;
+      }
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+
+    map.fitBounds(bounds);
+    let target = document.getElementById("SearchBar");
+    let lat_hidden_field = document.getElementById("hidden_lat");
+    let lng_hidden_field = document.getElementById("hidden_lng");
+    lat_hidden_field.setAttribute("value", lat);
+    lng_hidden_field.setAttribute("value", lng);
+
+    target.addEventListener("submit", e => {
+      e.removeAttribute("value");
+      e.setAttribute("value", query);
+    });
   });
   // let flats = document.getElementById("map").getAttribute("data-markers");
-
-  const markers_de_ouf = JSON.parse(document.getElementById('map').dataset.markers);
-  markers_de_ouf.forEach((marker) => {
-    console.log(marker.address)
-    console.log(marker.type)
-    console.log(marker.distance)
+  // if (flats && flats != "[]") {
+  //   flats = flats.replace("[", "");
+  //   flats = flats.replace("]", "");
+  //   flats = flats.split(/(?=\{)/);
+  //   $.each(flats, function(index, value) {
+  //     let json = JSON.parse(value.replace(/,*$/, ""));
+  //     map.addMarker({
+  //       lat: json.lat,
+  //       lng: json.lng
+  //     });
+  //   });
+  // };
+  const markers_2 = JSON.parse(document.getElementById('map').dataset.markers);
+  markers_2.forEach((marker) => {
     map.addMarker({
       lat: marker.lat,
       lng: marker.lng,
@@ -91,4 +108,3 @@ const search = map => {
     });
   });
 };
-

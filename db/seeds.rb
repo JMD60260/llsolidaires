@@ -69,7 +69,7 @@ appart1 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner1.id
 })
-sleep(2)
+
 appart2 = Flat.create!({
   address: "45 rue de la Harpe, Paris 75005",
   city: "Paris",
@@ -78,7 +78,7 @@ appart2 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner1.id
 })
-sleep(1)
+
 appart3 = Flat.create!({
   address: "6 rue Xavier Privas, Paris 75005",
   city: "Paris",
@@ -87,7 +87,7 @@ appart3 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner1.id
 })
-sleep(2)
+
 appart4 = Flat.create!({
   address: "28 rue de la Huchette, Paris 75005",
   city: "Paris",
@@ -96,7 +96,7 @@ appart4 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner1.id
 })
-sleep(1)
+
 appart5 = Flat.create!({
   address: "53 Rue du Metz, 59800 Lille",
   city: "Lille",
@@ -105,7 +105,7 @@ appart5 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner1.id
 })
-sleep(2)
+
 appart6 = Flat.create!({
   address: "26 Rue Kervégan, 44000 Nantes",
   city: "Nantes",
@@ -114,7 +114,7 @@ appart6 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner1.id
 })
-sleep(1)
+
 appart19 = Flat.create!({
   address: "82 Rue de la Balme, 69003 Lyon",
   city: "Lyon",
@@ -123,7 +123,7 @@ appart19 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner1.id
 })
-sleep(2)
+
 appart20 = Flat.create!({
   address: "24 Rue du Capitaine, 69003 Lyon",
   city: "Lyon",
@@ -132,7 +132,7 @@ appart20 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner1.id
 })
-sleep(1)
+
 appart21 = Flat.create!({
   address: "69 Rue Jeanne d'Arc, 69003 Lyon",
   city: "Lyon",
@@ -143,7 +143,7 @@ appart21 = Flat.create!({
 })
 
 puts "Création de 5 appartements 3 pièces...->Owner2"
-sleep(2)
+
 appart7 = Flat.create!({
   address: "35 avenue du parc, Saint-Leu la forêt 95320",
   city: "Saint-Leu la forêt",
@@ -152,7 +152,7 @@ appart7 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner2.id
 })
-sleep(1)
+
 appart8 = Flat.create!({
   address: "86 Rue Princesse, 59800 Lille",
   city: "Lille",
@@ -161,7 +161,7 @@ appart8 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner2.id
 })
-sleep(1)
+
 appart9 = Flat.create!({
   address: "21 Rue Saint-Sébastien, 59800 Lille",
   city: "Lille",
@@ -170,7 +170,7 @@ appart9 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner2.id
 })
-sleep(2)
+
 appart10 = Flat.create!({
   address: "12 Allée de la Maison Rouge, 44000 Nantes",
   city: "Nantes",
@@ -179,7 +179,7 @@ appart10 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner2.id
 })
-sleep(1)
+
 appart11 = Flat.create!({
   address: "2 Rue du Chêne d'Aron, 44000 Nantes",
   city: "Nantes",
@@ -188,7 +188,7 @@ appart11 = Flat.create!({
   accessibility_pmr: true,
   user_id: owner2.id
 })
-sleep(1)
+
 puts "Création de 7 appartements 2 pièces...--> Owner3"
 appart12 = Flat.create!({
   address: "10 rue du port, Clichy 92110",
@@ -198,7 +198,7 @@ appart12 = Flat.create!({
   accessibility_pmr: false,
   user_id: owner3.id
 })
-sleep(2)
+
 appart13 = Flat.create!({
   address: "13 Rue Commandant Mages, 13001 Marseille",
   city: "Marseille",
@@ -207,7 +207,7 @@ appart13 = Flat.create!({
   accessibility_pmr: false,
   user_id: owner3.id
 })
-sleep(1)
+
 appart14 = Flat.create!({
   address: "40 Boulevard Dahdah, 13004 Marseille",
   city: "Marseille",
@@ -216,7 +216,7 @@ appart14 = Flat.create!({
   accessibility_pmr: false,
   user_id: owner3.id
 })
-sleep(2)
+
 appart15 = Flat.create!({
   address: "1 Boulevard Léglize, 13004 Marseille",
   city: "Marseille",
@@ -225,7 +225,7 @@ appart15 = Flat.create!({
   accessibility_pmr: false,
   user_id: owner3.id
 })
-sleep(1)
+
 appart16 = Flat.create!({
   address: "11 Boulevard Léglize, 13004 Marseille",
   city: "Marseille",
@@ -234,7 +234,7 @@ appart16 = Flat.create!({
   accessibility_pmr: false,
   user_id: owner3.id
 })
-sleep(1)
+
 appart17 = Flat.create!({
   address: "11 rue Malherbe, 44000 Nantes",
   city: "Nantes",
@@ -243,7 +243,7 @@ appart17 = Flat.create!({
   accessibility_pmr: false,
   user_id: owner3.id
 })
-sleep(2)
+
 appart18 = Flat.create!({
   address: "74 Rue de la Balme, 69003 Lyon",
   city: "Lyon",

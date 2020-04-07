@@ -86,47 +86,54 @@
   <div class="col-12 marginleft mb-3">
     <h4>
       <% if @query %>
-      Résultats
+        Résultats
       <% end %>
     </h4>
   </div>
   <div class="row">
     <div class="col-lg-6 col-md-12 col-sm-12">
-      <% if params[:query] %>
-        <div id="map" class="mr-1" style="width: 100%; height: 600px;" data-markers=<%= @markers.to_json %> >
-      <% end %>
-    </div>
+      <%# <% if params[:query] %>
+        <div id="map" class="mr-1" style="width: 100%; height: 600px;" data-markers=<%= @markers.to_json %>>
+        </div>
+      <%# <% end %>
     </div>
     <% if @query %>
-    <div class="col-lg-6 col-md-12 col-sm-12">
-      <% if @flats.empty? %>
-      <h6 class="mb-4 type1">Pas de résultat.</h6>
-      <% end %>
-      <% @flats.each do |flat| %>
-      <div class="row marketing color-back w-100 p-3 mb-3">
-      <% if flat.photos.present? %>
-        <div style="background-image:url(<%= flat.photos[0].url %>); background-size: 100% auto; background-repeat: no-repeat;" class="d-block col-4 image-cara"></div>
-      <% end %>
-        <div class="col-8 d-flex flex-column justify-content-between">
-          <div>
-            <h6 class="mb-1 type"> Type : <span class="grey"> <%= flat.flat_type %></span></h6>
-            <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= flat.address %></span></h6>
-          </div>
-          <div class="d-flex justify-content-end">
-            <% photos_urls = flat.photos.map {|photo| photo.url } %>
-            <button id="myBtn" class="btn btn-outline-warning py-1 px-3 radius"
-            onclick="modalMap('<%= flat.flat_type %>','<%= flat.accessibility_pmr %>','<%= flat.address %>',
-                              '<%= photos_urls %>',
-                              '<%= flat.description %>', '<%= @start_date.strftime("%d/%m/%Y") %>', '<%= @end_date ? @end_date.strftime("%d/%m/%Y") : @end_date %>',
-                              '<%= flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }) %>')" >
-              Détail et demande
-            </button>
-          </div>
-        </div>
-      </div>
-      <% end %>
-      <% end %>
-    </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <% if @flats.empty? %>
+          <h6 class="mb-4 type1">Pas de résultat.</h6>
+        <% end %>
+        <% @flats.each do |flat| %>
+          <div class="row marketing color-back w-100 p-3 mb-3">
+            <% if flat.photos.present? %>
+              <div style="background-image:url(<%= flat.photos[0].url %>); background-size: 100% auto; background-repeat: no-repeat;" class="d-block col-4 image-cara"></div>
+            <% end %>
+            <div class="col-8 d-flex flex-column justify-content-between">
+              <div>
+                <div style="display: flex">
+                  <h6 class="mb-1 mr-3 type"> Type : <span class="grey"> <%= flat.flat_type %></span></h6>
+                  <h6 class="mb-1 ml-3 type" style="display: ruby"> à :<span class="grey"> <br> <%= flat.distance_to([params[:lat], params[:lng]]).round(2) %> km</span></h6>
+                </div>
+                <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= flat.address %></span></h6>
+              </div>
+              <div class="d-flex justify-content-end">
+                <% photos_urls = flat.photos.map {|photo| photo.url } %>
+                <button id="myBtn" class="btn btn-outline-warning py-1 px-3 radius"
+                        onclick="modalMap('<%= flat.flat_type %>',
+                                          '<%= flat.accessibility_pmr %>',
+                                          '<%= flat.address %>',
+                                          '<%= photos_urls %>',
+                                          '<%= flat.description %>',
+                                          '<%= @start_date.strftime("%d/%m/%Y") %>',
+                                          '<%= @end_date ? @end_date.strftime("%d/%m/%Y") : @end_date %>',
+                                          '<%= flat_rentals_path(flat, rental: {user_id: current_user.id, flat_id: flat.id, start_date: @start_date, end_date: @end_date }) %>')" >
+                  Détail et demande
+                </button>
+              </div>
+          	</div>
+					</div>
+        <% end %> <%# @flats.each do |flat| %>
+			</div>
+    <% end %> <%# if @query %>
   </div>
 </div>
 
@@ -203,27 +210,4 @@
 <% end %>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="margintop"> </div>
