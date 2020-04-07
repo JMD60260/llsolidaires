@@ -4,11 +4,18 @@ export { initAutocomplete };
 require("google-maps");
 
 const initAutocomplete = () => {
+  var input = document.getElementById("SearchBar");
+  var searchBox = new google.maps.places.SearchBox(input);
+  // Bias the SearchBox results towards current map's viewport.
+
   const map = new GMaps({
     el: "#map",
     lat: localStorage.getItem("lat") ? localStorage.getItem("lat") : 48.8534,
     lng: localStorage.getItem("lng") ? localStorage.getItem("lng") : 2.3488,
     zoom: 11
+  });
+  map.addListener("bounds_changed", function () {
+    searchBox.setBounds(map.getBounds());
   });
   search(map);
 };
