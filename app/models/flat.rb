@@ -35,6 +35,10 @@ class Flat < ApplicationRecord
     end
   end
 
+  def photos_urls
+    photos.map(&:url)
+  end
+
   def self.import(file)
     csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
     # knowing the ligne in the csv so we can send errors
