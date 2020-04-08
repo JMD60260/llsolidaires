@@ -5,6 +5,7 @@ require('google-maps');
 
 //= require sweetalert2
 //= require sweet-alert2-rails
+//= require rails-sweetalert2-confirm
 
 import "bootstrap";
 import { initAutocomplete } from "./map";
