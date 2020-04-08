@@ -117,6 +117,7 @@ function modalMap(
     modalPMR.innerText = "Non";
   }
   var photosUrlsArray = photosUrlsArrayAsString.slice(1,-1).split(", ");
+  modalCarousel.innerHTML = "";
   var carouselInnerHTML = "";
   if (photosUrlsArray[0] != ""){
     photosUrlsArray.forEach((photoUrl, i) => {
