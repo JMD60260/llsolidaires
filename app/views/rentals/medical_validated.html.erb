@@ -70,6 +70,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-6 col-lg-4 pl-lg-5 py-4">
         <div class="py-md-5">
           <div class="row justify-content-start pb-3">
@@ -78,6 +79,10 @@
               <p> <%= rental.flat.description %></p>
               <br>
               <h6 class="mb-4 type"> Propriétaire : <span class="grey"> <%= rental.flat.user.first_name + " " + rental.flat.user.last_name %> </span></h6>
+              <%= link_to rental_path(rental), method: :delete, data: { confirm: "Voulez-vous vraiment mettre fin à la location (à compter d'aujourd'hui) ?"} do %>
+                <button class="btn btn-danger text-white mt-5 mr-5 ml-5 mb-2">Mettre fin à la location</button>
+              <% end %>
+
             </div>
           </div>
         </div>
@@ -164,6 +169,10 @@
               <p> <%= rental.flat.description %></p>
               <br>
               <h6 class="mb-4 type"> Propriétaire : <span class="grey"> <%= rental.flat.user.first_name + " " + rental.flat.user.last_name %> </span></h6>
+
+              <%= link_to rental_path(rental), method: :delete, data: { confirm: "Voulez-vous vraiment annuler la réservation ?"} do %>
+                <button class="btn btn-danger text-white mt-5 mr-5 ml-5 mb-2">Annuler la réservation</button>
+              <% end %>
             </div>
           </div>
         </div>
