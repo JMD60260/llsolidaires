@@ -116,12 +116,11 @@
                 <h6 class="mb-4 type"> Adresse :<span class="grey"> <br> <%= flat.address %></span></h6>
               </div>
               <div class="d-flex justify-content-end">
-                <% photos_urls = flat.photos.map {|photo| photo.url } %>
                 <button id="myBtn" class="btn btn-outline-warning py-1 px-3 radius"
                         onclick="modalMap('<%= flat.flat_type %>',
                                           '<%= flat.accessibility_pmr %>',
-                                          '<%= flat.address %>',
-                                          '<%= photos_urls %>',
+                                          '<%= j flat.address %>',
+                                          '<%= flat.photos_urls %>',
                                           '<%= j flat.description %>',
                                           '<%= @start_date.strftime("%d/%m/%Y") %>',
                                           '<%= @end_date ? @end_date.strftime("%d/%m/%Y") : @end_date %>',

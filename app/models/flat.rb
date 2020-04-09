@@ -16,23 +16,22 @@ class Flat < ApplicationRecord
   end
 
   validate :found_address_presence?
-  after_validation :geocode#, :reverse_geocode
+  after_validation :avoid_return_in_address, :geocode
   before_save :reverse_geocode
-  # before_save :define_city
 
-  # def define_city
-  #   return unless city.present?
-  #   geocoded_adress = Geocoder.search("#{self.latitude}, #{self.longitude}")[0].data["address"]
-  #   geocoded_city = geocoded_adress["city"]
-  #   geocoded_town = geocoded_adress["town"]
-  #   (geocoded_city != nil) ? self.city = geocoded_city : self.city = geocoded_town
-  # end
 
   def found_address_presence?
-    # Impossible de raise des flashes d'erreurs ici, donc cette methode renvoie une 500 si ladresse n'est pas géocodable. A ameliorer
     if self.geocode == nil || self.geocode[1] == nil
       errors.add(:address, "Cette addresse n'est pas valide, merci de la compléter.")
     end
+  end
+
+  def avoid_return_in_address
+    self.address = self.address.gsub("\r\n", " ")
+  end
+
+  def photos_urls
+    photos.map(&:url)
   end
 
   def self.import(file)
@@ -136,11 +135,11 @@ class Flat < ApplicationRecord
     return available_between(start_date, start_date + 15)
   end
 
-  def available_for(start_date, end_date)
+  def available_for(start_date, end_date, delay)
     if end_date
-      return available_between(start_date, end_date)
+      return available_between(start_date - delay, end_date + delay)
     else
-      return available_from(start_date)
+      return available_from(start_date - delay)
     end
   end
 end
