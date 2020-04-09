@@ -27,6 +27,7 @@
             <div class="col-lg-8 col-sm-10 col-md-12">
               <%= f.input :phone, label: false, class:"form-control" %>
             </div>
+            <p class="text-danger">Vous devez indiquer votre mot de passe actuel pour enregistrer les modifications.</p>
           </div>
           <% if current_user.role == 'medical' %>
           <div class="form-group row formborder">
@@ -60,8 +61,6 @@
               <p class = "text-danger">Merci de nous envoyer vos documents</p>
               <% end %>
               <% end %>
-              <p class="text-danger">Vous devez indiquer votre mot de passe actuel pour enregistrer les modifications.</p>
-
             </div>
           </div>
           <% end %>
