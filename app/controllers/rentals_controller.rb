@@ -23,10 +23,20 @@ class RentalsController < ApplicationController
   end
 
   def destroy
-    if current_user == @rental.user && @rental.validated == false
-      flash[:error] = "Vous avez supprimé la demande de réservation de l'appartement situé #{@rental.flat.address}"
-      @rental.destroy
-      redirect_to medical_pending_requests_path
+    if current_user == @rental.user
+      if @rental.validated == false
+        @rental.destroy
+        flash[:error] = "Vous avez supprimé la demande de réservation de l'appartement situé au #{@rental.flat.address}"
+        redirect_to medical_pending_requests_path
+      elsif @rental.start_date > Date.today
+        @rental.destroy
+        flash[:error] = "Vous avez annulé votre réservation de l'appartement situé au #{@rental.flat.address}"
+        redirect_to medical_validated_rentals_path
+      elsif !(@rental.end_date) || @rental.end_date >= Date.today
+        @rental.update(end_date: Date.today)
+        flash[:error] = "Vous avez mis fin à votre occupation de l'appartement situé au #{@rental.flat.address}, à compter d'aujourd'hui."
+        redirect_to medical_validated_rentals_path
+      end
     else
       flash[:error] = "Vous ne pouvez pas supprimer cette réservation."
       redirect_to root_path

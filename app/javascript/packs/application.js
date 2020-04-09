@@ -5,6 +5,7 @@ require('google-maps');
 
 //= require sweetalert2
 //= require sweet-alert2-rails
+//= require rails-sweetalert2-confirm
 
 import "bootstrap";
 import { initAutocomplete } from "./map";
@@ -117,6 +118,7 @@ function modalMap(
     modalPMR.innerText = "Non";
   }
   var photosUrlsArray = photosUrlsArrayAsString.slice(1,-1).split(", ");
+  modalCarousel.innerHTML = "";
   var carouselInnerHTML = "";
   if (photosUrlsArray[0] != ""){
     photosUrlsArray.forEach((photoUrl, i) => {
@@ -156,3 +158,4 @@ setTimeout(function () {
 
 
 initAutocomplete();
+

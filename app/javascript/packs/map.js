@@ -3,6 +3,7 @@ export { initAutocomplete };
 
 require("google-maps");
 
+
 const initAutocomplete = () => {
   var input = document.getElementById("SearchBar");
   var searchBox = new google.maps.places.SearchBox(input);
