@@ -161,7 +161,9 @@ setTimeout(function () {
 }, 2750);
 
 
+const mapElement = document.getElementById('map');
 
-
-initAutocomplete();
+if (mapElement) {
+  initAutocomplete();
+}
 
