@@ -16,20 +16,22 @@ validationForDates();
 
 
 
-var bouton = document.querySelector("#soignant");
+var checkboxMedical = document.getElementById("user_role_medical");
+var checkboxOwner = document.getElementById("user_role_owner");
+console.log(checkboxMedical);
 var rr = document.querySelector("#rr");
 var aa = document.querySelector(".login-wrap");
 var dd = document.querySelector("#aa");
+
 function check() {
-  bouton.checked = true;
-  if (bouton.value = true) {
+  checkboxMedical.checked = true;
+  if (checkboxMedical.value = true) {
     rr.style.display = "block";
     dd.classList.remove("col-12");
     rr.classList.add("col-6");
     dd.classList.add("col-6");
     aa.style.maxWidth = "750px";
   }
-
 }
 
 function checkOut() {
@@ -40,8 +42,12 @@ function checkOut() {
   dd.classList.remove("col-6");
 }
 
-window.check = check;
-window.checkOut = checkOut;
+if (checkboxMedical) {
+  checkboxMedical.addEventListener('click', check);
+}
+if (checkboxOwner) {
+  checkboxOwner.addEventListener('click', checkOut);
+}
 
 
 //  // Get the modal
