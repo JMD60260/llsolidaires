@@ -27,7 +27,6 @@
             <div class="col-lg-8 col-sm-10 col-md-12">
               <%= f.input :phone, label: false, class:"form-control" %>
             </div>
-            <p class="text-danger">Vous devez indiquer votre mot de passe actuel pour enregistrer les modifications.</p>
           </div>
           <% if current_user.role == 'medical' %>
           <div class="form-group row formborder">
@@ -95,9 +94,9 @@
             <label for="example-date-input" class="col-lg-4 col-sm-10 col-form-label">Mot de passe actuel :</label>
             <div class="col-lg-8 col-sm-10 col-md-12">
               <%= f.input :current_password, label: false,
-              hint: "Vous devez indiquer votre mot de passe actuel pour enregistrer les modifications.",
               required: true,
               input_html: { autocomplete: "current-password" } %>
+            <p class="text-danger">Vous devez indiquer votre mot de passe actuel pour enregistrer les modifications.</p>
             </div>
           </div>
           <div class="col-12 text-center" style="text-align: end;">
