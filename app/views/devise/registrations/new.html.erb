@@ -3,155 +3,153 @@
 
 
 
-    <div class="hero-wrap" style="background-image: url(<%= image_url('bg_1.jpg') %>);">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 " id="hero">
-                    <div class="login-wrap">
-                        <div class="login-html" style="height: 920px;">
+<div class="hero-wrap" style="background-image: url(<%= image_url('bg_1.jpg') %>);">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 " id="hero">
+        <div class="login-wrap">
+          <div class="login-html" style="height: 920px;">
 
-                            <input id="tab-2" type="radio" name="tab" checked="" class="sign-up"><label for="tab-2" class="tab"></label>
-                            <div class="login-form mt-0">
+            <input id="tab-2" type="radio" name="tab" checked="" class="sign-up"><label for="tab-2" class="tab"></label>
+            <div class="login-form mt-0">
 
-                                <div class="sign-up-htm mt-0">
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <div class="sign-up-htm mt-0">
 
-                                    <div class="row ">
-                                        <div id="aa" class="col-12">
-                                            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                                                <div class="d-block ">
-                                                    <div class="custom-control custom-radio pl-0">
-                                                        <%= f.input :role,
-                                            collection: [["Vous êtes logeur", "owner"],["Vous êtes soignant", "medical"]],
-                                            label_method: :first,
-                                            value_method: :last,
-                                            as: :radio_buttons,
-                                            id: "owner",
-                                            checked: :none,
-                                            item_wrapper_class: 'inline' %>
-                                                    </div>
-                                                    <div class="group" style="margin-top: 8px;">
+                <div class="row ">
+                  <div id="aa" class="col-12">
+                    <div class="d-block ">
+                      <div class="custom-control custom-radio pl-0">
+                        <%= f.input :role,
+                        collection: [["Vous êtes logeur", "owner"],["Vous êtes soignant", "medical"]],
+                        label_method: :first,
+                        value_method: :last,
+                        as: :radio_buttons,
+                        id: "owner",
+                        checked: :none,
+                        item_wrapper_class: 'inline' %>
+                      </div>
+                      <div class="group" style="margin-top: 8px;">
 
-                                                        <label class="label">NOM</label>
-                                                        <%= f.input :last_name,
-                                    label: false,
-                                    input_html: { class: "input" },
-                                    label_html: { class: 'label' }  %>
-                                                    </div>
-                                                    <div class="group">
-                                                        <label class="label">PRENOM</label>
-                                                        <%= f.input :first_name,
-                                    label: false,
-                                    input_html: { class: "input" },
-                                    label_html: { class: 'label' }  %>
-                                                    </div>
-                                                    <div class="group">
-                                                        <label class="label">NUMERO DE TELEPHONE</label>
-                                                        <%= f.input :phone,
-                                    label: false,
-                                    input_html: { class: "input" },
-                                    label_html: { class: 'label' }  %>
-                                                    </div>
-                                                    <div class="group">
-                                                        <label class="label">ADRESSE EMAIL</label>
-                                                        <%= f.input :email,
-                                    label: false,
-                                    input_html: { autocomplete: "email", class: "input" } %>
-                                                    </div>
-                                                    <div class="group">
-                                                        <label class="label">MOT DE PASSE</label>
-                                                        <%= f.input :password,
-                                    label: false,
-                                    input_html: { autocomplete: "new-password", class: "input" },
-                                    label_html: { class: 'label' }  %>
-                                                    </div>
-                                                    <div class="group">
-                                                        <label class="label">CONFIRMATION DE MOT DE PASSE</label>
-                                                        <%= f.input :password_confirmation,
-                                    label: false,
-                                    input_html: { autocomplete: "new-password", class: "input" },
-                                    label_html: { class: 'label' }  %>
-                                                    </div>
-                                                    <div class="group">
-                                                        <div class="form-group row mb-1">
-                                                            <div class="col-sm-10">
-                                                                <div class="form-check">
-                                                                    <%= f.input :rgpd, label: ("J'ai lu et j'accepte les #{link_to 'mentions légales', pages_legal_notice_path, target: '_blank'}.").html_safe %>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <%= f.button :submit, "S'INSCRIRE", class: "button" %>
-                                                            <div class="text-center m-3">
-                                                                <%= link_to "SE CONNECTER", root_path, id:"link-cnx" %>
-                                                            </div>
-
-
-
-                                                    </div>
-
-
-                                                </div>
-
-
-                                                <div id="rr">
-                                                    <div class="group">
-                                                        <h6>Photocopie de votre carte d'identité (obligatoire)</h6>
-                                                        <br>
-                                                        <div class="custom-file">
-                                                            <%= f.label :identity_file do %>
-                                                                <%= f.file_field :identity_file, input_html: { class: "custom-file-input" },
-                            label_html: { class: 'custom-file-label' } %>
-                                                                    <%= f.hidden_field :identity_file_cache %>
-                                                                        <% end %>
-                                                        </div>
-                                                        <br>
-                                                        <br>
-                                                        <h6>Photocopie de carte CPS / attestation de l’hôpital / contrat de travail de l’hôpital / carte d’enregistrement à l’ordre national des infirmiers / Fiche de paie, badge, et d'une facon générale tout
-                                                            document daté de moins de 3 mois (obligatoire)</h6>
-                                                        <br>
-                                                        <div class="custom-file">
-                                                            <%= f.label :proof do %>
-                                                                <%= f.file_field :proof, input_html: { class: "custom-file-input" },
-                            label_html: { class: 'custom-file-label' } %>
-                                                                    <%= f.hidden_field :proof_cache %>
-                                                                        <% end %>
-                                                        </div>
-                                                    </div>
-                                                    <br>
-                                                    <div class="form-group form-login ">
-                                                        <label for="exampleFormControlTextarea1" style="color: #ffb400;">VOUS EN QUELQUES MOTS </label>
-                                                        <%= f.input :description,
+                        <label class="label">NOM</label>
+                        <%= f.input :last_name,
                         label: false,
-                        input_html: { rows: 6, class: "form-control" },
-                        placeholder: "Décrivez-vous en quelques lignes" %>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                    </div>
-
-
-                                    <% end %>
-
-                                </div>
+                        input_html: { class: "input" },
+                        label_html: { class: 'label' }  %>
+                      </div>
+                      <div class="group">
+                        <label class="label">PRENOM</label>
+                        <%= f.input :first_name,
+                        label: false,
+                        input_html: { class: "input" },
+                        label_html: { class: 'label' }  %>
+                      </div>
+                      <div class="group">
+                        <label class="label">NUMERO DE TELEPHONE</label>
+                        <%= f.input :phone,
+                        label: false,
+                        input_html: { class: "input" },
+                        label_html: { class: 'label' }  %>
+                      </div>
+                      <div class="group">
+                        <label class="label">ADRESSE EMAIL</label>
+                        <%= f.input :email,
+                        label: false,
+                        input_html: { autocomplete: "email", class: "input" } %>
+                      </div>
+                      <div class="group">
+                        <label class="label">MOT DE PASSE</label>
+                        <%= f.input :password,
+                        label: false,
+                        input_html: { autocomplete: "new-password", class: "input" },
+                        label_html: { class: 'label' }  %>
+                      </div>
+                      <div class="group">
+                        <label class="label">CONFIRMATION DE MOT DE PASSE</label>
+                        <%= f.input :password_confirmation,
+                        label: false,
+                        input_html: { autocomplete: "new-password", class: "input" },
+                        label_html: { class: 'label' }  %>
+                      </div>
+                      <div class="group">
+                        <div class="form-group row mb-1">
+                          <div class="col-sm-10">
+                            <div class="form-check">
+                              <%= f.input :rgpd, label: ("J'ai lu et j'accepte les #{link_to 'mentions légales', pages_legal_notice_path, target: '_blank'}.").html_safe %>
                             </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6 " style="margin-top: 550px;">
-                    <div class="row no-gutters slider-text align-items-center ">
-                        <div class="col-md-12 order-md-last  mt-5 text-left">
-                            <h1 class="mb-4 soulignement">DES LOGEMENTS GRATUITS POUR NOS SOIGNANTS</h1>
-
+                        <%= f.button :submit, "S'INSCRIRE", class: "button" %>
+                        <div class="text-center m-3">
+                          <%= link_to "SE CONNECTER", root_path, id:"link-cnx" %>
                         </div>
 
+
+
+                      </div>
+
+
                     </div>
 
+                  </div>
 
+                  <div id="rr">
+                    <div class="group">
+                      <h6>Photocopie de votre carte d'identité (obligatoire)</h6>
+                      <br>
+                      <div class="custom-file">
+                        <%= f.label :identity_file do %>
+                        <%= f.file_field :identity_file, input_html: { class: "custom-file-input" },
+                        label_html: { class: 'custom-file-label' } %>
+                        <%= f.hidden_field :identity_file_cache %>
+                        <% end %>
+                      </div>
+                      <br>
+                      <br>
+                      <h6>Photocopie de carte CPS / attestation de l’hôpital / contrat de travail de l’hôpital / carte d’enregistrement à l’ordre national des infirmiers / Fiche de paie, badge, et d'une facon générale tout
+                      document daté de moins de 3 mois (obligatoire)</h6>
+                      <br>
+                      <div class="custom-file">
+                        <%= f.label :proof do %>
+                        <%= f.file_field :proof, input_html: { class: "custom-file-input" },
+                        label_html: { class: 'custom-file-label' } %>
+                        <%= f.hidden_field :proof_cache %>
+                        <% end %>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-group form-login ">
+                      <label for="exampleFormControlTextarea1" style="color: #ffb400;">VOUS EN QUELQUES MOTS </label>
+                      <%= f.input :description,
+                      label: false,
+                      input_html: { rows: 6, class: "form-control" },
+                      placeholder: "Décrivez-vous en quelques lignes" %>
+                    </div>
+                  </div>
                 </div>
+                <% end %>
 
-
-
-
-
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+      <div class="col-md-6 " style="margin-top: 550px;">
+        <div class="row no-gutters slider-text align-items-center ">
+          <div class="col-md-12 order-md-last  mt-5 text-left">
+            <h1 class="mb-4 soulignement">DES LOGEMENTS GRATUITS POUR NOS SOIGNANTS</h1>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+
+
+    </div>
+  </div>
