@@ -8025,8 +8025,8 @@ body::-webkit-scrollbar-button {
     margin-left: 0px; }
   .no-gutters {
     display: none; }
-  #cnt-btn {
-    display: none; }
+  /* #cnt-btn {
+    display: none; } */
   #cnt-btn-in {
     display: block; } }
 
@@ -8122,8 +8122,8 @@ body::-webkit-scrollbar-button {
     padding: 0px; }
   .dashboardLink {
     margin-left: 0px; }
-  #cnt-btn {
-    display: none; }
+  /* #cnt-btn {
+    display: none; } */
   #cnt-btn-in {
     display: block; }
   h4, .h4 {
