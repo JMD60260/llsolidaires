@@ -28,6 +28,11 @@ class PagesController < ApplicationController
   end
 
   def partners
+    @medics_without_proof_1 = User.where(role: "medical", proof: nil)
+    @medics_without_id_1 = User.where(role: "medical", identity_file: nil)
+    @medics_without_both = User.where(role: "medical", identity_file: nil, proof: nil)
+    @medics_without_proof_2 = @medics_without_proof_1 - @medics_without_both
+    @medics_without_id_2 = @medics_without_id_1 - @medics_without_both
   end
 
   def owner_doc
@@ -39,4 +44,5 @@ class PagesController < ApplicationController
     @tab = "Aide et documentation"
     @as = "medical"
   end
+
 end
