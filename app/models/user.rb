@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   validates :role, :phone, :last_name, presence: true
   validates :rgpd, acceptance: {accept: true}
+  validates :proof, presence: true
+  validates :identity_file, presence: true
 
   after_create :send_password
 
