@@ -15,9 +15,9 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'rails-sweetalert2-confirm'
-gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
-gem 'sweet-alert2-rails'
+# gem 'rails-sweetalert2-confirm'
+# gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+# gem 'sweet-alert2-rails'
 
 # Geocoding gem for GoogleMaps
 gem 'geocoder'
