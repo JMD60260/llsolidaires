@@ -34,27 +34,27 @@
 
 
 <!-- Lister les utilisateurs "medics" qui n'ont pas uploadés leurs documents -->
-<!--
+
         <div>
           <h2>Medicals without both</h2>
           <ol>
-            <%= @medics_without_both.each do |medic| %>
+            <% @medics_without_both.each do |medic| %>
               <li><%= medic.email %></li>
             <% end %>
           </ol>
           <h2>Medicals without proof</h2>
           <ol>
-            <%= @medics_without_proof_2.each do |medic| %>
+            <% @medics_without_proof_2.each do |medic| %>
               <li><%= medic.email %></li>
             <% end %>
           </ol>
           <h2>Medicals without id</h2>
           <ol>
-            <%= @medics_without_id_2.each do |medic| %>
+            <% @medics_without_id_2.each do |medic| %>
               <li><%= medic.email %></li>
             <% end %>
           </ol>
         </div>
--->
+
 <!-- Lister les utilisateurs "medics" qui n'ont pas uploadés leurs documents END -->
         <div class="margintop"> </div>
