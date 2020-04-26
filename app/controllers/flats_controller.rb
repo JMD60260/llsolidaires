@@ -1,4 +1,5 @@
 class FlatsController < ApplicationController
+  include FileHeaders
   before_action :set_flat, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :import, :index]
 
@@ -71,14 +72,6 @@ class FlatsController < ApplicationController
   end
 
   private
-
-  def csv_stream_headers(filename:)
-    headers.delete('Content-Length')
-    headers['X-Accel-Buffering'] = 'no'
-    headers['Cache-Control'] = 'no-cache'
-    headers['Content-Type'] = 'text/csv; charset=utf-8'
-    headers['Content-Disposition'] = "attachment; filename=#{filename}"
-  end
 
   def set_flat
     @flat = Flat.find(params[:id])

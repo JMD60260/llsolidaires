@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  include FileHeaders
   skip_before_action :authenticate_user!, only: [:home, :legal_notice, :privacy_policy, :about_us, :partners, :userindex]
 
   def home
@@ -46,6 +47,15 @@ class PagesController < ApplicationController
   end
 
   def userindex
+    displayable_attributes = [:id, :email, :last_name, :first_name, :phone, :role]
     @users = User.all
+
+    respond_to do |format|
+      format.csv do
+        csv_stream_headers(filename: "#{Time.now.strftime("%Y%m%d-%H%M%S")}_users.csv")
+        self.response_body = CsvExport.new(@users, displayable_attributes).perform
+      end
+      format.html
+    end
   end
 end
