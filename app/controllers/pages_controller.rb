@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :legal_notice, :privacy_policy, :about_us, :partners]
+  skip_before_action :authenticate_user!, only: [:home, :legal_notice, :privacy_policy, :about_us, :partners, :userindex]
 
   def home
     if user_signed_in?
@@ -45,4 +45,7 @@ class PagesController < ApplicationController
     @as = "medical"
   end
 
+  def userindex
+    @users = User.all
+  end
 end
