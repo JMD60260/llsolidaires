@@ -1,4 +1,5 @@
 class FlatsController < ApplicationController
+  include FileHeaders
   before_action :set_flat, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :import, :index]
 
@@ -52,8 +53,18 @@ class FlatsController < ApplicationController
   end
 
   def index
+    displayable_attributes = [:address, :city, :flat_type, :description, :accessibility_pmr, :user_id]
     @flat = Flat.all
+
+    respond_to do |format|
+      format.csv do
+        csv_stream_headers(filename: "#{Time.now.strftime("%Y%m%d-%H%M%S")}_flats.csv")
+        self.response_body = CsvExport.new(@flat, displayable_attributes).perform
+      end
+      format.html
+    end
   end
+
   def import
     Flat.import(params[:file])
     redirect_to new_flat_path, notice: "Les propriétaires et appartements ont été ajoutés avec succès"
