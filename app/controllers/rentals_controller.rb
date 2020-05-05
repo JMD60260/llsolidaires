@@ -141,6 +141,18 @@ class RentalsController < ApplicationController
       redirect_to root_path
     end
   end
+  def index
+    displayable_attributes = [:flat_id, :user_id, :validated, :start_date, :end_date]
+    @rental = Rental.all
+
+    respond_to do |format|
+      format.csv do
+        csv_stream_headers(filename: "#{Time.now.strftime("%Y%m%d-%H%M%S")}_flats.csv")
+        self.response_body = CsvExport.new(@rental, displayable_attributes).perform
+      end
+      format.html
+    end
+  end
 
   private
 
