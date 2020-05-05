@@ -1,4 +1,5 @@
 class RentalsController < ApplicationController
+  include FileHeaders
   before_action :set_rental, only: [:download_proof, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index]
 
