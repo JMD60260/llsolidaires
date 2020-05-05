@@ -1,5 +1,6 @@
 class RentalsController < ApplicationController
   before_action :set_rental, only: [:download_proof, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def download_proof
     data = open(@rental.user.proof.url)
