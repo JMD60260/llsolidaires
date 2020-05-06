@@ -17,6 +17,7 @@ $secondary: #6b76ff;
 
 
 
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
@@ -33,7 +34,7 @@ $secondary: #6b76ff;
 }
 
 html {
-	
+
 }
 body {
 	font-family: $font-primary;
@@ -186,7 +187,7 @@ h1, h2, h3, h4, h5,
 				}
 			}
 
-			
+
 			&.ftco-seperator {
 				position: relative;
 				margin-left: 20px;
@@ -231,7 +232,7 @@ h1, h2, h3, h4, h5,
 			}
 		}
 	}
-	
+
 	.navbar-toggler {
 		border: none;
 		color: rgba(255,255,255,.5)!important;
@@ -244,7 +245,7 @@ h1, h2, h3, h4, h5,
 			outline: none !important;
 		}
 	}
-	
+
 		.navbar-toggler {
 			border: none;
 			color: $primary!important;
@@ -269,7 +270,7 @@ h1, h2, h3, h4, h5,
 			transition: .3s all ease-out;
 		}
 		&.sleep {
-			transition: .3s all ease-out;	
+			transition: .3s all ease-out;
 		}
 
 		.navbar-brand {
@@ -330,7 +331,7 @@ h1, h2, h3, h4, h5,
 
 .slider-text{
 	position: relative;
-	
+
 	h1 {
 		font-size: 38px;
 		color: $white;
@@ -354,7 +355,7 @@ h1, h2, h3, h4, h5,
 			}
 		}
 	}
-	
+
 	.breadcrumbs{
 		font-size: 16px;
 		margin-bottom: 20px;
@@ -387,11 +388,11 @@ h1, h2, h3, h4, h5,
 
 //////////////// FORM /////////////////////
 .form-login{
-	
+
 	padding: 1px;
     background: rgba(255, 255, 255, 0);
     border: none;
-   
+
     color: #000000;
 }
 .login-wrap{
@@ -412,7 +413,7 @@ h1, h2, h3, h4, h5,
     padding: 30px 50px 0px 50px;
     background:white;
     border-radius: 25px;
-    
+
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm{
@@ -452,16 +453,16 @@ h1, h2, h3, h4, h5,
 #link-cnx  {
 	color: $primary!important;
 	font-size: 16px;
-	
-	
+
+
 }
 
-	
+
 #link-cnx:hover {
-    
+
 	color: #4c442d!important;
 }
-	
+
 .login-form{
     margin-top: 15px;
 	min-height:345px;
@@ -484,23 +485,23 @@ h1, h2, h3, h4, h5,
     padding: 1px;
   background: rgba(255, 255, 255, 0);
   border: none;
-  border-bottom: 2px solid #6c757d; 
+  border-bottom: 2px solid #6c757d;
   color:#000000;}
 
   .form-login textarea:focus{
-    outline: none; 
+    outline: none;
   	border-bottom: 2px solid $primary; }
-  
+
 .login-form .group .input{
     padding: 1px;
   background: rgba(255, 255, 255, 0);
   border: none;
-  border-bottom: 2px solid #6c757d; 
+  border-bottom: 2px solid #6c757d;
   color:#000000;}
 
   .login-form .group .input:focus{
-    outline: none; 
-  border-bottom: 2px solid $primary; 
+    outline: none;
+  border-bottom: 2px solid $primary;
   }
 
 .login-form .group .button{
@@ -583,14 +584,14 @@ h1, h2, h3, h4, h5,
 
 
 
- 
 
-  
+
+
 
 .block-7 {
     margin-bottom: 30px;
-    
-    
+
+
     background: #fff; }
     .block-7 .heading {
       font-size: 14px;
@@ -626,12 +627,12 @@ h1, h2, h3, h4, h5,
         margin: 0; }
       .block-7 .pricing-text li {
         list-style: none;
-        
+
         margin-bottom: 15px;
         color: #fcd307; }
         .block-7 .pricing-text li strong {
           color: #000000; }
-  
+
 
 
 #scroll{
@@ -670,7 +671,7 @@ h1, h2, h3, h4, h5,
 	background: #3385bb;
 	padding: 4em 0;
 	z-index: 0;
-	
+
 	.ftco-footer-widget {
 		h2 {
 			font-weight: normal;
@@ -715,22 +716,22 @@ h1, h2, h3, h4, h5,
 }
 .icon-footer span {
 	font-size: 35px;
-	
+
 	a{
 		color: $primary !important;
 	}
 }
 .ftco-footer-social {
-	
+
 		margin-top: 25px !important;
 		width: 450px;
-	
+
 	li {
-		
+
 		list-style: none;
 		margin: 15px ;
 		display: inline-block;
-		a {	
+		a {
 			display: block;
 			float: left;
 			position: relative;
@@ -772,20 +773,20 @@ h1, h2, h3, h4, h5,
 	border-radius: 25px;
     width:11px
   }
-  
+
   /* background of the scrollbar except button or resizer */
   #scroll::-webkit-scrollbar-track {
 	background-color:rgb(114, 113, 113);
 	border-radius: 25px;
   }
-  
+
   /* scrollbar itself */
   #scroll::-webkit-scrollbar-thumb {
     background-color:$primary;
     border-radius:25px;
     border:4px solid $primary;
   }
-  
+
   /* set button(top and bottom of the scrollbar) */
   #scroll::-webkit-scrollbar-button {display:none}
 
@@ -795,22 +796,22 @@ body::-webkit-scrollbar {
     background-color:rgba(247, 245, 245, 0.733);
     width:11px
   }
-  
+
   /* background of the scrollbar except button or resizer */
   body::-webkit-scrollbar-track {
     background-color:rgb(114, 113, 113)
   }
-  
+
   /* scrollbar itself */
   body::-webkit-scrollbar-thumb {
     background-color:#ffffff;
     border-radius:16px;
     border:4px solid #ffffff;
   }
-  
+
   /* set button(top and bottom of the scrollbar) */
   body::-webkit-scrollbar-button {display:none}
-  
+
 
   ::selection  {
     background: $primary;
@@ -823,8 +824,8 @@ body::-webkit-scrollbar {
 
   .soulignement {
 	text-decoration: underline  #ffb400;
-   
-  
+
+
   }
   .dashboardLink{
 	  margin-left: -150px;
@@ -842,7 +843,7 @@ body::-webkit-scrollbar {
   }
 #rr{
 	display: none;
-  
+
   }
 	.custom-file-input ~ .custom-file-label:lang(fr)::after {
 	content: "Choisir...";
@@ -876,20 +877,20 @@ body::-webkit-scrollbar {
 
 	}
 	.hero-wrap1 {
-		
+
 		height: 200px;
-		
+
 	}
   }
 
-  
+
   @media (min-width: 650px) and (max-width: 1100px) {
 	#hero{
 		margin-left: 0px ;
 	  }
 	.dashboardLink  {
 		margin-left: 0px;
-		
+
 	}
 	.no-gutters {
 		display: none;
@@ -915,7 +916,7 @@ body::-webkit-scrollbar {
 		margin: auto;
 	}
 	.dashboardLink ul li {
-		 padding: 0rem 0rem; 
+		 padding: 0rem 0rem;
 	}
 	.mdl-type1{
 		color: #04148a;
@@ -931,29 +932,29 @@ body::-webkit-scrollbar {
 		font-size: 14px;
 	}
   }
-  
+
   @media (min-width: 300px) and (max-width: 649px) {
 	#user_proof{
 		font-size: 10px;
 	  }
-	
+
 	  #user_identity_file{
 		font-size: 10px;
 	  }
-	
-	
+
+
 	  .overlay1{
 		  height: 322px !important;
 	  }
 	.ftco-navbar-light .navbar-toggler {
-		
+
 		font-size: 12px;
-		
+
 	}
 	.type1 {
-		
+
 		font-size: 12px;
-		
+
 	}
 #ftco-navbaner img{
 	width: 100px;
@@ -973,13 +974,13 @@ body::-webkit-scrollbar {
 	  }
 	.login-html{
 		padding: 10px 30px 0px 30px;
-		
+
 	}
 	.login-wrap{
 		height: 700px;
 	}
 	#link-cnx {
-		
+
 		font-size: 10px;
 	}
 	.mdl-type1{
@@ -998,14 +999,14 @@ body::-webkit-scrollbar {
 		}
 	  }
 	  .login-form .group .label {
-		
-		 font-size: 10px; 
+
+		 font-size: 10px;
 	}
 	.login-wrap {
-		
+
 		width: auto;
-		
-	
+
+
 	}
 	#btn-hr-blue{
 		padding: 15px 88px !important;
@@ -1030,28 +1031,28 @@ body::-webkit-scrollbar {
 		font-size: 1em;
 	}
 	.m-3 {
-		 margin: 0rem !important; 
+		 margin: 0rem !important;
 	}
 	  .btn{
 		  font-size: 8px;
 	  }
 	.container-fluid .cardRow {
-		 margin-left: 3vw; 
-		
+		 margin-left: 3vw;
+
 	}
 	.ftco-footer-social {
-		
+
 		width: 300px;
 	}
 	.padding1{
 		padding: 0px;
 	  }
-	  
+
 	.dashboardLink {
 		margin-left: 0px;
-		
+
 	}
-	
+
 	#cnt-btn{
 		display: none;
 
@@ -1060,7 +1061,7 @@ body::-webkit-scrollbar {
 		display: block;
 
 	}
-	
+
 	h4, .h4 {
 		font-size: 15px !important;
 	}
@@ -1068,7 +1069,7 @@ body::-webkit-scrollbar {
 		font-size: 10px;
 	}
   }
-  
+
   @media (min-width: 300px) and (max-width: 400px) {
 	#btn-hr-blue{
 		padding: 15px 70px !important;
@@ -1088,7 +1089,7 @@ body::-webkit-scrollbar {
 	#hero{
 		margin-left: 0px ;
 	  }
-	 
+
 }
 
 
