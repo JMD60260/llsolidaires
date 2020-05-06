@@ -53,7 +53,7 @@ class FlatsController < ApplicationController
   end
 
   def index
-    displayable_attributes = [:address, :city, :flat_type, :description, :accessibility_pmr, :user_id]
+    displayable_attributes = [:id, :address, :city, :flat_type, :description, :accessibility_pmr, :user_id]
     @flat = Flat.all
 
     respond_to do |format|
