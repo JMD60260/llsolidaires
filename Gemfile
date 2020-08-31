@@ -26,9 +26,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
 
 # Update August 2020
-gem "activesupport", ">= 6.0.3.1"
-gem "actionview", ">= 6.0.3.1"
-gem "actionpack", ">= 6.0.3.2"
+
+
 
 # Algolia Search
 gem "algoliasearch-rails"
