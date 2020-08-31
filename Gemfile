@@ -24,7 +24,7 @@ gem 'geocoder'
 gem 'aws-sdk-s3', require: false
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
-
+gem "activesupport", ">= 6.0.3.1"
 
 # Algolia Search
 gem "algoliasearch-rails"
