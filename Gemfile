@@ -22,7 +22,7 @@ gem 'webpacker'
 # Geocoding gem for GoogleMaps
 gem 'geocoder'
 gem 'aws-sdk-s3', require: false
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'fog-aws'
 
 # Update August 2020
