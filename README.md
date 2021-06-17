@@ -27,6 +27,7 @@
     Zoom
     Serveur Jitsi
     Google Drive
+    Figma (https://www.figma.com/file/bi6yntZAuhC7Wvo5ZPwXJB/llsolidaires?node-id=0%3A1)
 
 ***
 
